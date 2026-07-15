@@ -1,0 +1,11 @@
+SrTiO3 pristine 5-atom cell -- Gamma-point phonons (harmonic ph.x, escalation ladder step 1)
+&inputph
+    prefix    = 'SrTiO3_pristine'
+    outdir    = './tmp/'
+    fildyn    = 'SrTiO3.dyn'
+    epsil     = .true.
+    tr2_ph    = 1.0d-14
+    verbosity = 'high'
+    recover   = .true.
+/
+0.0 0.0 0.0

@@ -1,0 +1,40 @@
+# manuscript & review material — never public
+manuscript/
+**/[Rr]eferee*
+references/
+
+# local agent config — not part of the project
+CLAUDE.md
+CLAUDE_*.md
+.claude/
+
+# secrets
+.env
+*.pem
+*credentials*
+*secrets*
+
+# python
+.venv/
+venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# pseudopotentials — redistribution license not stated in the files;
+# download sources + MD5s recorded in dft/qe/pseudopotentials/SOURCES.md
+*.UPF
+
+# heavy calculation outputs
+data/raw/
+*.wfc*
+*.save/
+fc2.hdf5
+fc3.hdf5
+kappa-*.hdf5
+*.out.tar.gz
+
+# OS / editors
+.DS_Store
+~$*

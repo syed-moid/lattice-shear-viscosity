@@ -1,0 +1,44 @@
+&CONTROL
+    calculation = 'vc-relax'
+    restart_mode = 'from_scratch'
+    prefix = 'SrTiO3_pristine'
+    pseudo_dir = './pseudo/'
+    outdir = './tmp/'
+    tstress = .true.
+    tprnfor = .true.
+    etot_conv_thr = 1.0d-6
+    forc_conv_thr = 1.0d-5
+/
+&SYSTEM
+    ibrav = 1
+    celldm(1) = 7.37              ! starting guess only — this is what gets refined
+    nat = 5
+    ntyp = 3
+    ecutwfc = 60.0
+    ecutrho = 480.0
+    occupations = 'fixed'
+/
+&ELECTRONS
+    conv_thr = 1.0d-10
+    mixing_beta = 0.3
+/
+&IONS
+    ion_dynamics = 'bfgs'
+/
+&CELL
+    cell_dynamics = 'bfgs'
+    press = 0.0
+    press_conv_thr = 0.1
+/
+ATOMIC_SPECIES
+ Sr  87.62   Sr.pbe-spn-kjpaw_psl.1.0.0.UPF
+ Ti  47.867  Ti.pbe-spn-kjpaw_psl.1.0.0.UPF
+ O   15.999  O.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+ Sr  0.000000000  0.000000000  0.000000000
+ Ti  0.500000000  0.500000000  0.500000000
+ O   0.500000000  0.500000000  0.000000000
+ O   0.500000000  0.000000000  0.500000000
+ O   0.000000000  0.500000000  0.500000000
+K_POINTS automatic
+ 8 8 8 0 0 0

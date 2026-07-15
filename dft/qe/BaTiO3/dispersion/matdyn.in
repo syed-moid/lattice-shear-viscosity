@@ -1,0 +1,26 @@
+&input
+    flfrc  = 'BaTiO3.444.fc'
+    asr    = 'crystal'
+    flfrq  = 'BaTiO3.freq'
+    flvec  = 'BaTiO3.modes'
+    q_in_band_form = .true.
+    q_in_cryst_coord = .false.
+/
+6
+  0.0  0.0  0.0   40    ! Gamma
+  0.5  0.0  0.0   40    ! X
+  0.5  0.5  0.0   40    ! M
+  0.0  0.0  0.0   40    ! Gamma
+  0.5  0.5  0.5   40    ! R
+  0.5  0.0  0.0   1     ! X
+! Run LOCALLY (seconds):  matdyn.x < matdyn.in > matdyn.log
+! - q in units of 2*pi/a (cartesian), standard simple-cubic path
+!   Gamma-X-M-Gamma-R-X with 40 interpolated points per segment
+! - Gamma-X-M-Gamma shows the ferroelectric soft branch across the zone;
+!   Gamma-R-X crosses the R point where the AFD instability should appear
+! - Frequencies land in BaTiO3.freq (gnuplot-able via BaTiO3.freq.gp);
+!   imaginary modes print as negative
+! - ACCEPTANCE: interpolated Gamma frequencies should reproduce the direct
+!   dynmat.x values (soft TO ~ -244 cm-1 etc.); mismatch means the
+!   non-analytic Z*/eps data didn't make it into the .fc file -- see the
+!   dyn1 fallback note in ph_disp.in

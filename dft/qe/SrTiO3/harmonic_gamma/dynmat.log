@@ -1,0 +1,59 @@
+
+     Program DYNMAT v.7.4 starts on  5Jul2026 at 11:37:37 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on      14 processor cores
+     Number of MPI processes:                 1
+     Threads/MPI process:                    14
+
+     MPI processes distributed on     1 nodes
+     0 MiB available memory on the printing compute node when the environment starts
+
+
+     Reading Dynamical Matrix from file SrTiO3.dyn
+     ...Force constants read
+     ...epsilon and Z* read
+     Acoustic Sum Rule: || Z*(ASR) - Z*(orig)|| =    9.399201E-02
+     Acoustic Sum Rule: ||dyn(ASR) - dyn(orig)||=    4.011859E-03
+
+     Polarizability (A^3 units)
+     multiply by 0.361272 for Clausius-Mossotti correction
+        25.779181    0.000000    0.000000
+         0.000000   25.779181    0.000000
+         0.000000    0.000000   25.779181
+
+     IR activities are in (D/A)^2/amu units
+
+# mode   [cm-1]    [THz]      IR
+    1   -137.75   -4.1297   78.2569
+    2   -137.75   -4.1297   78.2569
+    3     -0.00   -0.0000    0.0000
+    4      0.00    0.0000    0.0000
+    5      0.00    0.0000    0.0000
+    6    145.26    4.3548    0.0034
+    7    145.89    4.3735    0.3142
+    8    145.89    4.3735    0.3142
+    9    230.86    6.9210    0.0000
+   10    230.86    6.9210    0.0000
+   11    230.86    6.9210    0.0000
+   12    445.12   13.3445    7.0481
+   13    509.56   15.2763   11.1774
+   14    509.56   15.2763   11.1774
+   15    734.76   22.0276   82.6969
+
+     DYNMAT       :      0.00s CPU      0.02s WALL
+
+
+   This run was terminated on:  11:37:37   5Jul2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

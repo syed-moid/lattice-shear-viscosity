@@ -1,0 +1,12 @@
+BaTiO3 pristine 5-atom cell -- Gamma-point phonons (harmonic ph.x)
+&inputph
+    prefix    = 'BaTiO3_pristine'
+    outdir    = './tmp/'
+    fildyn    = 'BaTiO3.dyn'
+    epsil     = .true.
+    tr2_ph    = 1.0d-14
+    verbosity = 'high'
+    recover   = .false.  ! first attempts only; flip to .true. only when
+                          ! restarting a crashed run on a kept-alive VM
+/
+0.0 0.0 0.0

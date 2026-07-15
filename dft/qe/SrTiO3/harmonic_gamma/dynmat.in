@@ -1,0 +1,17 @@
+&input
+    fildyn = 'SrTiO3.dyn'
+    asr    = 'crystal'
+    q(1) = 1.0
+    q(2) = 0.0
+    q(3) = 0.0
+/
+! Run:  dynmat.x < dynmat.in > dynmat.out   (local, seconds)
+! - asr='crystal': acoustic triplet -> 0 exactly; small redistribution on optic modes
+! - q direction sets the nonanalytic LO-TO term; for cubic symmetry any
+!   direction is equivalent, (1,0,0) is conventional
+! Acceptance:
+!   - acoustic modes at 0.0
+!   - soft T_1u still strongly imaginary (~ -130s cm-1; ASR shifts it only slightly)
+!   - NEW: LO partners split off from each TO (LO frequencies between/above the
+!     TOs, highest LO well above 509 cm-1) -- these come from Z* + eps_inf
+!   - IR intensities printed per mode; T_2u silent mode should show ~zero

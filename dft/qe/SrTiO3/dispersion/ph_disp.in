@@ -1,0 +1,29 @@
+SrTiO3 pristine -- phonon dispersion, 4x4x4 q-grid (harmonic, escalation ladder step: full BZ)
+&inputph
+    prefix    = 'SrTiO3_pristine'
+    outdir    = './tmp/'
+    fildyn    = 'SrTiO3.dyn'
+    ldisp     = .true.
+    nq1 = 4, nq2 = 4, nq3 = 4
+    tr2_ph    = 1.0d-14
+    verbosity = 'high'
+    recover   = .false.  ! first attempt; flip to .true. only on a restart
+                          ! of a crashed run on a kept-alive VM (same rule
+                          ! as the Gamma run)
+/
+! NOTES
+! - NO epsil here: epsil=.true. is not allowed together with ldisp in ph.x.
+!   For an insulator, ph.x should compute eps/Z* automatically at the q=0
+!   point of the grid -- VERIFY after the run that SrTiO3.dyn1 contains a
+!   "Dielectric Tensor" block. If it does NOT (version-dependent), the
+!   fallback is legitimate and easy: copy the Gamma dyn file from
+!   harmonic_gamma/ (same QE 6.7 build, identical geometry/pseudos/cutoffs)
+!   over SrTiO3.dyn1 before running q2r.x, so the force constants carry
+!   Z* + eps for the non-analytic LO-TO term.
+! - Output: one file per irreducible q (SrTiO3.dyn1 ... SrTiO3.dynN, ~8 for
+!   a 4x4x4 grid in Pm-3m) plus SrTiO3.dyn0 (the grid header). All small
+!   text files -- committable.
+! - EXPECTED PHYSICS at R=(1/2,1/2,1/2): a second imaginary pocket, the
+!   antiferrodistortive (AFD) instability of SrTiO3 -- distinct from the
+!   ferroelectric one at Gamma. Its appearance is an acceptance signal,
+!   not an error, same rule as before.

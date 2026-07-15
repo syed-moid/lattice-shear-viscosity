@@ -1,0 +1,35 @@
+
+     Program MATDYN v.7.4 starts on  6Jul2026 at  8:58:18 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on      14 processor cores
+     Number of MPI processes:                 1
+     Threads/MPI process:                    14
+
+     MPI processes distributed on     1 nodes
+     0 MiB available memory on the printing compute node when the environment starts
+
+ mass for atomic type   1 not given; uses mass from file SrTiO3.444.fc                                                                                                                                                                                                                                                   
+ mass for atomic type   2 not given; uses mass from file SrTiO3.444.fc                                                                                                                                                                                                                                                   
+ mass for atomic type   3 not given; uses mass from file SrTiO3.444.fc                                                                                                                                                                                                                                                   
+ Norm of the difference between old and new effective charges:    0.00000007745966552832
+
+ Norm of the difference between old and new force-constants:   0.00049558975648836148
+
+
+     MATDYN       :      1.97s CPU      5.24s WALL
+
+
+   This run was terminated on:   8:58:23   6Jul2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

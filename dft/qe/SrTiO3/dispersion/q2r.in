@@ -1,0 +1,12 @@
+&input
+    fildyn = 'SrTiO3.dyn'
+    zasr   = 'crystal'
+    flfrc  = 'SrTiO3.444.fc'
+/
+! Run LOCALLY (seconds):  q2r.x < q2r.in > q2r.log
+! - Reads SrTiO3.dyn0..dynN from the current directory (the downloaded
+!   dispersion outputs), Fourier-transforms to real-space interatomic force
+!   constants in SrTiO3.444.fc
+! - zasr='crystal' applies the sum rule to the Born charges
+! - Check q2r.log for "fft-check success" -- confirms the dyn set covers
+!   the full 4x4x4 grid consistently

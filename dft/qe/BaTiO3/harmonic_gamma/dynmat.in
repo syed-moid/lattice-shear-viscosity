@@ -1,0 +1,16 @@
+&input
+    fildyn = 'BaTiO3.dyn'
+    asr    = 'crystal'
+    q(1) = 1.0
+    q(2) = 0.0
+    q(3) = 0.0
+/
+! Run LOCALLY in qe/BaTiO3/harmonic_gamma/ (seconds):
+!     dynmat.x < dynmat.in > dynmat.log
+! (stdout -> dynmat.log; dynmat.x's own filout default writes dynmat.out --
+!  keeping the names separate avoids the STO collision)
+! Acceptance:
+!   - acoustic +8.3 -> exactly 0
+!   - soft T_1u stays strongly imaginary (~ -240s), doublet + LO partner
+!   - T_2u silent mode: exactly threefold, IR = 0
+!   - full TO/LO inventory for the STO comparison table

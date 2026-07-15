@@ -1,0 +1,47 @@
+&CONTROL
+    calculation = 'vc-relax'
+    restart_mode = 'from_scratch'
+    prefix = 'BaTiO3_pristine'
+    pseudo_dir = './pseudo/'
+    outdir = './tmp/'
+    tstress = .true.
+    tprnfor = .true.
+    etot_conv_thr = 1.0d-6
+    forc_conv_thr = 1.0d-5
+/
+&SYSTEM
+    ibrav = 1
+    celldm(1) = 7.57               ! starting guess (~4.006 A cubic BTO expt);
+                                    ! this gets refined -- the answer is the
+                                    ! CELL_PARAMETERS scale factor at
+                                    ! convergence x 7.57, NOT the celldm echo
+    nat = 5
+    ntyp = 3
+    ecutwfc = 60.0
+    ecutrho = 480.0
+    occupations = 'fixed'
+/
+&ELECTRONS
+    conv_thr = 1.0d-10
+    mixing_beta = 0.3
+/
+&IONS
+    ion_dynamics = 'bfgs'
+/
+&CELL
+    cell_dynamics = 'bfgs'
+    press = 0.0
+    press_conv_thr = 0.1
+/
+ATOMIC_SPECIES
+ Ba  137.327  Ba.pbe-spn-kjpaw_psl.1.0.0.UPF
+ Ti  47.867   Ti.pbe-spn-kjpaw_psl.1.0.0.UPF
+ O   15.999   O.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+ Ba  0.000000000  0.000000000  0.000000000
+ Ti  0.500000000  0.500000000  0.500000000
+ O   0.500000000  0.500000000  0.000000000
+ O   0.500000000  0.000000000  0.500000000
+ O   0.000000000  0.500000000  0.500000000
+K_POINTS automatic
+ 8 8 8 0 0 0
