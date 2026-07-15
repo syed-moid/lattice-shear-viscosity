@@ -1,0 +1,51 @@
+# ins_reference_points_SrTiO3.csv - assembled 2026-07-15 from pre-digitized data
+# source: Vogt, Phys. Rev. B 51, 8046 (1995), Fig. 6 (hyper-Raman, zone-center soft mode)
+# digitization: WebPlotDigitizer CSVs from ferroelectric-ins-ml qe/anchoring/vogt1995_fig6/
+# NOTE: Vogt 1995 prints no numeric frequencies for stable optic branches (TO2, TO4,
+#   F2u, LO); it anchors ONLY the renormalized soft mode. The harmonic soft mode is
+#   imaginary, so these points validate renormalized (Route H) frequencies, not the
+#   bare harmonic dispersion. Uncertainty ~ +/-0.15 meV (source README).
+# derived 300 K anchor: omega_s = 89.24 cm-1 (11.06 meV); gamma_full = 23.0 cm-1
+#   -> Gamma_HWHM = 11.5 cm-1 (convention FULL_GAMMA_CONFIRMED, Vogt Eq. (13))
+mode_label,q_label,qx,qy,qz,value,unit,temperature_K,provenance
+TO1_soft_F1u_omega,Gamma,0,0,0,46.50,cm-1,109.8,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,50.24,cm-1,121.3,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,53.15,cm-1,130.7,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,56.27,cm-1,142.2,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,58.76,cm-1,150.5,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,61.67,cm-1,162.0,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,64.58,cm-1,172.5,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,66.46,cm-1,181.9,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,69.16,cm-1,192.3,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,70.83,cm-1,200.7,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,72.91,cm-1,208.0,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,75.41,cm-1,218.5,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,75.41,cm-1,222.6,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,76.87,cm-1,231.0,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,78.95,cm-1,240.4,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,80.41,cm-1,248.8,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,83.12,cm-1,262.4,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,85.00,cm-1,273.9,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,87.09,cm-1,287.5,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_omega,Gamma,0,0,0,88.96,cm-1,297.9,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,6.44,cm-1,109.5,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,7.74,cm-1,121.0,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,8.77,cm-1,131.4,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,9.94,cm-1,140.8,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,10.56,cm-1,151.2,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,11.32,cm-1,162.7,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,12.55,cm-1,174.1,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,13.65,cm-1,182.5,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,15.03,cm-1,192.9,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,15.85,cm-1,201.2,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,17.16,cm-1,210.6,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,17.37,cm-1,224.1,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,18.19,cm-1,219.9,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,19.22,cm-1,230.3,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,19.70,cm-1,249.1,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,20.93,cm-1,239.7,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,21.15,cm-1,261.6,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,22.11,cm-1,273.1,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,22.66,cm-1,286.7,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,22.59,cm-1,298.2,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_F1u_damping_full,Gamma,0,0,0,23.01,cm-1,298.2,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"

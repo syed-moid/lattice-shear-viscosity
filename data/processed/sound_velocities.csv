@@ -1,0 +1,25 @@
+# sound_velocities.csv - produced by scripts/sound_velocities.py
+# calc: acoustic slopes of harmonic_dispersion_<mat>.csv fitted through the
+#   origin over the four smallest |q| along each direction
+# densities used for literature velocities and citations:
+#   SrTiO3: rho_calc = 4987.9 kg/m^3 (relaxed cell), rho_lit = 5110 kg/m^3; Bell and Rupprecht, Phys. Rev. 129, 90 (1963), 300 K
+#   BaTiO3: rho_calc = 5936.5 kg/m^3 (relaxed cell), rho_lit = 5990 kg/m^3; Li, Chan, Grimsditch, Zouboulis, J. Appl. Phys. 70, 7327 (1991), cubic ~443 K
+material,direction,branch,v_calc_m_s,v_lit_m_s,deviation_pct
+SrTiO3,[100],TA,4657.0,4916.1,-5.27
+SrTiO3,[100],TA,4657.0,4916.1,-5.27
+SrTiO3,[100],LA,7916.0,7883.7,0.41
+SrTiO3,[110],TA,4664.2,4587.7,1.67
+SrTiO3,[110],T2A(001),4704.0,4916.1,-4.31
+SrTiO3,[110],LA,7866.5,8079.2,-2.63
+SrTiO3,[111],TA,4671.6,4699.7,-0.6
+SrTiO3,[111],TA,4671.6,4699.7,-0.6
+SrTiO3,[111],LA,7852.0,8143.4,-3.58
+BaTiO3,[100],TA,4472.0,4246.2,5.32
+BaTiO3,[100],TA,4472.0,4246.2,5.32
+BaTiO3,[100],LA,6926.9,5374.1,28.89
+BaTiO3,[110],TA,3891.8,2756.1,41.21
+BaTiO3,[110],T2A(001),4464.4,4246.2,5.14
+BaTiO3,[110],LA,7219.9,6270.2,15.15
+BaTiO3,[111],TA,4078.8,3327.8,22.57
+BaTiO3,[111],TA,4078.8,3327.8,22.57
+BaTiO3,[111],LA,7286.5,6541.7,11.39

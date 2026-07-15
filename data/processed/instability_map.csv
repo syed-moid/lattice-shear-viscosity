@@ -1,0 +1,15 @@
+# instability_map.csv - produced by scripts/instability_map.py
+# harmonic modes with omega^2 < 0 at high-symmetry points (|omega| in cm^-1;
+#   degeneracy = number of imaginary branches at that point; NAC direction (1,0,0)
+#   splits the Gamma triplet into doublet + hardened LO partner)
+# unstable regions along the full path (index/40 = fraction of segment):
+#   SrTiO3: unstable path regions: Gamma..X-M[6/40]; X-M[39/40]..M-Gamma[1/40]; M-Gamma[18/40]..Gamma-R[9/40]; Gamma-R[34/40]..R-X[9/40]; R-X[39/40]..X
+#   BaTiO3: unstable path regions: Gamma..Gamma-R[15/40]; R-X[26/40]..X
+material,q_label,qx,qy,qz,degeneracy,abs_omega_cm1,irrep
+SrTiO3,Gamma,0.0,0.0,0.0,2,137.7,"Gamma15 (F1u, FE)"
+SrTiO3,X,0.5,0.0,0.0,2,30.7,X5 (FE branch)
+SrTiO3,M,0.5,0.5,0.0,1,13.5,"M3 (AFD, in-phase rotation)"
+SrTiO3,R,0.5,0.5,0.5,3,76.3,R25 (AFD rotation)
+BaTiO3,Gamma,0.0,0.0,0.0,2,244.8,"Gamma15 (F1u, FE)"
+BaTiO3,X,0.5,0.0,0.0,2,214.6,X5 (FE chain branch)
+BaTiO3,M,0.5,0.5,0.0,1,190.3,M3' (FE chain branch)

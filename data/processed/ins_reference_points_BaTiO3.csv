@@ -1,0 +1,22 @@
+# ins_reference_points_BaTiO3.csv - assembled 2026-07-15
+# source: Tomeno, Tsunoda, Oka, Nishi, Oohara, J. Phys. Soc. Jpn. 89, 054601 (2020),
+#   INS on cubic BaTiO3 at 453 K (T_C + 48 K)
+# method column: "printed" = value printed as a number in the paper text;
+#   "digitized" = read from Fig. 1 solid circles (this repo, by-eye, +/-0.7 meV);
+#   the paper prints NO table of phonon frequencies.
+# Error bars in Fig. 1 are peak FWHM, not fit uncertainty.
+# 1 meV = 8.06554 cm-1.
+mode_label,q_label,qx,qy,qz,value_meV,value_cm1,temperature_K,method,provenance,notes
+TA_X5p,X,0.5,0.0,0.0,14.2,114.5,453,digitized,"Fig. 1(a), solid circle at xi=0.5","zone-boundary TA along [x00]"
+TA_D5,GX_0.3,0.3,0.0,0.0,12.2,98.4,453,digitized,"Fig. 1(a)","TA Delta5 branch"
+TA_D5,GX_0.2,0.2,0.0,0.0,9.5,76.6,453,digitized,"Fig. 1(a)","TA Delta5 branch"
+TO_D5_upper,Gamma,0.0,0.0,0.0,22.8,183.9,453,digitized,"Fig. 1(a) Gamma15 label","second-lowest TO Gamma15; calc open circle 20.6 meV shown in same figure"
+TO_D5_upper,GX_0.4,0.4,0.0,0.0,25.1,202.4,453,digitized,"Fig. 1(a)","upper TO Delta5 near X"
+TA_S4,M,0.5,0.5,0.0,13.8,111.3,453,digitized,"Fig. 1(b) M'2 plateau","zone-boundary TA Sigma4, polarization [001]"
+TA_S4,GM_0.2,0.2,0.2,0.0,12.5,100.8,453,digitized,"Fig. 1(b)","TA Sigma4 branch"
+TO_S4_M3p,M,0.5,0.5,0.0,8.0,64.5,453,printed,"text p. 054601-6: approximately 8 meV","TO Sigma4 at M; heavily renormalized branch, harmonic counterpart unstable"
+TA_L3_R15,R,0.5,0.5,0.5,17.5,141.1,453,digitized,"Fig. 1(c) R15 solid circle","zone-boundary TA Lambda3; calc open square 15.9 meV shown in same figure"
+TA_L3,GR_0.3,0.3,0.3,0.3,14.2,114.5,453,digitized,"Fig. 1(c)","TA Lambda3 branch"
+TO_L3_R25,R,0.5,0.5,0.5,23.9,192.8,453,digitized,"Fig. 1(c) near R25","upper TO Lambda3 at R"
+TO_L3_G_extrap,Gamma,0.0,0.0,0.0,3.0,24.2,423,printed,"text p. 054601-5 citing Harada Axe Shirane (Ref. 6)","q->0 extrapolation of TO Lambda3; Tomeno's own near-Gamma data DISAGREE (diffuse-dominated); use with caution"
+TO_soft_effective,Gamma,0.0,0.0,0.0,7.4,59.7,453,derived,"anchor.ymal (ferroelectric-ins-ml), small-q TO extrapolation of Fig. 1","EFFECTIVE zone-center soft TO; overdamped, +/-1 meV; FWHM ~8+/-2 meV"
