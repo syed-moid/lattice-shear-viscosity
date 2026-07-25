@@ -1,0 +1,16 @@
+# eta_BaTiO3.csv - produced by scripts/compute_eta_BaTiO3.py
+# ZONE-CENTER-ANCHORED soft-TO sector of eta_44 (Gamma-point-only scope,
+# manuscript 3.2): PARTIAL viscosity, lower bound wrt the full-zone sum.
+# Lambda from own strained cells; omega_s/Gamma from VSR 1982 hyper-Raman
+# (measured points, no Cochran fit); Harada dispersion, cap q_par<=0.47 A^-1.
+# See data/processed/reports/eta_BaTiO3_stageC.md for the full provenance.
+T_K,eta_soft_sector_Pas,omega_s_cm1,Gamma_HWHM_cm1,overdamped,u_cap_cm1
+410,9.149545e-04,10.77,45.41,1,118.2
+425,2.759590e-04,16.05,45.71,1,118.2
+450,7.998840e-05,25.25,51.99,1,118.2
+475,4.021763e-05,32.58,55.97,1,118.2
+500,2.256666e-05,43.53,77.16,1,118.2
+550,1.273618e-05,54.59,86.71,1,118.2
+600,7.338397e-06,67.08,97.13,1,118.2
+650,4.469096e-06,82.62,118.77,1,118.2
+700,3.279049e-06,91.15,122.31,1,118.2
