@@ -60,13 +60,17 @@ def unstable_ranges(df: pd.DataFrame) -> list[str]:
     return [f"{name(a)}..{name(b)}" for a, b in ranges]
 
 
-def main() -> None:
-    rows = []
-    summaries = []
+def _collect(rows, summaries) -> None:
     for material in ("SrTiO3", "BaTiO3"):
-        df = pd.read_csv(
+        full = pd.read_csv(
             REPO / "data" / "processed" / f"harmonic_dispersion_{material}.csv", comment="#"
         )
+        for functional in sorted(full.functional.unique()):
+            df = full[full.functional == functional]
+            _map_one(material, functional, df, rows, summaries)
+
+
+def _map_one(material, functional, df, rows, summaries):
         for index, label in NODES.items():
             if index == 120 or index == 200:  # repeated path nodes
                 continue
@@ -78,6 +82,7 @@ def main() -> None:
             rows.append(
                 {
                     "material": material,
+                    "functional": functional,
                     "q_label": label,
                     "qx": q.qx,
                     "qy": q.qy,
@@ -87,8 +92,13 @@ def main() -> None:
                     "irrep": IRREPS.get((material, label), "?"),
                 }
             )
-        summaries.append(f"#   {material}: unstable path regions: {'; '.join(unstable_ranges(df))}")
+        summaries.append(
+            f"#   {material} [{functional}]: unstable path regions: "
+            f"{'; '.join(unstable_ranges(df))}"
+        )
 
+
+def _write(rows, summaries):
     out = REPO / "data" / "processed" / "instability_map.csv"
     header = [
         "# instability_map.csv - produced by scripts/instability_map.py",
@@ -104,6 +114,12 @@ def main() -> None:
     for s in summaries:
         print(s.lstrip("# "))
     print(f"-> {out.relative_to(REPO)}")
+
+
+def main() -> None:  # noqa: F811 - compose the split steps
+    rows, summaries = [], []
+    _collect(rows, summaries)
+    _write(rows, summaries)
 
 
 if __name__ == "__main__":

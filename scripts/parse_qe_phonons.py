@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Parse matdyn.x frequency files into dispersion CSVs.
 
-Reads dft/qe/<material>/dispersion/<material>.freq (matdyn.x output along
-Gamma-X-M-Gamma-R-X, q in 2*pi/a cartesian units, frequencies in cm^-1;
-imaginary modes printed as negative) and writes
+Reads matdyn.x frequency files for every functional present --
+dft/qe/<material>/dispersion/<material>.freq (PBE) and
+dft/qe/<material>/dispersion_pbesol/<material>_pbesol.freq (PBEsol) --
+along Gamma-X-M-Gamma-R-X (q in 2*pi/a cartesian units, cm^-1; imaginary
+modes printed as negative) and writes
 data/processed/harmonic_dispersion_<material>.csv with columns:
 
-    path_index, qx, qy, qz, path_coord, segment, branch, omega_cm1, omega_thz
+    functional, path_index, qx, qy, qz, path_coord, segment, branch, omega_cm1, omega_thz
 
 Sign convention is preserved: negative omega means an imaginary
 (unstable) harmonic mode.
@@ -69,26 +71,36 @@ def segment_of(path_index: int) -> str:
     return SEGMENTS[min(path_index // 40, len(SEGMENTS) - 1)]
 
 
-def write_csv(material: str) -> Path:
-    freq_file = REPO / "dft" / "qe" / material / "dispersion" / f"{material}.freq"
-    out_file = REPO / "data" / "processed" / f"harmonic_dispersion_{material}.csv"
-    nbnd, points = parse_freq_file(freq_file)
+SOURCES = {
+    "pbe": ("dispersion", "{material}.freq"),
+    "pbesol": ("dispersion_pbesol", "{material}_pbesol.freq"),
+}
 
+
+def write_csv(material: str) -> Path:
+    out_file = REPO / "data" / "processed" / f"harmonic_dispersion_{material}.csv"
     lines = [
         f"# harmonic_dispersion_{material}.csv - produced by scripts/parse_qe_phonons.py",
-        f"# source: {freq_file.relative_to(REPO)} (matdyn.x along Gamma-X-M-Gamma-R-X, "
-        "q in 2*pi/a units)",
+        "# sources: matdyn.x along Gamma-X-M-Gamma-R-X, q in 2*pi/a units, one block",
+        "#   per functional present under dft/qe/<material>/",
         "# omega_cm1 < 0 denotes an imaginary (unstable) harmonic mode",
-        "path_index,qx,qy,qz,path_coord,segment,branch,omega_cm1,omega_thz",
+        "functional,path_index,qx,qy,qz,path_coord,segment,branch,omega_cm1,omega_thz",
     ]
-    for index, (q, coord, freqs) in enumerate(points):
-        for branch, omega_cm1 in enumerate(freqs, start=1):
-            lines.append(
-                f"{index},{q[0]:.6f},{q[1]:.6f},{q[2]:.6f},{coord:.6f},"
-                f"{segment_of(index)},{branch},{omega_cm1:.4f},{omega_cm1 * CM1_TO_THZ:.6f}"
-            )
+    found = []
+    for functional, (subdir, pattern) in SOURCES.items():
+        freq_file = REPO / "dft" / "qe" / material / subdir / pattern.format(material=material)
+        if not freq_file.exists():
+            continue
+        nbnd, points = parse_freq_file(freq_file)
+        found.append(f"{functional} ({len(points)} q x {nbnd})")
+        for index, (q, coord, freqs) in enumerate(points):
+            for branch, omega_cm1 in enumerate(freqs, start=1):
+                lines.append(
+                    f"{functional},{index},{q[0]:.6f},{q[1]:.6f},{q[2]:.6f},{coord:.6f},"
+                    f"{segment_of(index)},{branch},{omega_cm1:.4f},{omega_cm1 * CM1_TO_THZ:.6f}"
+                )
     out_file.write_text("\n".join(lines) + "\n")
-    print(f"{material}: {len(points)} q-points x {nbnd} branches -> {out_file.relative_to(REPO)}")
+    print(f"{material}: {'; '.join(found)} -> {out_file.relative_to(REPO)}")
     return out_file
 
 

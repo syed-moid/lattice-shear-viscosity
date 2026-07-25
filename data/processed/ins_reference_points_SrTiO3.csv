@@ -7,6 +7,13 @@
 #   bare harmonic dispersion. Uncertainty ~ +/-0.15 meV (source README).
 # derived 300 K anchor: omega_s = 89.24 cm-1 (11.06 meV); gamma_full = 23.0 cm-1
 #   -> Gamma_HWHM = 11.5 cm-1 (convention FULL_GAMMA_CONFIRMED, Vogt Eq. (13))
+# STABLE-BRANCH ANCHORS added 2026-07-15 (Gate G1 resolution item 4):
+#   Servoin, Luspin, Gervais, Phys. Rev. B 22, 5501 (1980) [IR, 297 K] and
+#   Stirling, J. Phys. C 5, 2711 (1972) [INS, 297 K]. Values as tabulated with
+#   per-value attribution in Evarestov et al., arXiv:1008.4003, Tables 4-5;
+#   page-check the originals before manuscript use. Soft modes (TO1 at Gamma,
+#   R4+ AFD) are renormalized experimental values - the harmonic counterparts
+#   are imaginary and not directly comparable.
 mode_label,q_label,qx,qy,qz,value,unit,temperature_K,provenance
 TO1_soft_F1u_omega,Gamma,0,0,0,46.50,cm-1,109.8,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
 TO1_soft_F1u_omega,Gamma,0,0,0,50.24,cm-1,121.3,"Vogt PRB 51 8046 (1995) Fig. 6; WebPlotDigitizer (ferroelectric-ins-ml qe/anchoring); cubic phase only"
@@ -49,3 +56,18 @@ TO1_soft_F1u_damping_full,Gamma,0,0,0,22.11,cm-1,273.1,"Vogt PRB 51 8046 (1995) 
 TO1_soft_F1u_damping_full,Gamma,0,0,0,22.66,cm-1,286.7,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
 TO1_soft_F1u_damping_full,Gamma,0,0,0,22.59,cm-1,298.2,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
 TO1_soft_F1u_damping_full,Gamma,0,0,0,23.01,cm-1,298.2,"Vogt PRB 51 8046 (1995) Fig. 6 right axis; FULL damping gamma per Eq. (13); HWHM Gamma = gamma/2"
+TO1_soft_renorm,Gamma,0,0,0,42.00,cm-1,297,"Servoin 1980 (IR); soft mode, renormalized - not harmonic-comparable"
+TO1_soft_renorm,Gamma,0,0,0,91.00,cm-1,297,"Stirling 1972 (INS); soft mode, renormalized - not harmonic-comparable"
+TO2_F1u,Gamma,0,0,0,175.00,cm-1,297,"Servoin 1980 (IR), TO2"
+TO2_F1u,Gamma,0,0,0,170.00,cm-1,297,"Stirling 1972 (INS), TO2"
+TO3_F2u_silent,Gamma,0,0,0,265.00,cm-1,297,"Stirling 1972 (INS), t2u silent mode"
+TO4_F1u,Gamma,0,0,0,545.00,cm-1,297,"Servoin 1980 (IR), TO4"
+TO4_F1u,Gamma,0,0,0,547.00,cm-1,297,"Stirling 1972 (INS), TO4"
+LO1_F1u,Gamma,0,0,0,171.00,cm-1,297,"Servoin 1980 (IR), LO1"
+LO2_F1u,Gamma,0,0,0,474.00,cm-1,297,"Servoin 1980 (IR), LO2"
+LO3_F1u,Gamma,0,0,0,795.00,cm-1,297,"Servoin 1980 (IR), LO3"
+R4p_AFD_soft_renorm,R,0.5,0.5,0.5,52.00,cm-1,297,"Stirling 1972 (INS), R4+ AFD soft mode, renormalized - not harmonic-comparable"
+R5p,R,0.5,0.5,0.5,145.00,cm-1,297,"Stirling 1972 (INS), R5+"
+R4m,R,0.5,0.5,0.5,446.00,cm-1,297,"Stirling 1972 (INS), R4-"
+R5p_upper,R,0.5,0.5,0.5,450.00,cm-1,297,"Stirling 1972 (INS), R5+ upper"
+R3p,R,0.5,0.5,0.5,474.00,cm-1,297,"Stirling 1972 (INS), R3+"
