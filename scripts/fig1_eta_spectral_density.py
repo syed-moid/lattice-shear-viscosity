@@ -61,8 +61,9 @@ ax.annotate(r"Route S / Route H partition, $\omega_0$ = 175 cm$^{-1}$"
             textcoords="data", fontsize=7,
             arrowprops=dict(arrowstyle="->", lw=0.8))
 ax.axvspan(lo[0], 0.0, color="0.9", zorder=0)
-ax.text(-95, 0.02, "bare-imaginary\nmanifold\n($\\omega_0^2 < 0$)",
-        fontsize=6.5, color="0.35", va="bottom")
+# label placed in the upper part of the shaded strip, clear of the bars
+ax.text(-50, peak * 1e3 * 0.98, "bare-imaginary\nmanifold\n($\\omega_0^2 < 0$)",
+        fontsize=6.5, color="0.35", ha="center", va="top")
 
 total = (routeS + h_stab + h_unst + g_sec).sum()
 ax.set_xlabel(r"bare harmonic frequency $\omega_0$ (cm$^{-1}$; negative = imaginary)")

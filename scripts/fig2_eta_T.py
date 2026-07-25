@@ -56,14 +56,15 @@ ax.stackplot(T, h_stable, h_unst, g_sec, s_route,
              colors=["#4878a8", "#a84848", "#c8a848", "#6aa86a"], alpha=0.85)
 ax.plot(T, eta, "k-", lw=1.6, label=r"$\eta_{xyxy}$ total")
 filled = vogt_ok
-ax.plot(T[filled], eta[filled], "ko", ms=5)
+ax.plot(T[filled], eta[filled], "ko", ms=5,
+        label="filled: Vogt soft-mode\nparameters used (100–300 K)")
 ax.plot(T[~filled], eta[~filled], "ko", ms=6, mfc="white",
         label="open: Vogt series exceeded,\ntheory floor used (350, 400 K)")
 
 ax.set_xlabel("T (K)")
 ax.set_ylabel(r"$\eta_{xyxy}$ (Pa s)")
 ax.set_xlim(T.min() - 10, T.max() + 10)
-ax.set_ylim(0, eta.max() * 1.18)
+ax.set_ylim(0, eta.max() * 1.32)
 ax.legend(fontsize=6.5, loc="upper right", framealpha=0.95)
 ax.set_title(r"SrTiO$_3$ lattice shear viscosity, partition-resolved", fontsize=9)
 fig.tight_layout()

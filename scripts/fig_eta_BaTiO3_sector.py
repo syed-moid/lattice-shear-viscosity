@@ -1,6 +1,20 @@
 #!/usr/bin/env python3
-"""BaTiO3 zone-center soft-mode sector viscosity eta_soft(T) — DRAFT figure,
-deliberately UNNUMBERED (final manuscript assembly assigns the number).
+"""Figure 5 — BaTiO3 zone-center soft-mode sector viscosity eta_soft(T)
+(numbering assigned 2026-07-25; manuscript text update deferred).
+
+Caption (for the manuscript):
+  Figure 5. Critical enhancement of the BaTiO3 soft-mode sector viscosity.
+  Zone-center soft-mode sector of eta_44 (circles, left log axis) computed
+  from the strained-cell coupling Lambda, the measured hyper-Raman
+  soft-mode frequency omega_s(T) and damping (Vogt, Sanjurjo & Rossbroich
+  [32]; squares, right axis show omega_s), and the neutron branch
+  dispersion of Harada, Axe & Shirane [33], with the overdamped effective
+  lifetime of Eq. (12). The sector viscosity rises nearly three
+  hundredfold between 700 K and 410 K (T_C + 17 K) as omega_s collapses
+  — the mechanism of Eq. (13) realized with measured inputs. The sector
+  is a lower bound on the full eta_44: the stable manifold lies outside
+  the zone-center-only scope of section 3.2 (every zone-center point is
+  overdamped). Dotted line: T_C = 393 K.
 
 Data provenance (committed CSVs only, no hand-edited data):
   data/processed/eta_BaTiO3.csv
@@ -52,13 +66,13 @@ ax.set_xlabel("T (K)")
 ax.set_ylabel(r"$\eta_{44}^{\rm soft}$ (Pa s)")
 ax.set_title(r"BaTiO$_3$ soft-mode sector viscosity: critical enhancement",
              fontsize=9)
-ax.text(0.03, 0.04,
-        "SECTOR quantity (Gamma-point-only scope):\n"
-        "stable manifold excluded — lower bound on the\n"
-        "full-zone $\\eta_{44}$; all points overdamped ($\\tau_{\\rm eff}$)",
-        transform=ax.transAxes, fontsize=6.5, color="0.35")
-ax.legend(fontsize=7, loc="upper right")
-fig.tight_layout()
+ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.55, 0.99))
+fig.tight_layout(rect=(0, 0.09, 1, 1))
+# scope caveat as a figure footnote below the axes — clear of both curves
+fig.text(0.5, 0.012,
+         "SECTOR quantity ($\\Gamma$-point-only scope): stable manifold excluded —\n"
+         "lower bound on the full-zone $\\eta_{44}$; all points overdamped ($\\tau_{\\rm eff}$)",
+         ha="center", va="bottom", fontsize=6.5, color="0.35")
 OUT.parent.mkdir(exist_ok=True)
 fig.savefig(f"{OUT}.png", dpi=220)
 fig.savefig(f"{OUT}.pdf")
