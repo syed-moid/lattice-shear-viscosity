@@ -1,12 +1,23 @@
 # manuscript & review material — never public
 manuscript/
 **/[Rr]eferee*
-references/
 
-# local agent config — not part of the project
-CLAUDE.md
-CLAUDE_*.md
-.claude/
+# library-paper PDFs and figure crops are copyrighted — only the digitized
+# derived data (CSVs + per-figure READMEs) are distributed, with citation
+references/*
+!references/digitized/
+!references/digitized/**
+
+# internal working logs — not part of the data-availability record
+monitoring/
+data/processed/reports/GATE_1p.md
+
+# documents and rendered figure outputs — sources/scripts are committed,
+# outputs regenerate; paper PDFs are copyrighted
+*.pdf
+*.docx
+*.png
+*.jpg
 
 # secrets
 .env
