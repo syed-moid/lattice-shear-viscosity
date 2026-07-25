@@ -9,6 +9,7 @@ Central formula (SI units throughout; eta in Pa s):
 from .gruneisen import mode_gruneisen_finite_strain, mode_gruneisen_volume
 from .isotope import isotope_scattering_rate, mass_variance_g2, matthiessen
 from .materials import BATIO3, SRTIO3, Material
+from .matdyn_input import gamma_centered_mesh, write_matdyn_input
 from .softmode import cochran_frequency, is_overdamped
 from .validation import (
     akhiezer_attenuation,
@@ -31,6 +32,7 @@ __all__ = [
     "akhiezer_attenuation",
     "bose_einstein",
     "cochran_frequency",
+    "gamma_centered_mesh",
     "inverse_quality_factor",
     "is_overdamped",
     "isotope_scattering_rate",
@@ -44,4 +46,5 @@ __all__ = [
     "tau_effective",
     "tau_from_linewidth",
     "thz_to_rad_per_s",
+    "write_matdyn_input",
 ]

@@ -21,3 +21,13 @@ dependencies = [
 [build-system]
 requires = ["uv_build>=0.11.19,<0.12.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+azure = [
+    "azure-identity>=1.25.3",
+    "azure-mgmt-compute>=38.1.0",
+    "azure-mgmt-network>=31.0.1",
+    "azure-mgmt-resource>=26.0.0",
+    "paramiko>=5.0.0",
+    "python-dotenv>=1.2.2",
+]
