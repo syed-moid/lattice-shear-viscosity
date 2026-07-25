@@ -1,0 +1,5 @@
+&input
+    fildyn = 'SrTiO3.dyn'
+    zasr   = 'crystal'
+    flfrc  = 'SrTiO3.rebuilt.fc'
+/

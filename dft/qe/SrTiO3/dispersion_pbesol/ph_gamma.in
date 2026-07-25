@@ -1,0 +1,11 @@
+SrTiO3 PBEsol -- Gamma phonons with epsil (Born charges + eps_inf)
+&inputph
+    prefix    = 'SrTiO3_pbesol'
+    outdir    = './tmp/'
+    fildyn    = 'SrTiO3_pbesol_gamma.dyn'
+    epsil     = .true.
+    tr2_ph    = 1.0d-14
+    verbosity = 'high'
+    recover   = .false.
+/
+0.0 0.0 0.0

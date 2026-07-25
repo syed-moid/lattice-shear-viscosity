@@ -1,0 +1,11 @@
+SrTiO3 PBEsol -- phonon dispersion, 4x4x4 q-grid
+&inputph
+    prefix    = 'SrTiO3_pbesol'
+    outdir    = './tmp/'
+    fildyn    = 'SrTiO3_pbesol.dyn'
+    ldisp     = .true.
+    nq1 = 4, nq2 = 4, nq3 = 4
+    tr2_ph    = 1.0d-14
+    verbosity = 'high'
+    recover   = .false.
+/

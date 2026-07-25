@@ -1,0 +1,5 @@
+&input
+    fildyn = 'BaTiO3.dyn'
+    zasr   = 'crystal'
+    flfrc  = 'BaTiO3.rebuilt.fc'
+/

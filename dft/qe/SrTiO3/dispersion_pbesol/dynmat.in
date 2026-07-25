@@ -1,0 +1,7 @@
+&input
+    fildyn = 'SrTiO3_pbesol_gamma.dyn'
+    asr    = 'crystal'
+    q(1) = 1.0
+    q(2) = 0.0
+    q(3) = 0.0
+/

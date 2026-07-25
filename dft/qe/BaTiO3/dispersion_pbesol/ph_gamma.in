@@ -1,0 +1,11 @@
+BaTiO3 PBEsol -- Gamma phonons with epsil (Born charges + eps_inf)
+&inputph
+    prefix    = 'BaTiO3_pbesol'
+    outdir    = './tmp/'
+    fildyn    = 'BaTiO3_pbesol_gamma.dyn'
+    epsil     = .true.
+    tr2_ph    = 1.0d-14
+    verbosity = 'high'
+    recover   = .false.
+/
+0.0 0.0 0.0

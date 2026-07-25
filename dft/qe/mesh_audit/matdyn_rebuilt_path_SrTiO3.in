@@ -1,0 +1,14 @@
+&input
+    flfrc  = 'SrTiO3.rebuilt.fc'
+    asr    = 'crystal'
+    flfrq  = 'SrTiO3.rebuilt.freq'
+    q_in_band_form = .true.
+    q_in_cryst_coord = .false.
+/
+6
+  0.0  0.0  0.0   40
+  0.5  0.0  0.0   40
+  0.5  0.5  0.0   40
+  0.0  0.0  0.0   40
+  0.5  0.5  0.5   40
+  0.5  0.0  0.0   1

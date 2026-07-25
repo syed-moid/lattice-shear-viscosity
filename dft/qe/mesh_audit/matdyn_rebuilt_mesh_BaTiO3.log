@@ -1,0 +1,28 @@
+
+     Program MATDYN v.6.7MaX starts on 16Jul2026 at 11:59:43 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+ mass for atomic type   1 not given; uses mass from file BaTiO3.rebuilt.fc                                                                                                                                                                                                                                               
+ mass for atomic type   2 not given; uses mass from file BaTiO3.rebuilt.fc                                                                                                                                                                                                                                               
+ mass for atomic type   3 not given; uses mass from file BaTiO3.rebuilt.fc                                                                                                                                                                                                                                               
+Norm of the difference between old and new effective charges:    0.00000000000000153837
+Norm of the difference between old and new force-constants:   0.00031340287256296422
+
+     MATDYN       :      1.86s CPU      1.87s WALL
+
+
+   This run was terminated on:  11:59:45  16Jul2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

@@ -17,3 +17,15 @@ Not copied (kept in the origin repo): `qe/anchoring/vogt1995_fig6/` —
 digitized soft-mode frequency and damping data for SrTiO3 from
 Vogt, Phys. Rev. B 51, 8046 (1995), Fig. 6. Re-copy into
 `data/processed/` if needed for the soft-mode figure.
+
+## Force-constant file replacement (2026-07-16)
+
+The `dispersion/SrTiO3.444.fc` copied from the origin project proved
+inconsistent with the `.dyn` set and `.freq` committed alongside it:
+matdyn.x runs from that fc did not reproduce the committed Gamma
+frequencies (uniform-mesh audit, `dft/qe/mesh_audit/`). The fc was
+regenerated with q2r.x (zasr='crystal', QE 6.7) from the committed
+`SrTiO3.dyn0..dyn10`; the regenerated fc reproduces the committed
+band-path frequencies to within 0.06 cm-1 along the whole path (exact at Gamma). The
+stale original is preserved in `data/raw/stale_pbe_fc/` (gitignored).
+All committed PBEsol fc files were verified self-consistent the same way.

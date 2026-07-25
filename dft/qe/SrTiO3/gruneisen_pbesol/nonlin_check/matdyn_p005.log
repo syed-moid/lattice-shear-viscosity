@@ -1,0 +1,430 @@
+
+     Program MATDYN v.6.7MaX starts on 20Jul2026 at 12:49:21 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+ mass for atomic type   1 not given; uses mass from file SrTiO3_pbesol_shear_xy_p005.444.fc                                                                                                                                                                                                                              
+ mass for atomic type   2 not given; uses mass from file SrTiO3_pbesol_shear_xy_p005.444.fc                                                                                                                                                                                                                              
+ mass for atomic type   3 not given; uses mass from file SrTiO3_pbesol_shear_xy_p005.444.fc                                                                                                                                                                                                                              
+Norm of the difference between old and new effective charges:    0.00000007745966689694
+Norm of the difference between old and new force-constants:   0.00037668397019936160
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 322.1487%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 321.8558%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 321.0075%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 319.5852%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 317.6024%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 315.1171%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 312.1851%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 308.8439%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 305.1362%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 301.1362%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 404.9546%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 403.9517%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 287.8637%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 283.1836%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 402.9104%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 273.7019%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 268.9859%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 264.2937%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 259.6667%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 255.1349%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 250.7021%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 246.3775%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 242.1670%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 238.0728%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 234.0946%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 230.2298%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 226.4738%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 222.8203%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 219.2620%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 215.7906%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 212.4044%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 209.0807%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 205.8098%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 202.5961%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 199.4243%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 196.2860%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 193.1732%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 190.0788%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 186.9960%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 183.9187%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 180.8417%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 181.5397%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 183.2168%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 185.9106%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 189.6830%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 194.6256%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 200.8559%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 208.5421%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 217.8981%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 908.5700%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 904.4620%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 898.1168%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 279.2803%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 877.4790%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 333.8998%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 371.8351%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 420.4797%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 484.5881%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 572.2526%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 698.4877%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 721.2857%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 578.5021%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 552.2275%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 527.3094%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 878.9243%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 728.9093%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 627.8858%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 555.6901%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 425.6706%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 460.8167%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 428.5738%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 403.0215%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 370.9215%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 366.2454%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 353.1923%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 342.5164%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 335.0393%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 315.3144%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 251.5673%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 216.7704%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 383.3257%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 324.1391%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 148.9254%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  92.4492%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  65.1480%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  49.3380%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  39.1768%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  32.1847%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  27.1342%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  23.3513%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  20.4370%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  18.1408%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  16.2982%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  14.7970%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  13.5583%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  12.5253%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  11.6560%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  10.9190%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  10.2903%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   9.7510%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   9.2867%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   8.8857%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   8.5387%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   8.2381%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.9779%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.7530%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.5594%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.3936%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.2529%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.1351%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   7.0382%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   6.9608%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   6.9017%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   6.8601%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   6.8354%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:   6.8272%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  10.7439%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  10.8041%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  10.9044%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  11.0447%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  11.2248%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  11.4445%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  11.7040%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  12.0033%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  12.3430%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  12.7240%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  13.1483%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  13.6188%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  14.1399%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  14.7184%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  15.3634%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  16.0876%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  16.9079%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  17.8469%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  18.9347%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  20.2113%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  21.7302%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  23.5649%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  25.8175%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  28.6352%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  32.2363%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  36.9601%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  43.3613%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  52.4149%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  65.9997%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|:  88.2505%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 130.3613%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 236.7077%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 956.0001%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 551.5077%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 232.2812%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 276.7765%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 505.6950%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 796.1141%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 517.2446%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 303.8237%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 224.2940%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 214.5087%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: ********%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 199.3299%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 955.3864%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 936.1226%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 185.6030%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 183.0856%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 181.5077%
+     Max |d(i,j)-d*(j,i)| =  0.003801
+     Max |d(i,j)-d*(j,i)|/|d(i,j)|: 180.8417%
+
+     MATDYN       :      0.45s CPU      0.45s WALL
+
+
+   This run was terminated on:  12:49:22  20Jul2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

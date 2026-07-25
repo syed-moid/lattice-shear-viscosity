@@ -1,0 +1,5 @@
+&input
+    fildyn = 'BaTiO3_pbesol_hydro_p005.dyn'
+    zasr   = 'crystal'
+    flfrc  = 'BaTiO3_pbesol_hydro_p005.444.fc'
+/

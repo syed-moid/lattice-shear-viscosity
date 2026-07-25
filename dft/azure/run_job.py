@@ -42,9 +42,10 @@ import posixpath
 import re
 import secrets
 import stat
+import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from provision_vm import (
@@ -95,13 +96,21 @@ class SshSession:
             self._client = None
 
 
+_SUBSCRIPTION_ID_RE = re.compile(r"(/subscriptions/)[0-9a-fA-F-]{36}(/)")
+
+
 class RunLog:
-    """Print to console and append to <input-dir>/run_log.txt."""
+    """Print to console and append to <input-dir>/run_log.txt.
+
+    run_log.txt files are committed as provenance, so Azure resource IDs
+    are redacted: the subscription GUID never lands in the repository.
+    """
 
     def __init__(self, path):
         self.path = Path(path)
 
     def log(self, message):
+        message = _SUBSCRIPTION_ID_RE.sub(r"\1REDACTED\2", str(message))
         line = f"[{datetime.now(timezone.utc).isoformat(timespec='seconds')}] {message}"
         print(line, flush=True)
         with self.path.open("a") as fh:
@@ -320,6 +329,34 @@ def download_outputs(ssh, input_dir, uploaded, log):
     return downloaded
 
 
+def arm_auto_shutdown(vm_name, resource_group, hours_from_now, log):
+    """Idle-cost safety net: schedule Azure's native daily auto-shutdown for
+    this VM at (now + hours_from_now), via `az vm auto-shutdown`. This runs
+    entirely in Azure's control plane, independent of this process or any
+    launching session still being alive — a completed/orphaned job that nobody
+    is watching still gets deallocated instead of billing indefinitely.
+
+    Caller guarantees hours_from_now <= 24 (see --auto-shutdown-hours help):
+    the underlying schedule is DAILY-recurring by clock time, so its first
+    occurrence is always within the next 24h — a larger value would fire on
+    day 1, prematurely killing a still-healthy longer job.
+    """
+    target = datetime.now(timezone.utc) + timedelta(hours=hours_from_now)
+    time_arg = target.strftime("%H%M")
+    result = subprocess.run(
+        ["az", "vm", "auto-shutdown", "-g", resource_group, "-n", vm_name,
+         "--time", time_arg],
+        capture_output=True, text=True,
+    )
+    if result.returncode == 0:
+        log(f"Auto-shutdown armed: {vm_name} deallocates at {time_arg} UTC "
+            f"daily (next occurrence ~{target.isoformat(timespec='minutes')}) "
+            "if nothing tears it down first.")
+    else:
+        log(f"WARNING: auto-shutdown arming failed for {vm_name} "
+            f"(rc={result.returncode}): {result.stderr.strip()}")
+
+
 def detect_qe_banner(input_dir):
     """Pull the 'Program PWSCF/PHONON ... starts' banners from the downloaded
     per-command output logs."""
@@ -356,7 +393,21 @@ def main():
     parser.add_argument("--vm-name",
                         help="override the generated VM name (also used to "
                              "derive NIC/IP/disk names)")
+    parser.add_argument("--auto-shutdown-hours", type=float, default=None,
+                        help="idle-cost safety net: arm Azure's native daily "
+                             "auto-shutdown at (now + this many hours), so the "
+                             "VM deallocates itself even if nothing is watching "
+                             "it. Azure's auto-shutdown is a DAILY recurring "
+                             "clock-time trigger, not a one-shot future date, so "
+                             "its very next occurrence is always within 24h — "
+                             "values > 24 are rejected (arm it manually closer "
+                             "to job completion instead).")
     args = parser.parse_args()
+    if args.auto_shutdown_hours is not None and args.auto_shutdown_hours > 24:
+        parser.error("--auto-shutdown-hours must be <= 24 (Azure's auto-shutdown "
+                      "is a daily clock-time trigger; its first occurrence is "
+                      "always within the next 24h, so a larger value would fire "
+                      "too early for a still-healthy long-running job)")
 
     input_dir = Path(args.input_dir)
     if not input_dir.is_dir():
@@ -389,6 +440,8 @@ def main():
         # resource by name, so tearing down nothing is harmless.
         provisioned = True
         vm_ip = provision_vm(vm_name, vm_size=args.vm_size, cfg=cfg, log=log)
+        if args.auto_shutdown_hours is not None:
+            arm_auto_shutdown(vm_name, cfg["AZURE_GROUP"], args.auto_shutdown_hours, log)
         qe_version = wait_for_qe_ready(vm_ip, log)
         # Lets the user ssh in and tail run_stdout_*.log while the job runs.
         print_connection_info(vm_name, args.vm_size, cfg["LOCATION"], vm_ip, log=log)

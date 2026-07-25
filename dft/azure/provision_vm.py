@@ -31,7 +31,7 @@ from azure.mgmt.network import models as network_models
 from azure.mgmt.resource.resources import ResourceManagementClient
 from dotenv import load_dotenv
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 load_dotenv(REPO_ROOT / ".env")
 
 VNET_NAME = "qe-vnet"

@@ -1,0 +1,49 @@
+&CONTROL
+    calculation = 'vc-relax'
+    restart_mode = 'from_scratch'
+    prefix = 'SrTiO3_pbesol'
+    pseudo_dir = './pseudo/'
+    outdir = './tmp/'
+    tstress = .true.
+    tprnfor = .true.
+    etot_conv_thr = 1.0d-6
+    forc_conv_thr = 1.0d-5
+/
+&SYSTEM
+    ibrav = 1
+    celldm(1) = 7.37              ! starting guess (PBE relaxed value; PBEsol
+                                    ! contracts, BFGS refines -- the answer is the
+                                    ! CELL_PARAMETERS scale factor at convergence
+                                    ! x 7.37, NOT the celldm echo)
+    nat = 5
+    ntyp = 3
+    ecutwfc = 60.0
+    ecutrho = 480.0
+    occupations = 'fixed'
+/
+&ELECTRONS
+    conv_thr = 1.0d-10
+    mixing_beta = 0.3
+/
+&IONS
+    ion_dynamics = 'bfgs'
+/
+&CELL
+    cell_dynamics = 'bfgs'
+    press = 0.0
+    press_conv_thr = 0.1
+/
+ATOMIC_SPECIES
+ Sr  87.62   Sr.pbesol-spn-kjpaw_psl.1.0.0.UPF
+ Ti  47.867  Ti.pbesol-spn-kjpaw_psl.1.0.0.UPF
+ O   15.999  O.pbesol-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+ Sr  0.000000000  0.000000000  0.000000000
+ Ti  0.500000000  0.500000000  0.500000000
+ O   0.500000000  0.500000000  0.000000000
+ O   0.500000000  0.000000000  0.500000000
+ O   0.000000000  0.500000000  0.500000000
+K_POINTS automatic
+ 8 8 8 0 0 0
+! Functional comes from the PBEsol UPFs -- verify the output banner reads
+! 'Exchange-correlation= SLA  PW   PSX  PSC' before accepting the run.

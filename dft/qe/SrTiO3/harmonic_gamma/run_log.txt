@@ -58,12 +58,12 @@
 [2026-07-04T23:37:57+00:00] Outputs in qe/SrTiO3/harmonic_gamma: SrTiO3.dyn, run_stdout_2.log, run_stdout_1.log
 [2026-07-04T23:37:57+00:00] Job SUCCEEDED (2/2 commands, all exit 0).
 [2026-07-04T23:37:57+00:00] Deleting VM qe-20260704-213905-08f5...
-[2026-07-04T23:38:08+00:00] Deleted /subscriptions/a19349c2-6b9e-4d00-8cf7-8fc91d46d25b/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Compute/virtualMachines/qe-20260704-213905-08f5
+[2026-07-04T23:38:08+00:00] Deleted /subscriptions/REDACTED/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Compute/virtualMachines/qe-20260704-213905-08f5
 [2026-07-04T23:38:08+00:00] NIC qe-20260704-213905-08f5-nic: not found, nothing to delete.
 [2026-07-04T23:38:09+00:00] Deleting public IP qe-20260704-213905-08f5-ip...
-[2026-07-04T23:38:09+00:00] Deleted /subscriptions/a19349c2-6b9e-4d00-8cf7-8fc91d46d25b/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Network/publicIPAddresses/qe-20260704-213905-08f5-ip
+[2026-07-04T23:38:09+00:00] Deleted /subscriptions/REDACTED/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Network/publicIPAddresses/qe-20260704-213905-08f5-ip
 [2026-07-04T23:38:09+00:00] OS disk qe-20260704-213905-08f5-osdisk: not found, nothing to delete.
 [2026-07-04T23:38:09+00:00] Teardown complete. Deleted resource IDs:
-[2026-07-04T23:38:09+00:00]   /subscriptions/a19349c2-6b9e-4d00-8cf7-8fc91d46d25b/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Compute/virtualMachines/qe-20260704-213905-08f5
-[2026-07-04T23:38:09+00:00]   /subscriptions/a19349c2-6b9e-4d00-8cf7-8fc91d46d25b/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Network/publicIPAddresses/qe-20260704-213905-08f5-ip
+[2026-07-04T23:38:09+00:00]   /subscriptions/REDACTED/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Compute/virtualMachines/qe-20260704-213905-08f5
+[2026-07-04T23:38:09+00:00]   /subscriptions/REDACTED/resourceGroups/rg-ferroelectric-ins-ml/providers/Microsoft.Network/publicIPAddresses/qe-20260704-213905-08f5-ip
 [2026-07-04T23:38:09+00:00] Job end (exit code 0).

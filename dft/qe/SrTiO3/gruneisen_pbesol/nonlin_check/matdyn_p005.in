@@ -1,0 +1,15 @@
+&input
+    flfrc  = 'SrTiO3_pbesol_shear_xy_p005.444.fc'
+    asr    = 'crystal'
+    flfrq  = 'SrTiO3_pbesol_shear_xy_p005.freq'
+    flvec  = 'SrTiO3_pbesol_shear_xy_p005.modes'
+    q_in_band_form = .true.
+    q_in_cryst_coord = .false.
+/
+6
+  0.0  0.0  0.0   40    ! Gamma
+  0.5  0.0  0.0   40    ! X
+  0.5  0.5  0.0   40    ! M
+  0.0  0.0  0.0   40    ! Gamma
+  0.5  0.5  0.5   40    ! R
+  0.5  0.0  0.0   1     ! X

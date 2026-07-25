@@ -1,0 +1,160 @@
+
+     Program Q2R v.6.7MaX starts on 23Jul2026 at 13:45:19 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+
+     reading grid info from file SrTiO3_pbesol_shear_xy_m010.dyn0    
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn1
+ macroscopic fields = T
+   6.33093  -0.03130   0.00000
+  -0.03130   6.33093   0.00000
+   0.00000   0.00000   6.32524
+  na=            1
+   2.55454   0.00436   0.00000
+   0.00436   2.55454   0.00000
+   0.00000   0.00000   2.55383
+  na=            2
+   7.33785  -0.07813   0.00000
+  -0.07813   7.33785   0.00000
+   0.00000   0.00000   7.33262
+  na=            3
+  -2.08179  -0.01764   0.00000
+  -0.01764  -2.08179   0.00000
+   0.00000   0.00000  -5.84325
+  na=            4
+  -2.08288   0.01382   0.00000
+   0.07706  -5.84595   0.00000
+   0.00000   0.00000  -2.08067
+  na=            5
+  -5.84595   0.07706   0.00000
+   0.01382  -2.08288   0.00000
+   0.00000   0.00000  -2.08067
+Norm of the difference between old and new effective charges:    0.09156044126396292726
+  nqs=            1
+ q=   0.00000000  0.00000000  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn2
+  nqs=            2
+ q=   0.00000000  0.00000000  0.25001250
+ q=   0.00000000  0.00000000 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn3
+  nqs=            1
+ q=   0.00000000  0.00000000 -0.50002500
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn4
+  nqs=            4
+ q=   0.00250037  0.25003750  0.00000000
+ q=   0.25003750  0.00250037  0.00000000
+ q=  -0.00250037 -0.25003750  0.00000000
+ q=  -0.25003750 -0.00250037  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn5
+  nqs=            8
+ q=   0.00250037  0.25003750  0.25001250
+ q=   0.00250037  0.25003750 -0.25001250
+ q=   0.25003750  0.00250037  0.25001250
+ q=  -0.00250037 -0.25003750  0.25001250
+ q=  -0.25003750 -0.00250037  0.25001250
+ q=  -0.00250037 -0.25003750 -0.25001250
+ q=  -0.25003750 -0.00250037 -0.25001250
+ q=   0.25003750  0.00250037 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn6
+  nqs=            4
+ q=   0.00250037  0.25003750 -0.50002500
+ q=   0.25003750  0.00250037 -0.50002500
+ q=  -0.00250037 -0.25003750 -0.50002500
+ q=  -0.25003750 -0.00250037 -0.50002500
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn7
+  nqs=            2
+ q=  -0.00500075 -0.50007501  0.00000000
+ q=   0.50007501  0.00500075  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn8
+  nqs=            4
+ q=  -0.00500075 -0.50007501  0.25001250
+ q=  -0.00500075 -0.50007501 -0.25001250
+ q=   0.50007501  0.00500075  0.25001250
+ q=   0.50007501  0.00500075 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn9
+  nqs=            2
+ q=  -0.00500075 -0.50007501 -0.50002500
+ q=   0.50007501  0.00500075 -0.50002500
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn10
+  nqs=            2
+ q=   0.25253788  0.25253788  0.00000000
+ q=  -0.25253788 -0.25253788  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn11
+  nqs=            4
+ q=   0.25253788  0.25253788  0.25001250
+ q=   0.25253788  0.25253788 -0.25001250
+ q=  -0.25253788 -0.25253788  0.25001250
+ q=  -0.25253788 -0.25253788 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn12
+  nqs=            2
+ q=   0.25253788  0.25253788 -0.50002500
+ q=  -0.25253788 -0.25253788 -0.50002500
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn13
+  nqs=            4
+ q=   0.24503675 -0.49757463  0.00000000
+ q=  -0.49757463  0.24503675  0.00000000
+ q=   0.49757463 -0.24503675  0.00000000
+ q=  -0.24503675  0.49757463  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn14
+  nqs=            8
+ q=   0.24503675 -0.49757463  0.25001250
+ q=   0.24503675 -0.49757463 -0.25001250
+ q=  -0.49757463  0.24503675  0.25001250
+ q=  -0.49757463  0.24503675 -0.25001250
+ q=   0.49757463 -0.24503675  0.25001250
+ q=  -0.24503675  0.49757463  0.25001250
+ q=   0.49757463 -0.24503675 -0.25001250
+ q=  -0.24503675  0.49757463 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn15
+  nqs=            4
+ q=   0.24503675 -0.49757463 -0.50002500
+ q=  -0.49757463  0.24503675 -0.50002500
+ q=   0.49757463 -0.24503675 -0.50002500
+ q=  -0.24503675  0.49757463 -0.50002500
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn16
+  nqs=            2
+ q=   0.24753713 -0.24753713  0.00000000
+ q=  -0.24753713  0.24753713  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn17
+  nqs=            4
+ q=   0.24753713 -0.24753713  0.25001250
+ q=   0.24753713 -0.24753713 -0.25001250
+ q=  -0.24753713  0.24753713  0.25001250
+ q=  -0.24753713  0.24753713 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn18
+  nqs=            2
+ q=   0.24753713 -0.24753713 -0.50002500
+ q=  -0.24753713  0.24753713 -0.50002500
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn19
+  nqs=            1
+ q=  -0.50507576 -0.50507576  0.00000000
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn20
+  nqs=            2
+ q=  -0.50507576 -0.50507576  0.25001250
+ q=  -0.50507576 -0.50507576 -0.25001250
+  reading force constants from file SrTiO3_pbesol_shear_xy_m010.dyn21
+  nqs=            1
+ q=  -0.50507576 -0.50507576 -0.50002500
+
+      q-space grid ok, #points =   64
+
+      fft-check warning: sum of imaginary terms = 2.121497E-08
+
+     Q2R          :      0.05s CPU      0.05s WALL
+
+
+   This run was terminated on:  13:45:19  23Jul2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
