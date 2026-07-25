@@ -1,18 +1,19 @@
-# VSR 1982 Fig. 3 — cubic BaTiO3 soft mode, Omega0(T) and gamma/Omega0(T)
+# VSR 1982 Fig. 3 — cubic BaTiO3 soft mode, $\Omega_0(T)$ and $\gamma/\Omega_0(T)$
 
 Paper: H. Vogt, J. A. Sanjurjo, and G. Rossbroich, "Soft-mode spectroscopy
 in cubic BaTiO3 by hyper-Raman scattering", Phys. Rev. B 26, 5904 (1982)
 [references/PhysRevB.26.5904.pdf; figure crop references/VSR_Fig3.jpg].
 
-Figure/panels: Fig. 3. Bottom panel: soft-TO frequency Omega0 vs T.
-Top panel: RELATIVE damping gamma/Omega0 vs T (dimensionless; gamma is
-the classical-dispersion-oscillator FULL damping constant).
+Figure/panels: Fig. 3. Bottom panel: soft-TO frequency $\Omega_0$ vs T.
+Top panel: RELATIVE damping $\gamma/\Omega_0$ vs T (dimensionless;
+$\gamma$ is the classical-dispersion-oscillator FULL damping constant).
 
 Axis units AS PLOTTED (verified against the figure image 2026-07-24):
-T in KELVIN (300-900 K; cubic phase, all data above T_C ~= 393 K);
-Omega0 in cm^-1 (axis break above ~100 cm^-1); gamma/Omega0 dimensionless.
-No temperature conversion is needed or applied; raw files are verbatim
-WebPlotDigitizer X,Y exports (headerless), NEVER edited.
+T in KELVIN (300-900 K; cubic phase, all data above $T_C \approx 393$ K);
+$\Omega_0$ in $\mathrm{cm}^{-1}$ (axis break above ~100 $\mathrm{cm}^{-1}$);
+$\gamma/\Omega_0$ dimensionless. No temperature conversion is needed or
+applied; raw files are verbatim WebPlotDigitizer X,Y exports (headerless),
+NEVER edited.
 
 Symbol -> source map (resolved from the paper):
 - closed circles = VSR this-work (hyper-Raman):

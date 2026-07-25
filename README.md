@@ -4,9 +4,11 @@ Data, code, and figure pipeline for *Lattice shear viscosity in strongly
 anharmonic ferroelectric oxides from first principles* (SrTiO3 and BaTiO3).
 The `latvisc` package evaluates the phonon-mode expression
 
-    eta_ijlm = (1 / (V k_B T)) * sum_qs (hbar omega)^2 * gamma_ij * gamma_lm * n (n + 1) * tau
+$$
+\eta_{ijlm} = \frac{1}{V k_B T} \sum_{\mathbf{q}s} (\hbar\omega)^2\, \gamma_{ij}\, \gamma_{lm}\, n(n+1)\, \tau
+$$
 
-(gamma the mode Grueneisen tensor, tau = 1/(2 Gamma) from anharmonic
+($\gamma$ the mode Grueneisen tensor, $\tau = 1/(2\Gamma)$ from anharmonic
 linewidths, with an overdamped-safe effective lifetime for the soft mode)
 from first-principles phonon frequencies, linewidths, and mode Grueneisen
 parameters, and cross-checks the result against kinetic theory and Akhiezer
@@ -38,9 +40,9 @@ uv run pytest
 1. QE relax and DFPT runs on Azure VMs (`dft/azure/`); inputs and small
    text outputs land in `dft/qe/<material>/`.
 2. phono3py runs locally (`anharmonic/<material>/`) produce mode linewidths
-   Gamma_qs(T, f) as hdf5 in `data/raw/` (gitignored).
+   $\Gamma_{\mathbf{q}s}(T, f)$ as hdf5 in `data/raw/` (gitignored).
 3. Strained phonon runs give mode Grueneisen tensors (`latvisc.gruneisen`).
-4. `latvisc` computes eta(T, f) and writes small csv/json to
+4. `latvisc` computes $\eta(T, f)$ and writes small csv/json to
    `data/processed/` (committed).
 5. `scripts/fig*.py` regenerate every paper figure from `data/processed/`
    into `figures/`; each figure maps to exactly one script.
