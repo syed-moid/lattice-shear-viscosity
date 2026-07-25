@@ -1,0 +1,9 @@
+# unstable_bz_fraction.csv - produced by scripts/unstable_fraction.py
+# uniform 11x11x11 Gamma-centered mesh (matdyn.x, crystal coords);
+# unstable = omega < -1 cm^-1; q_fraction = BZ-volume fraction of
+# q-points hosting at least one unstable mode
+material,functional,mesh,n_modes_total,n_modes_unstable,mode_fraction,n_q_unstable,q_fraction
+SrTiO3,pbe,11x11x11,19965,414,0.0207,323,0.2427
+BaTiO3,pbe,11x11x11,19965,1186,0.0594,899,0.6754
+SrTiO3,pbesol,11x11x11,19965,134,0.0067,105,0.0789
+BaTiO3,pbesol,11x11x11,19965,1062,0.0532,819,0.6153

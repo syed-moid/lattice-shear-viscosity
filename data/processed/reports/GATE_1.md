@@ -132,7 +132,7 @@ gate.
 3. **SrTiO3 stable-branch anchors**: approve adding Servoin 1980 (IR
    printed table) and/or Stirling 1972 (INS) to the anchor set, or accept
    velocity-only validation for SrTiO3.
-4. Reminder — open from CLAUDE.md: whether existing 5-atom harmonic data
+4. Reminder — open project question: whether existing 5-atom harmonic data
    is converged enough to seed phono3py supercell runs (interacts with
    the q-grid flag in A1 and with the route choice).
 

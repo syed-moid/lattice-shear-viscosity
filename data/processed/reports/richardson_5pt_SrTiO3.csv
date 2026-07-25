@@ -1,0 +1,12 @@
+# richardson_5pt_SrTiO3.csv - produced by scripts/check_5point_richardson.py
+# 5-point omega^2(eps) analysis, match_four_strains_by_overlap canonical labeling
+# 18 sign-change-under-strain entries excluded (see script docstring)
+# proposed_cutoff_cm1=175, flag_above_pct=0.74, flag_below_pct=10.95, verdict=CONFIRMED
+omega0_bin_cm1,n_usable,flag_rate_pct,median_resid,p90_resid
+[0,50),180,61.11,0.2340,1.0629
+[50,100),1498,16.82,0.0257,0.1388
+[100,150),3888,3.70,0.0195,0.0703
+[150,175),1193,19.61,0.0260,0.1760
+[175,200),930,2.15,0.0061,0.0361
+[200,300),2847,2.67,0.0047,0.0447
+[300,inf),9276,0.00,0.0053,0.0224
