@@ -1,0 +1,12 @@
+# alamode_sto_tau300K_bands.csv - produced by scripts/crosscheck_alamode_sto_tau.py
+# tau_q(300K) = 1/(2*Gamma_q), Gamma HWHM cm-1, from data/raw/alamode_sto/STO_RTA_production.result
+# compare against data/processed/reports/tadano2015_tau300K_crosscheck.md's digitized Fig 7 inset
+band_lo_cm1,band_hi_cm1,n_modes,tau_median_ps,tau_p10_ps,tau_p90_ps,paper_range_ps
+0,50,6,0.2338,0.1807,0.2965,"5-20 ps (long-lived acoustic tail, max ~15-20)"
+100,150,95,0.7216,0.2780,1.2294,"1-4 ps (dense cluster)"
+150,200,61,0.1915,0.1150,0.4472,"0.7-3 ps (declining)"
+200,450,168,0.2557,0.1072,0.5889,"0.4-1.2 ps (broad plateau ~0.6-0.8)"
+460,490,37,0.1228,0.0346,0.2592,"1-2 ps (local rise)"
+500,550,54,0.2160,0.0496,0.3633,"0.12-0.5 ps (pronounced dip, min ~0.12)"
+560,730,0,,,,"spectral gap, no modes expected"
+730,830,33,0.2240,0.1891,0.2674,"0.2-0.45 ps (top optic branch)"

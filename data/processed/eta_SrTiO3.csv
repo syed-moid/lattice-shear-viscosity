@@ -1,0 +1,14 @@
+# eta_SrTiO3.csv - produced by scripts/compute_eta_SrTiO3.py (Stage C)
+# eta_xyxy(T), Pa s; Route S/H partition at 175 cm-1 (Richardson-validated);
+# gamma from eps05 strained cells (signed eigenvalues); omega_r/Gamma from
+# SCPH-coupled ALAMODE per-T runs (validated at 300 K, see
+# tadano2015_tau300K_crosscheck.md); Gamma-point soft sector from Vogt 1995
+# where covered. See data/processed/reports/eta_SrTiO3_stageC.md.
+T_K,eta_total_Pas,eta_routeS_Pas,eta_routeH_stable_Pas,eta_routeH_unstable_Pas,eta_gamma_sector_Pas,frac_lowomega,vogt_gamma_sector,n_extrapolated_modes,provisional_method_flag
+100,6.028872e-03,9.733652e-05,4.237314e-03,1.575309e-03,1.189119e-04,0.9839,1,2,method_validated_at_300K_only
+150,4.675538e-03,1.702366e-04,3.866668e-03,6.092142e-04,2.941928e-05,0.9636,1,2,method_validated_at_300K_only
+200,4.188713e-03,2.167179e-04,3.674105e-03,2.854795e-04,1.241099e-05,0.9483,1,2,method_validated_at_300K_only
+250,3.950564e-03,2.300471e-04,3.536690e-03,1.765271e-04,7.299627e-06,0.9418,1,2,method_validated_at_300K_only
+300,3.886195e-03,2.550559e-04,3.498751e-03,1.271872e-04,5.201235e-06,0.9344,1,2,no
+350,3.681661e-03,2.762095e-04,3.393029e-03,1.041601e-05,2.006508e-06,0.9250,0,2,method_validated_at_300K_only
+400,3.616698e-03,2.796263e-04,3.326941e-03,8.494713e-06,1.636395e-06,0.9227,0,2,method_validated_at_300K_only

@@ -1,0 +1,13 @@
+# alamode_sto_tau300K_bands_scph.csv - produced by scripts/crosscheck_alamode_sto_tau.py
+# tau_q(300K) = 1/(2*Gamma_q), Gamma HWHM cm-1, from data/raw/alamode_sto/STO_RTA_scph_300K.result
+# compare against data/processed/reports/tadano2015_tau300K_crosscheck.md's digitized Fig 7 inset
+band_lo_cm1,band_hi_cm1,n_modes,tau_median_ps,tau_p10_ps,tau_p90_ps,paper_range_ps
+0,50,0,,,,"5-20 ps (long-lived acoustic tail, max ~15-20)"
+50,100,16,3.4249,0.7103,12.3501,"(gap between digitized bands -- not in the paper's own table; added after finding the longest-tau SCPH-coupled mode, 17.5 ps at 54.9 cm-1, fell here)"
+100,150,105,2.7891,1.5781,4.4081,"1-4 ps (dense cluster)"
+150,200,62,1.2527,0.8903,2.3875,"0.7-3 ps (declining)"
+200,450,195,0.7312,0.3718,1.1199,"0.4-1.2 ps (broad plateau ~0.6-0.8)"
+460,490,18,1.0232,0.8498,1.3866,"1-2 ps (local rise)"
+500,550,76,0.2833,0.1152,0.6904,"0.12-0.5 ps (pronounced dip, min ~0.12)"
+560,730,0,,,,"spectral gap, no modes expected"
+730,830,34,0.2477,0.2080,0.3014,"0.2-0.45 ps (top optic branch)"

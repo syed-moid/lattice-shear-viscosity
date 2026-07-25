@@ -1,0 +1,16 @@
+# table1_convergence_SrTiO3.csv - produced by scripts/table1_convergence.py
+# q-mesh convergence of eta_xyxy(300 K), generation-3 assembly; the 4^3 line
+# is the exactly-DFPT-commensurate grid (zero interpolation error) and is
+# NOT part of the interpolated-mesh convergence read-off. Smearing block:
+# isotope-channel Gaussian DOS smearing sensitivity at f = 0.15.
+mesh,n_q,eta_300K_Pas,dev_from_133_pct
+"4^3 (exact DFPT grid)",64,2.951441e-03,-28.193
+"7^3",343,3.474649e-03,-15.464
+"9^3",729,4.047054e-03,-1.537
+"11^3 (production)",1331,3.886195e-03,-5.451
+"13^3",2197,4.110236e-03,0.000
+
+sigma_cm1,eta_f015_Pas,suppression_pct
+5.0,3.592673e-03,-7.553
+10.0,3.614218e-03,-6.999
+20.0,3.657849e-03,-5.876

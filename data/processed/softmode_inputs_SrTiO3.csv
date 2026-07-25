@@ -1,0 +1,96 @@
+# softmode_inputs_SrTiO3.csv - Route H external input (Gamma-point soft mode)
+# source: Vogt, Phys. Rev. B 51, 8046 (1995), Fig. 6, digitized (WebPlotDigitizer)
+#   in ferroelectric-ins-ml/qe/anchoring/vogt1995_fig6/ (committed there); imported
+#   here verbatim, not re-digitized. Damping column converted full-gamma -> HWHM
+#   Gamma = gamma_full/2 on import (convention confirmed via Vogt Eq. 13, see that
+#   folder README.md); omega columns are as-digitized, no conversion.
+# quantity: omega_F1u_cm1 (cubic phase, T > ~110 K, T_a=105K), omega_A2u_cm1 and
+#   omega_Eu_cm1 (T < T_a split components, for future T-varying Route H work),
+#   Gamma_HWHM_cm1 (soft-mode damping, all T, full-to-HWHM converted).
+# independently-digitized series at different T points -- long format, not
+#   interpolated onto a common grid, to avoid fabricating unmeasured points.
+quantity,T_K,value_cm1
+omega_F1u_cm1,85.7143,38.3955
+omega_F1u_cm1,93.0314,41.3022
+omega_F1u_cm1,96.1672,42.5479
+omega_F1u_cm1,109.7561,46.4977
+omega_F1u_cm1,121.2544,50.2377
+omega_F1u_cm1,130.6620,53.1472
+omega_F1u_cm1,142.1603,56.2665
+omega_F1u_cm1,150.5226,58.7608
+omega_F1u_cm1,162.0209,61.6732
+omega_F1u_cm1,172.4739,64.5842
+omega_F1u_cm1,181.8815,66.4592
+omega_F1u_cm1,192.3345,69.1633
+omega_F1u_cm1,200.6969,70.8300
+omega_F1u_cm1,208.0139,72.9090
+omega_F1u_cm1,218.4669,75.4062
+omega_F1u_cm1,222.6481,75.4120
+omega_F1u_cm1,231.0105,76.8718
+omega_F1u_cm1,240.4181,78.9537
+omega_F1u_cm1,248.7805,80.4136
+omega_F1u_cm1,262.3693,83.1220
+omega_F1u_cm1,273.8676,84.9999
+omega_F1u_cm1,287.4564,87.0876
+omega_F1u_cm1,297.9094,88.9641
+omega_A2u_cm1,11.0559,17.3877
+omega_A2u_cm1,17.2818,18.4264
+omega_A2u_cm1,22.4613,19.6714
+omega_A2u_cm1,28.6873,20.7102
+omega_A2u_cm1,35.9405,22.3703
+omega_A2u_cm1,42.1473,24.2367
+omega_A2u_cm1,46.2708,26.1016
+omega_A2u_cm1,53.5097,28.3824
+omega_A2u_cm1,60.7438,30.8702
+omega_A2u_cm1,66.9458,32.9434
+omega_A2u_cm1,72.1013,35.2229
+omega_A2u_cm1,77.2569,37.5023
+omega_A2u_cm1,79.8658,37.2972
+omega_Eu_cm1,11.4983,9.7400
+omega_Eu_cm1,17.7700,11.1969
+omega_Eu_cm1,21.9512,12.8579
+omega_Eu_cm1,28.2230,14.9355
+omega_Eu_cm1,35.5401,17.4283
+omega_Eu_cm1,41.8118,20.1266
+omega_Eu_cm1,47.0383,22.8235
+omega_Eu_cm1,53.3101,25.5218
+omega_Eu_cm1,60.6272,28.2216
+omega_Eu_cm1,66.8990,30.0923
+omega_Eu_cm1,73.1707,32.9975
+omega_Eu_cm1,80.4878,35.4903
+Gamma_HWHM_cm1,10.4242,0.4298
+Gamma_HWHM_cm1,17.7341,0.5335
+Gamma_HWHM_cm1,22.9533,0.6369
+Gamma_HWHM_cm1,29.2203,0.7062
+Gamma_HWHM_cm1,35.4777,0.9126
+Gamma_HWHM_cm1,40.7041,0.9132
+Gamma_HWHM_cm1,46.9543,1.2225
+Gamma_HWHM_cm1,53.2093,1.4632
+Gamma_HWHM_cm1,59.4811,1.4639
+Gamma_HWHM_cm1,65.7456,1.5675
+Gamma_HWHM_cm1,71.9982,1.8425
+Gamma_HWHM_cm1,80.3223,2.3920
+Gamma_HWHM_cm1,85.5392,2.5298
+Gamma_HWHM_cm1,92.8538,2.5649
+Gamma_HWHM_cm1,98.0707,2.7026
+Gamma_HWHM_cm1,109.5330,3.2182
+Gamma_HWHM_cm1,120.9858,3.8710
+Gamma_HWHM_cm1,131.4028,4.3864
+Gamma_HWHM_cm1,140.7698,4.9704
+Gamma_HWHM_cm1,151.2012,5.2801
+Gamma_HWHM_cm1,162.6731,5.6586
+Gamma_HWHM_cm1,174.1282,6.2770
+Gamma_HWHM_cm1,182.4523,6.8266
+Gamma_HWHM_cm1,192.8574,7.5135
+Gamma_HWHM_cm1,201.1910,7.9259
+Gamma_HWHM_cm1,210.5532,8.5783
+Gamma_HWHM_cm1,224.1348,8.6828
+Gamma_HWHM_cm1,219.9250,9.0937
+Gamma_HWHM_cm1,230.3420,9.6092
+Gamma_HWHM_cm1,249.1405,9.8513
+Gamma_HWHM_cm1,239.6899,10.4674
+Gamma_HWHM_cm1,261.6338,10.5728
+Gamma_HWHM_cm1,273.0985,11.0541
+Gamma_HWHM_cm1,286.6681,11.3299
+Gamma_HWHM_cm1,298.1687,11.2969
+Gamma_HWHM_cm1,298.1543,11.5026

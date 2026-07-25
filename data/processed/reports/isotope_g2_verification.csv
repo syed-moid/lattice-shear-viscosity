@@ -1,0 +1,7 @@
+# isotope_g2_verification.csv - produced by scripts/verify_isotope_g2.py
+# g2(kappa) = sum_i f_i (1 - M_i/Mbar)^2 (Eq. 9), 2-isotope O sublattice case
+# M_nat_O=15.999, M_18O=17.99916, verdict=PASS (identity holds to float precision)
+f,g2_general_sum,g2_exact_closed_form,abs_diff,g2_manuscript_approx,manuscript_rel_error_pct
+0.05,7.33204046e-04,7.33204046e-04,1.30e-18,7.42399052e-04,1.25
+0.1,1.37212828e-03,1.37212828e-03,3.04e-18,1.40665083e-03,2.52
+0.15,1.92006735e-03,1.92006735e-03,1.08e-18,1.99275535e-03,3.79

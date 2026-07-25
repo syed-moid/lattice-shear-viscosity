@@ -1,0 +1,17 @@
+# maerten2018_damping_300K.csv - reference values transcribed from
+# Maerten, Bojahr, Reinhardt, Koreeda, Roessle, Bargheer,
+# "Critical behavior of the damping rate of GHz acoustic phonons in SrTiO3
+# at the antiferrodistortive phase transition measured by time- and
+# frequency-resolved Brillouin scattering", arXiv:1810.00381 (2018; latest
+# version Apr 2019). NO published journal version exists as of 2026-07-24
+# (arXiv record carries no journal-ref) - cite as preprint.
+# Quantities are the paper's own quoted text values at T = 300 K, cubic phase:
+# LA phonons along [100], v_L = 7.9-8.1 nm/ps, Gamma = amplitude decay rate
+# (= angular HWHM of the Brillouin line, beta = Gamma/2pi, their Fig. 3).
+# Their Fig. 6 confirms Akhiezer Gamma ~ q^2 at 300 K over ~2 decades in q.
+# band rows give the min/max of "on the order of 1-2 GHz" (text, Sec. IV).
+label,q_um_inv,gamma_GHz,source
+bulk_STO_BS,58,1.0,"text Sec IV: BS experiments systematically ~1 GHz; bulk STO results of ~1 GHz"
+LSMO_TDBS_cubic,52,2.0,"text Sec IV: T independent value of Gamma ~ 2 GHz at high T"
+band_min,58,1.0,"text: damping at 300 K on the order of 1-2 GHz"
+band_max,58,2.0,"text: damping at 300 K on the order of 1-2 GHz"

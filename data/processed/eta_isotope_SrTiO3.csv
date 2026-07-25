@@ -1,0 +1,11 @@
+# eta_isotope_SrTiO3.csv - produced by scripts/compute_eta_isotope_SrTiO3.py
+# Tamura 18O series at 300 K, exact g2 sum (Eq. 9), total-DOS site-projection
+# approximation, Matthiessen Gamma_total = Gamma_anh + Gamma_iso (HWHM).
+# Baseline eta carries the same Stage-C provenance/provisional flags as
+# eta_SrTiO3.csv (see eta_SrTiO3_stageC.md), incl. the OUT-OF-DECADE gate.
+f_18O,g2,eta_total_Pas,eta_over_eta0
+0.0,0.000000e+00,3.886195e-03,1.000000
+0.01,1.543454e-04,3.862251e-03,0.993839
+0.05,7.332040e-04,3.775909e-03,0.971621
+0.1,1.372128e-03,3.686472e-03,0.948607
+0.15,1.920067e-03,3.614218e-03,0.930015

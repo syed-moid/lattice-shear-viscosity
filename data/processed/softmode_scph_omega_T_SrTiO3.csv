@@ -1,0 +1,44 @@
+# softmode_scph_omega_T_SrTiO3.csv - Route H theory-side Omega(T), SrTiO3
+# Imported 2026-07-23 verbatim (plus a cm^-1 conversion column, 1 meV =
+#   8.065544 cm^-1) from the ferroelectric-kappa-scph sister project:
+#   data/literature/STO/tadano_2015/scph_omega_T.csv (digitized from Tadano &
+#   Tsuneyuki, PRB 92, 054301 (2015), Fig. 5; see that project's
+#   extraction_log.md). Imported, NOT re-digitized.
+# Complements the EXPERIMENTAL Vogt (1995) import in softmode_inputs_SrTiO3.csv:
+#   SCPH_with_PM / SCPH_without_PM = the paper's self-consistent phonon curves,
+#   TDEP = its temperature-dependent-effective-potential comparison, exp_* =
+#   the experimental points the paper itself overlays (Servoin 1980 IR;
+#   Yamada & Shirane 1969 neutron).
+# Use SCPH_with_PM as the theory Omega_s(T) when pairing with the ALAMODE
+#   SCPH-coupled linewidths in data/raw/alamode_sto/ (same physics chain).
+T_K,mode,method,Omega_meV,Omega_cm1,Omega_sq_meV2,source_figure
+0,TO1,SCPH_with_PM,13.64,110.01,186.05,Fig_5
+200,TO1,SCPH_with_PM,16.37,132.03,267.98,Fig_5
+500,TO1,SCPH_with_PM,18.97,153.00,359.86,Fig_5
+1000,TO1,SCPH_with_PM,22.44,180.99,503.55,Fig_5
+0,TO2,SCPH_with_PM,21.57,173.97,465.27,Fig_5
+500,TO2,SCPH_with_PM,25.66,206.96,658.44,Fig_5
+1000,TO2,SCPH_with_PM,29.51,238.01,870.84,Fig_5
+0,TO1,SCPH_without_PM,14.63,118.00,214.04,Fig_5
+400,TO1,SCPH_without_PM,22.94,185.02,526.24,Fig_5
+0,TO2,SCPH_without_PM,21.57,173.97,465.27,Fig_5
+500,TO2,SCPH_without_PM,23.93,193.01,572.64,Fig_5
+1000,TO2,SCPH_without_PM,25.66,206.96,658.44,Fig_5
+50,TO1,TDEP,9.42,75.98,88.74,Fig_5
+100,TO1,TDEP,12.03,97.03,144.72,Fig_5
+200,TO1,TDEP,14.51,117.03,210.54,Fig_5
+500,TO1,TDEP,18.60,150.02,345.96,Fig_5
+800,TO1,TDEP,20.83,168.01,433.89,Fig_5
+50,TO2,TDEP,20.71,167.04,428.90,Fig_5
+200,TO2,TDEP,21.82,175.99,476.11,Fig_5
+500,TO2,TDEP,23.93,193.01,572.64,Fig_5
+800,TO2,TDEP,26.28,211.96,690.64,Fig_5
+300,TO1,exp_Servoin,10.91,88.00,119.03,Fig_5
+435,TO1,exp_Servoin,13.76,110.98,189.34,Fig_5
+510,TO1,exp_Servoin,14.88,120.02,221.41,Fig_5
+705,TO1,exp_Servoin,16.86,135.99,284.26,Fig_5
+920,TO1,exp_Servoin,18.60,150.02,345.96,Fig_5
+15,TO1,exp_YamadaShirane,2.23,17.99,4.97,Fig_5
+85,TO1,exp_YamadaShirane,4.71,37.99,22.18,Fig_5
+150,TO1,exp_YamadaShirane,7.69,62.02,59.14,Fig_5
+250,TO1,exp_YamadaShirane,9.67,77.99,93.51,Fig_5
