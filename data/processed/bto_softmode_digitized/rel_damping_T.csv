@@ -1,0 +1,26 @@
+# rel_damping_T.csv - produced by scripts/merge_bto_softmode_digitizations.py
+# units: dimensionless. RELATIVE damping gamma_full/Omega0 (classical-oscillator FULL gamma).
+# raw sources under references/digitized/ (local-only; see READMEs there
+# for symbol maps and the Kelvin axis verification). Raw files unedited.
+T_K,value,source
+407.14,8.465,vsr1982_fig3_thiswork
+412.09,8.0671,vsr1982_fig3_thiswork
+421.98,6.2117,vsr1982_fig3_thiswork
+431.87,4.7537,vsr1982_fig3_thiswork
+445.05,4.1562,vsr1982_fig3_thiswork
+456.59,4.0887,vsr1982_fig3_thiswork
+473.08,3.4246,vsr1982_fig3_thiswork
+502.75,3.5538,vsr1982_fig3_thiswork
+553.85,3.1508,vsr1982_fig3_thiswork
+603.30,2.8804,vsr1982_fig3_thiswork
+652.75,2.875,vsr1982_fig3_thiswork
+703.85,2.6707,vsr1982_fig3_thiswork
+393.96,2.3075,luspin1980_via_vsr_fig3
+426.92,2.1714,luspin1980_via_vsr_fig3
+474.73,2.2324,luspin1980_via_vsr_fig3
+527.47,2.2928,luspin1980_via_vsr_fig3
+626.37,2.0832,luspin1980_via_vsr_fig3
+845.60,1.5954,luspin1980_via_vsr_fig3
+398.90,6.0156,barker1966_via_vsr_fig3
+417.03,5.4838,barker1966_via_vsr_fig3
+473.08,4.0206,barker1966_via_vsr_fig3

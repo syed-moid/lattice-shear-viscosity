@@ -1,0 +1,29 @@
+# omega0sq_T.csv - produced by scripts/merge_bto_softmode_digitizations.py
+# units: 10^3 cm-2. Omega0^2; the intensity series assumes T-independent HR polarizability (calibrated Omega0=31 cm-1 at 473 K) — corroboration only.
+# raw sources under references/digitized/ (local-only; see READMEs there
+# for symbol maps and the Kelvin axis verification). Raw files unedited.
+T_K,value,source
+405.05,0.12392,vsr1982_fig6_fit_PRIMARY
+412.30,0.12497,vsr1982_fig6_fit_PRIMARY
+421.34,0.19875,vsr1982_fig6_fit_PRIMARY
+432.19,0.30901,vsr1982_fig6_fit_PRIMARY
+443.03,0.49174,vsr1982_fig6_fit_PRIMARY
+455.66,0.78343,vsr1982_fig6_fit_PRIMARY
+455.68,0.6385,vsr1982_fig6_fit_PRIMARY
+471.92,1.0032,vsr1982_fig6_fit_PRIMARY
+502.53,2.0221,vsr1982_fig6_fit_PRIMARY
+502.60,1.6598,vsr1982_fig6_fit_PRIMARY
+553.08,3.0077,vsr1982_fig6_fit_PRIMARY
+603.51,4.6092,vsr1982_fig6_fit_PRIMARY
+651.98,7.0438,vsr1982_fig6_fit_PRIMARY
+702.46,8.4279,vsr1982_fig6_fit_PRIMARY
+405.05,0.12392,vsr1982_fig6_intensity_corroboration
+412.30,0.12497,vsr1982_fig6_intensity_corroboration
+421.33,0.27121,vsr1982_fig6_intensity_corroboration
+432.18,0.38147,vsr1982_fig6_intensity_corroboration
+443.01,0.60044,vsr1982_fig6_intensity_corroboration
+455.68,0.6385,vsr1982_fig6_intensity_corroboration
+553.05,3.1526,vsr1982_fig6_intensity_corroboration
+603.49,4.7179,vsr1982_fig6_intensity_corroboration
+652.12,6.3191,vsr1982_fig6_intensity_corroboration
+702.50,8.2105,vsr1982_fig6_intensity_corroboration

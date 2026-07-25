@@ -1,0 +1,20 @@
+# gamma_abs_T.csv - produced by scripts/merge_bto_softmode_digitizations.py
+# units: cm-1. ABSOLUTE classical-oscillator FULL damping constant gamma.
+# raw sources under references/digitized/ (local-only; see READMEs there
+# for symbol maps and the Kelvin axis verification). Raw files unedited.
+T_K,value,source
+406.55,95.411,vsr1982_via_presting_fig2
+410.74,86.957,vsr1982_via_presting_fig2
+422.07,91.184,vsr1982_via_presting_fig2
+431.95,88.768,vsr1982_via_presting_fig2
+443.29,94.807,vsr1982_via_presting_fig2
+457.54,115.34,vsr1982_via_presting_fig2
+471.63,106.28,vsr1982_via_presting_fig2
+501.60,158.21,vsr1982_via_presting_fig2
+551.14,170.29,vsr1982_via_presting_fig2
+602.16,193.84,vsr1982_via_presting_fig2
+653.31,241.55,vsr1982_via_presting_fig2
+702.81,247.58,vsr1982_via_presting_fig2
+400.76,71.86,inoue_akimoto1983_via_presting_fig2
+471.38,62.802,inoue_akimoto1983_via_presting_fig2
+572.21,146.74,inoue_akimoto1983_via_presting_fig2

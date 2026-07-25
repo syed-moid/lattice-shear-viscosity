@@ -1,0 +1,96 @@
+# softmode_inputs_BaTiO3.csv - COMPLETE zone-center soft-mode inputs, cubic BaTiO3
+# Rebuilt by scripts/build_bto_softmode_inputs.py from the canonical merged
+# digitizations in data/processed/bto_softmode_digitized/ (VSR 1982 Fig. 3+6,
+# Presting 1983 Fig. 2; 4/4 consistency checks passed) plus the retained
+# Harada 1971 finite-q neutron anchors and Ehsan 2021 SCP anchors from the
+# 2026-07-23 import. Conventions applied in code, never in raw files:
+# Gamma_HWHM = gamma_full/2 (classical-oscillator FULL damping halved);
+# overdamped_flag = 1 where gamma_full/Omega0 > 1. All T in Kelvin (axis
+# units verified against the figure images; see references/digitized/*/README.md).
+# omega_s(T) is to be interpolated from the MEASURED points — VSR observe
+# systematic deviation from the linear Curie-Weiss law, so NO Cochran-linear
+# fit is imposed (noted for manuscript section 4.5).
+quantity,T_K,value_cm1,overdamped_flag,source
+omega_s,407.80,10.99,,vsr1982_fig3_thiswork
+omega_s,411.10,10.66,,vsr1982_fig3_thiswork
+omega_s,421.15,14.65,,vsr1982_fig3_thiswork
+omega_s,431.18,18.31,,vsr1982_fig3_thiswork
+omega_s,444.55,22.63,,vsr1982_fig3_thiswork
+omega_s,456.31,28.28,,vsr1982_fig3_thiswork
+omega_s,471.27,30.94,,vsr1982_fig3_thiswork
+omega_s,503.14,44.91,,vsr1982_fig3_thiswork
+omega_s,553.07,55.22,,vsr1982_fig3_thiswork
+omega_s,603.07,67.86,,vsr1982_fig3_thiswork
+omega_s,654.85,84.15,,vsr1982_fig3_thiswork
+omega_s,706.35,92.14,,vsr1982_fig3_thiswork
+omega_s,394.63,62.51,,luspin1980_via_vsr_fig3
+omega_s,427.70,62.86,,luspin1980_via_vsr_fig3
+omega_s,475.63,62.89,,luspin1980_via_vsr_fig3
+omega_s,528.66,66.9,,luspin1980_via_vsr_fig3
+omega_s,626.72,83.24,,luspin1980_via_vsr_fig3
+omega_s,849.43,120.2,,luspin1980_via_vsr_fig3
+omega_s,399.82,19.48,,barker1966_via_vsr_fig3
+omega_s,416.59,26.76,,barker1966_via_vsr_fig3
+omega_s,473.29,41.96,,barker1966_via_vsr_fig3
+omega_s,406.07,10.87,,vsr1982_via_presting_fig2
+omega_s,413.13,10.27,,vsr1982_via_presting_fig2
+omega_s,421.64,14.49,,vsr1982_via_presting_fig2
+omega_s,431.55,18.12,,vsr1982_via_presting_fig2
+omega_s,444.30,22.95,,vsr1982_via_presting_fig2
+omega_s,457.05,27.78,,vsr1982_via_presting_fig2
+omega_s,472.62,31.4,,vsr1982_via_presting_fig2
+omega_s,502.37,44.69,,vsr1982_via_presting_fig2
+omega_s,551.90,55.56,,vsr1982_via_presting_fig2
+omega_s,602.86,68.24,,vsr1982_via_presting_fig2
+omega_s,652.42,84.54,,vsr1982_via_presting_fig2
+omega_s,701.94,92.39,,vsr1982_via_presting_fig2
+omega_s,401.81,7.85,,inoue_akimoto1983_via_presting_fig2
+omega_s,471.16,24.16,,inoue_akimoto1983_via_presting_fig2
+omega_s,573.10,53.74,,inoue_akimoto1983_via_presting_fig2
+Gamma_HWHM,407.14,46.53,1,vsr1982_fig3_thiswork
+Gamma_HWHM,412.09,44.59,1,vsr1982_fig3_thiswork
+Gamma_HWHM,421.98,46.44,1,vsr1982_fig3_thiswork
+Gamma_HWHM,431.87,44.05,1,vsr1982_fig3_thiswork
+Gamma_HWHM,445.05,47.53,1,vsr1982_fig3_thiswork
+Gamma_HWHM,456.59,57.92,1,vsr1982_fig3_thiswork
+Gamma_HWHM,473.08,54.34,1,vsr1982_fig3_thiswork
+Gamma_HWHM,502.75,79.49,1,vsr1982_fig3_thiswork
+Gamma_HWHM,553.85,87.3,1,vsr1982_fig3_thiswork
+Gamma_HWHM,603.30,97.83,1,vsr1982_fig3_thiswork
+Gamma_HWHM,652.75,120,1,vsr1982_fig3_thiswork
+Gamma_HWHM,703.85,122.5,1,vsr1982_fig3_thiswork
+Gamma_HWHM,393.96,72.12,1,luspin1980_via_vsr_fig3
+Gamma_HWHM,426.92,68.24,1,luspin1980_via_vsr_fig3
+Gamma_HWHM,474.73,70.2,1,luspin1980_via_vsr_fig3
+Gamma_HWHM,527.47,76.6,1,luspin1980_via_vsr_fig3
+Gamma_HWHM,626.37,86.64,1,luspin1980_via_vsr_fig3
+Gamma_HWHM,845.60,95.41,1,luspin1980_via_vsr_fig3
+Gamma_HWHM,398.90,58.59,1,barker1966_via_vsr_fig3
+Gamma_HWHM,417.03,73.69,1,barker1966_via_vsr_fig3
+Gamma_HWHM,473.08,84.23,1,barker1966_via_vsr_fig3
+Gamma_HWHM,406.55,47.71,1,vsr1982_via_presting_fig2
+Gamma_HWHM,410.74,43.48,1,vsr1982_via_presting_fig2
+Gamma_HWHM,422.07,45.59,1,vsr1982_via_presting_fig2
+Gamma_HWHM,431.95,44.38,1,vsr1982_via_presting_fig2
+Gamma_HWHM,443.29,47.4,1,vsr1982_via_presting_fig2
+Gamma_HWHM,457.54,57.67,1,vsr1982_via_presting_fig2
+Gamma_HWHM,471.63,53.14,1,vsr1982_via_presting_fig2
+Gamma_HWHM,501.60,79.11,1,vsr1982_via_presting_fig2
+Gamma_HWHM,551.14,85.14,1,vsr1982_via_presting_fig2
+Gamma_HWHM,602.16,96.92,1,vsr1982_via_presting_fig2
+Gamma_HWHM,653.31,120.8,1,vsr1982_via_presting_fig2
+Gamma_HWHM,702.81,123.8,1,vsr1982_via_presting_fig2
+Gamma_HWHM,400.76,35.93,1,inoue_akimoto1983_via_presting_fig2
+Gamma_HWHM,471.38,31.4,1,inoue_akimoto1983_via_presting_fig2
+Gamma_HWHM,572.21,73.37,1,inoue_akimoto1983_via_presting_fig2
+omega_softTO_finite_q,723,120.98,,HAS1971_q0.313invA
+omega_softTO_finite_q,523,102.43,,HAS1971_q0.313invA
+omega_softTO_finite_q,423,79.04,,HAS1971_q0.313invA
+omega_softTO_finite_q,423,112.11,,HAS1971_q0.470invA
+Gamma_HWHM_finite_q,723,137.11,1,HAS1971_q0.313invA
+Gamma_HWHM_finite_q,523,116.95,1,HAS1971_q0.313invA
+Gamma_HWHM_finite_q,423,88.72,1,HAS1971_q0.313invA
+Gamma_HWHM_finite_q,423,133.89,1,HAS1971_q0.470invA
+A_soft_100_cm2A2,423,63232,,HAS1971_dispersion_pm20pct
+A_stiff_110_111_cm2A2,423,3.09e+05,,HAS1971_dispersion
+omega_scp_Gamma,500,170.02,,EHSAN2021_SCP

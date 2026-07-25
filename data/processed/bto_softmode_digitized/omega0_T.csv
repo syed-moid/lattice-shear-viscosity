@@ -1,0 +1,41 @@
+# omega0_T.csv - produced by scripts/merge_bto_softmode_digitizations.py
+# units: cm-1. Soft-TO frequency Omega0, cubic phase.
+# raw sources under references/digitized/ (local-only; see READMEs there
+# for symbol maps and the Kelvin axis verification). Raw files unedited.
+T_K,value,source
+407.80,10.993,vsr1982_fig3_thiswork
+411.10,10.662,vsr1982_fig3_thiswork
+421.15,14.651,vsr1982_fig3_thiswork
+431.18,18.309,vsr1982_fig3_thiswork
+444.55,22.631,vsr1982_fig3_thiswork
+456.31,28.282,vsr1982_fig3_thiswork
+471.27,30.944,vsr1982_fig3_thiswork
+503.14,44.907,vsr1982_fig3_thiswork
+553.07,55.22,vsr1982_fig3_thiswork
+603.07,67.858,vsr1982_fig3_thiswork
+654.85,84.151,vsr1982_fig3_thiswork
+706.35,92.139,vsr1982_fig3_thiswork
+394.63,62.511,luspin1980_via_vsr_fig3
+427.70,62.861,luspin1980_via_vsr_fig3
+475.63,62.888,luspin1980_via_vsr_fig3
+528.66,66.904,luspin1980_via_vsr_fig3
+626.72,83.237,luspin1980_via_vsr_fig3
+849.43,120.24,luspin1980_via_vsr_fig3
+399.82,19.481,barker1966_via_vsr_fig3
+416.59,26.757,barker1966_via_vsr_fig3
+473.29,41.957,barker1966_via_vsr_fig3
+406.07,10.87,vsr1982_via_presting_fig2
+413.13,10.266,vsr1982_via_presting_fig2
+421.64,14.493,vsr1982_via_presting_fig2
+431.55,18.116,vsr1982_via_presting_fig2
+444.30,22.947,vsr1982_via_presting_fig2
+457.05,27.778,vsr1982_via_presting_fig2
+472.62,31.401,vsr1982_via_presting_fig2
+502.37,44.686,vsr1982_via_presting_fig2
+551.90,55.556,vsr1982_via_presting_fig2
+602.86,68.237,vsr1982_via_presting_fig2
+652.42,84.541,vsr1982_via_presting_fig2
+701.94,92.391,vsr1982_via_presting_fig2
+401.81,7.8502,inoue_akimoto1983_via_presting_fig2
+471.16,24.155,inoue_akimoto1983_via_presting_fig2
+573.10,53.744,inoue_akimoto1983_via_presting_fig2

@@ -1,0 +1,17 @@
+# invtau_T.csv - produced by scripts/merge_bto_softmode_digitizations.py
+# units: cm-1. Debye relaxation rate, panel-defined as 1/tau = Omega0^2/gamma.
+# raw sources under references/digitized/ (local-only; see READMEs there
+# for symbol maps and the Kelvin axis verification). Raw files unedited.
+T_K,value,source
+408.22,1.3293,vsr1982_fig6
+411.83,1.3303,vsr1982_fig6
+422.59,2.4873,vsr1982_fig6
+433.33,4.0769,vsr1982_fig6
+445.86,5.8113,vsr1982_fig6
+458.42,7.113,vsr1982_fig6
+472.73,9.2806,vsr1982_fig6
+503.20,12.895,vsr1982_fig6
+553.44,17.813,vsr1982_fig6
+603.61,24.03,vsr1982_fig6
+653.84,29.237,vsr1982_fig6
+704.10,33.867,vsr1982_fig6
