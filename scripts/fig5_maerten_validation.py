@@ -68,8 +68,9 @@ ax.loglog(q_axis, gamma_ghz(ETA_OURS, q_axis), "-", color="#4878a8", lw=1.8,
 # old pre-registered decade, shown as excluded
 ax.fill_between(q_axis, gamma_ghz(1e-4, q_axis), gamma_ghz(1e-3, q_axis),
                 color="#c86a6a", alpha=0.25,
-                label=r"old $10^{-4}$–$10^{-3}$ Pa s decade"
-                      "\n(below every measured point)")
+                label="order-unity-Grüneisen estimate\n"
+                      r"($10^{-4}$–$10^{-3}$ Pa s; below the"
+                      "\nreported experimental range)")
 
 # their measured band at q ~ 52-58 um^-1
 q_lo, q_hi = 50, 60
