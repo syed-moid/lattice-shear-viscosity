@@ -1,7 +1,7 @@
 # Provenance — dft/qe/SrTiO3
 
 All files copied 2026-07-15 from the ferroelectric-ins-ml project
-(local path: `~/Documents/WORKSPACES/PHD/INS_ML/ferroelectric-ins-ml`).
+(the author's local `ferroelectric-ins-ml` working copy).
 
 | Directory          | Origin                          | Contents                                                        |
 |--------------------|---------------------------------|-----------------------------------------------------------------|
@@ -14,7 +14,7 @@ No files exceeded the 5 MB copy limit; nothing was skipped except
 `.DS_Store` and `.gitkeep` placeholders.
 
 Not copied (kept in the origin repo): `qe/anchoring/vogt1995_fig6/` —
-digitized soft-mode frequency and damping data for SrTiO3 from
+digitized soft-mode frequency and damping data for SrTiO₃ from
 Vogt, Phys. Rev. B 51, 8046 (1995), Fig. 6. Re-copy into
 `data/processed/` if needed for the soft-mode figure.
 
@@ -26,6 +26,6 @@ matdyn.x runs from that fc did not reproduce the committed Gamma
 frequencies (uniform-mesh audit, `dft/qe/mesh_audit/`). The fc was
 regenerated with q2r.x (zasr='crystal', QE 6.7) from the committed
 `SrTiO3.dyn0..dyn10`; the regenerated fc reproduces the committed
-band-path frequencies to within 0.06 cm-1 along the whole path (exact at Gamma). The
+band-path frequencies to within 0.06 cm⁻¹ along the whole path (exact at Gamma). The
 stale original is preserved in `data/raw/stale_pbe_fc/` (gitignored).
 All committed PBEsol fc files were verified self-consistent the same way.

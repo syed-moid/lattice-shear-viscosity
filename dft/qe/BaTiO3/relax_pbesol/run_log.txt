@@ -24,7 +24,7 @@
 [2026-07-15T21:11:08+00:00]   Public IP:   20.124.189.196
 [2026-07-15T21:11:08+00:00]   SSH user:    azureuser
 [2026-07-15T21:11:08+00:00]   Connect:     ssh azureuser@20.124.189.196
-[2026-07-15T21:11:08+00:00]   Private key: /Users/syed.a.moid/.ssh/id_ed25519
+[2026-07-15T21:11:08+00:00]   Private key: ~/.ssh/id_ed25519
 [2026-07-15T21:11:08+00:00] ==========================================================
 [2026-07-15T21:11:08+00:00] VM CPU topology: CPU(s):                                  16 | Thread(s) per core:                      2
 [2026-07-15T21:11:08+00:00] Uploading Ba.pbesol-spn-kjpaw_psl.1.0.0.in (636 bytes)...
@@ -62,7 +62,7 @@
 [2026-07-15T21:11:13+00:00]   Public IP:   20.124.189.196
 [2026-07-15T21:11:13+00:00]   SSH user:    azureuser
 [2026-07-15T21:11:13+00:00]   Connect:     ssh azureuser@20.124.189.196
-[2026-07-15T21:11:13+00:00]   Private key: /Users/syed.a.moid/.ssh/id_ed25519
+[2026-07-15T21:11:13+00:00]   Private key: ~/.ssh/id_ed25519
 [2026-07-15T21:11:13+00:00] ==========================================================
 [2026-07-15T21:11:13+00:00] VM is running and BILLING; ssh in to diagnose, or run `python azure/teardown_vm.py qe-20260715-210948-b40e` when done.
 [2026-07-15T21:11:13+00:00] Job end (exit code 1).
@@ -92,7 +92,7 @@
 [2026-07-15T21:18:52+00:00]   Public IP:   20.25.83.12
 [2026-07-15T21:18:52+00:00]   SSH user:    azureuser
 [2026-07-15T21:18:52+00:00]   Connect:     ssh azureuser@20.25.83.12
-[2026-07-15T21:18:52+00:00]   Private key: /Users/syed.a.moid/.ssh/id_ed25519
+[2026-07-15T21:18:52+00:00]   Private key: ~/.ssh/id_ed25519
 [2026-07-15T21:18:52+00:00] ==========================================================
 [2026-07-15T21:18:52+00:00] VM CPU topology: CPU(s):                                  16 | Thread(s) per core:                      2
 [2026-07-15T21:18:53+00:00] Uploading vc_relax.in (1414 bytes)...
