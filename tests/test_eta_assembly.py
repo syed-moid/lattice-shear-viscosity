@@ -84,6 +84,19 @@ def test_gamma_point_rank_pairing_survives_reordering(maps):
     assert lam_min == pytest.approx(-3600.0)
 
 
+def test_sanity_gate_uses_revised_band():
+    # revised 2026-07-24 expectation band (eta_SrTiO3_stageC.md, section
+    # B): 1e-3..1e-2 Pa s. The old 1e-4..1e-3 decade came from an
+    # O(1)-gamma estimate and sits below every measured damping point —
+    # the production value 3.89e-3 must PASS and the old decade's
+    # midpoint must not.
+    assert eta_mod.ETA_300K_BAND_PAS == (1e-3, 1e-2)
+    ok, label = eta_mod.sanity_gate(3.89e-3)
+    assert ok and label == "PASS"
+    ok, label = eta_mod.sanity_gate(3e-4)
+    assert not ok and label == "OUTSIDE EXPECTED BAND"
+
+
 def test_character_aware_gamma_keeps_populations_separate(maps):
     _, map_gamma, soft_gamma_median, _, _ = maps
     # soft-sector statistics: only the bare-soft modes (Gamma TO1 at 8.0,

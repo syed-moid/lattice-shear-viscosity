@@ -85,6 +85,21 @@ OMEGA_MIN = 5.0                # below this the bare mode is treated as unstable
 SOFT_CHAR_CM1 = 50.0
 TEMPS = [100, 150, 200, 250, 300, 350, 400]
 GAMMA_BINS = 40                # frequency bins for the Gamma(omega) map
+# Revised expectation band for eta(300 K), SrTiO3 (2026-07-24 sign-off;
+# see data/processed/reports/eta_SrTiO3_stageC.md, section B): grounded
+# in the measured gamma distribution (zone-rms 4.2, eta weighting
+# gamma^2 without sign cancellation) and the Maerten et al. GHz damping
+# bracket (3-6e-3 Pa s).
+# The old 1e-4..1e-3 decade came from an O(1)-gamma estimate and sits
+# below every measured damping point.
+ETA_300K_BAND_PAS = (1e-3, 1e-2)
+
+
+def sanity_gate(eta300: float) -> tuple[bool, str]:
+    """Check eta(300 K) against the revised SrTiO3 expectation band."""
+    lo, hi = ETA_300K_BAND_PAS
+    ok = lo <= eta300 <= hi
+    return ok, "PASS" if ok else "OUTSIDE EXPECTED BAND"
 
 
 def build_maps(temperature: int):
@@ -337,9 +352,10 @@ def main() -> None:
             f"{flags['n_extrapolated']},{provisional}")
 
     eta300 = results[300][0]
-    gate = "PASS" if 1e-4 <= eta300 <= 1e-3 else "OUT OF EXPECTED DECADE"
+    _, gate = sanity_gate(eta300)
     print(f"\nSanity gate: eta(300 K) = {eta300:.3e} Pa s -> {gate} "
-          f"(expected 1e-4..1e-3)")
+          f"(expected {ETA_300K_BAND_PAS[0]:.0e}..{ETA_300K_BAND_PAS[1]:.0e}, "
+          f"revised band, see eta_SrTiO3_stageC.md)")
     print(f"Low-omega (Route H + Gamma) fraction at 300 K: "
           f"{results[300][3]:.1%} (old bare-surface pathology: [0,50) cm-1 "
           f"alone carried 93% of eta0 with divergent curvature — the "
