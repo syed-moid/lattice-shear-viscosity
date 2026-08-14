@@ -1,4 +1,4 @@
-# VSR 1982 Fig. 6 — cubic BaTiO3, $\Omega_0^2(T)$ and Debye relaxation rate $1/\tau(T)$
+# VSR 1982 Fig. 6 — cubic BaTiO₃, $\Omega_0^2(T)$ and Debye relaxation rate $1/\tau(T)$
 
 Paper: H. Vogt, J. A. Sanjurjo, and G. Rossbroich, Phys. Rev. B 26, 5904
 (1982) [references/PhysRevB.26.5904.pdf; crop references/VSR_Fig6.jpg].

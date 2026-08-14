@@ -22,13 +22,13 @@ settings across the two materials.
 
 | Material | Relaxed a (this repo) | Experimental a | Deviation | Source of relaxed value |
 |---|---|---|---|---|
-| SrTiO3 (cubic Pm-3m) | 3.9383 Angstrom (celldm 7.442023 bohr; V = 61.077 Angstrom^3) | 3.905 Angstrom at 300 K [1] | +0.85% | `SrTiO3/relax/vc_relax.out` |
-| BaTiO3 (cubic Pm-3m) | 4.0254 Angstrom (celldm 7.606726 bohr; V = 65.222 Angstrom^3) | 4.00 Angstrom just above T_C = 393 K [2] | +0.63% | `BaTiO3/relax/vc_relax.out` |
+| SrTiO₃ (cubic Pm-3m) | 3.9383 Angstrom (celldm 7.442023 bohr; V = 61.077 Angstrom^3) | 3.905 Angstrom at 300 K [1] | +0.85% | `SrTiO3/relax/vc_relax.out` |
+| BaTiO₃ (cubic Pm-3m) | 4.0254 Angstrom (celldm 7.606726 bohr; V = 65.222 Angstrom^3) | 4.00 Angstrom just above T_C = 393 K [2] | +0.63% | `BaTiO3/relax/vc_relax.out` |
 
 [1] Okazaki and Kawaminami, Mater. Res. Bull. 8, 545 (1973); the 3.905
 Angstrom room-temperature value is standard across neutron/x-ray studies.
 [2] Kwei, Lawson, Billinge, and Cheong, J. Phys. Chem. 97, 2368 (1993):
-cubic BaTiO3 a = 4.00-4.01 Angstrom in the 400-450 K range.
+cubic BaTiO₃ a = 4.00-4.01 Angstrom in the 400-450 K range.
 
 Both overestimates are the expected PBE behavior (underbinding).
 
@@ -39,7 +39,7 @@ ferroelectric instability); PBE underbinds (larger cell, exaggerated
 instability); PBEsol is the usual compromise for perovskite soft modes.
 With PBE at the PBE-relaxed volume, the imaginary soft-mode frequencies
 below are expected to be on the large side: harmonic |omega| of the
-Gamma TO1 instability is 137.8 cm^-1 (SrTiO3) and 244.8 cm^-1 (BaTiO3),
+Gamma TO1 instability is 137.8 cm⁻¹ (SrTiO₃) and 244.8 cm⁻¹ (BaTiO₃),
 both larger in magnitude than typical LDA/PBEsol literature values. This
 does not affect stable-branch validation but must be kept in mind for any
 soft-mode-sensitive quantity.
@@ -51,7 +51,7 @@ soft-mode-sensitive quantity.
 | `SrTiO3/relax/`, `BaTiO3/relax/` | vc-relax, BFGS, press_conv_thr 0.1 kbar | Converged; scale factors 1.009772427 / 1.004851461 |
 | `SrTiO3/harmonic_gamma/`, `BaTiO3/harmonic_gamma/` | ph.x at Gamma with `epsil=.true.` + dynmat.x (`asr='crystal'`, q -> (1,0,0)) | Full Gamma TO/LO inventory |
 | `SrTiO3/dispersion/`, `BaTiO3/dispersion/` | ph.x `ldisp` 4x4x4 q-grid; q2r (`zasr='crystal'`), matdyn along Gamma-X-M-Gamma-R-X (40 pts/segment) | 4x4x4 is adequate for band-structure plotting; coarse for full-BZ integrals |
-| `SrTiO3/pristine_2x2x2/` | scf input only (40 atoms) | Staged for supercell work; no BaTiO3 counterpart yet |
+| `SrTiO3/pristine_2x2x2/` | scf input only (40 atoms) | Staged for supercell work; no BaTiO₃ counterpart yet |
 
 ## Flags
 

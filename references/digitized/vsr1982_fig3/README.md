@@ -1,7 +1,7 @@
-# VSR 1982 Fig. 3 — cubic BaTiO3 soft mode, $\Omega_0(T)$ and $\gamma/\Omega_0(T)$
+# VSR 1982 Fig. 3 — cubic BaTiO₃ soft mode, $\Omega_0(T)$ and $\gamma/\Omega_0(T)$
 
 Paper: H. Vogt, J. A. Sanjurjo, and G. Rossbroich, "Soft-mode spectroscopy
-in cubic BaTiO3 by hyper-Raman scattering", Phys. Rev. B 26, 5904 (1982)
+in cubic BaTiO₃ by hyper-Raman scattering", Phys. Rev. B 26, 5904 (1982)
 [references/PhysRevB.26.5904.pdf; figure crop references/VSR_Fig3.jpg].
 
 Figure/panels: Fig. 3. Bottom panel: soft-TO frequency $\Omega_0$ vs T.

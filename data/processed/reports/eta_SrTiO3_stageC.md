@@ -1,4 +1,4 @@
-# Stage C — SrTiO3 eta_xyxy: provenance, audit (A), external consistency check (B) — 2026-07-24
+# Stage C — SrTiO₃ $\eta_{xyxy}$: provenance, audit (A), external consistency check (B) — 2026-07-24
 
 (Framing language updated 2026-08-14 to match the manuscript's current epistemics: the
 Maerten comparison is an order-of-magnitude consistency check of a longitudinal
@@ -12,11 +12,11 @@ assembly's three generations, each change audit-driven and documented:
 |---|---|---|
 | 1 | 1.89e-2 Pa s (non-monotonic in T) | first assembly; character-blind frequency-binned Gamma map |
 | 2 | 5.75e-3 (monotonic) | character-aware Gamma for bare-unstable modes; Vogt 300 K edge tolerance |
-| 3 (current) | **3.89e-3** (monotonic, smooth across the Vogt boundary) | A-audit fixes: per-q RANK PAIRING of the bare<->renormalized ALAMODE correspondence (the raw (q,branch) pairing mapped bare TO1 -> acoustic 0 at Gamma, poisoning the unstable region of the eigenvalue map); soft-character Gamma extended to the whole bare [5,50) cm-1 manifold; physical branch-minimum floor omega_r >= omega_s(Gamma,T) (Vogt where covered, ALAMODE's own renormalized Gamma-point TO1 otherwise) |
+| 3 (current) | **3.89e-3** (monotonic, smooth across the Vogt boundary) | A-audit fixes: per-q RANK PAIRING of the bare<->renormalized ALAMODE correspondence (the raw (q,branch) pairing mapped bare TO1 -> acoustic 0 at Gamma, poisoning the unstable region of the eigenvalue map); soft-character Gamma extended to the whole bare [5,50) cm⁻¹ manifold; physical branch-minimum floor omega_r >= omega_s(Gamma,T) (Vogt where covered, ALAMODE's own renormalized Gamma-point TO1 otherwise) |
 
 ## Formula and constants
 
-eta_xyxy(T) = (1/(V_cell N_q k_B T)) sum_qs (hbar w)^2 gamma_xy^2 n(n+1) tau_eff,
+$\eta_{xyxy}$(T) = (1/(V_cell N_q k_B T)) sum_qs (hbar w)^2 gamma_xy^2 n(n+1) tau_eff,
 tau_eff = 1/(2[Gamma - Re sqrt(Gamma^2 - w^2)]) (overdamped-safe).
 V_cell = (3.8930 A)^3 (PBEsol cell); N_q = 11^3; 15 branches; the 3
 acoustic Gamma translations are excluded.
@@ -25,14 +25,14 @@ acoustic Gamma translations are excluded.
 
 | quantity | source value/units | conversions applied | where |
 |---|---|---|---|
-| D = d(omega^2)/d(eps) | strained-cell .modes, cm-1 (matdyn; imaginary printed NEGATIVE) | signed eigenvalue sign(w)*w^2 [cm-2] BEFORE differencing (no abs/sqrt anywhere; regression-guarded) | check_shear_nonlinearity.compute_dataset |
+| D = d(omega^2)/d(eps) | strained-cell .modes, cm⁻¹ (matdyn; imaginary printed NEGATIVE) | signed eigenvalue sign(w)*w^2 [cm-2] BEFORE differencing (no abs/sqrt anywhere; regression-guarded) | check_shear_nonlinearity.compute_dataset |
 | Lambda (Route H) | = -D, same strained cells. NOT taken from Vogt — Vogt supplies only omega_s and damping | none | compute_eta_SrTiO3.assemble |
 | gamma (Route S) | -D/(2*omega0^2), dimensionless (gamma = -d ln omega/d eps = -(1/2) d ln omega^2/d eps — the 1/2 is definitional, applied once) | none | assemble |
 | gamma (Route H) | Lambda/(2*omega_r^2) = -D/(2*omega_r^2); reduces to Route S as omega_r -> omega0 | none | assemble |
-| omega_r | ALAMODE SCPH-coupled .result frequencies, cm-1, via the rank-paired eigenvalue map | cm-1 -> rad/s by 2*pi*c*100 exactly once, at the weight/tau step | assemble |
-| Gamma_anh | ALAMODE #GAMMA_EACH, cm-1, HWHM (convention pinned earlier by unit-trace + Tadano cross-check) | cm-1 -> rad/s once; tau = 1/(2*Gamma) via tau_effective — the single factor 2 of the HWHM convention, applied once | assemble |
-| Gamma (Vogt, Gamma sector) | softmode_inputs_SrTiO3.csv `Gamma_HWHM_cm1` — Vogt's FULL gamma was halved ONCE at import (Vogt Eq. 13 convention, documented in that CSV header). The eta script consumes the HWHM column directly — no second halving, no omission | cm-1 -> rad/s once | load_vogt/assemble |
-| Gamma_iso | Tamura rate 1/tau_iso [rad/s] -> HWHM = rate/2 (once) -> cm-1; Matthiessen Gamma_anh + Gamma_iso | as stated | compute_eta_isotope |
+| omega_r | ALAMODE SCPH-coupled .result frequencies, cm⁻¹, via the rank-paired eigenvalue map | cm⁻¹ -> rad/s by 2*pi*c*100 exactly once, at the weight/tau step | assemble |
+| Gamma_anh | ALAMODE #GAMMA_EACH, cm⁻¹, HWHM (convention pinned earlier by unit-trace + Tadano cross-check) | cm⁻¹ -> rad/s once; tau = 1/(2*Gamma) via tau_effective — the single factor 2 of the HWHM convention, applied once | assemble |
+| Gamma (Vogt, Gamma sector) | softmode_inputs_SrTiO3.csv `Gamma_HWHM_cm1` — Vogt's FULL gamma was halved ONCE at import (Vogt Eq. 13 convention, documented in that CSV header). The eta script consumes the HWHM column directly — no second halving, no omission | cm⁻¹ -> rad/s once | load_vogt/assemble |
+| Gamma_iso | Tamura rate 1/tau_iso [rad/s] -> HWHM = rate/2 (once) -> cm⁻¹; Matthiessen Gamma_anh + Gamma_iso | as stated | compute_eta_isotope |
 | weight | (hbar*w)^2 * n(n+1), w = omega_r in rad/s, n = Bose(hbar w / k_B T) | — | assemble |
 | prefactor | 1/(V_cell * N_q * k_B * T) | dimensional check: J^2 * s / (J * m^3) = Pa s | assemble |
 
@@ -60,9 +60,9 @@ eta): [-inf,0): 3.4%; [5,25): 2.5%; [25,50): 12.3%; [50,75): 15.1%;
 [75,100): 16.1%; [100,125): 35.0%; [125,150): 3.5%; [150,175): 5.6%.
 Top-20 single modes carry 13.5% (largest single mode 0.8%) —
 **broad-based**, with individually plausible inputs (gamma 10-20, tau
-1.5-3.8 ps, Gamma 0.7-1.8 cm-1). The generation-2 audit had exposed the
+1.5-3.8 ps, Gamma 0.7-1.8 cm⁻¹). The generation-2 audit had exposed the
 concentrated artifacts (4 near-Gamma modes at 15% with omega_r = 39.9
-cm-1 BELOW the measured branch minimum, and soft-branch modes with
+cm⁻¹ BELOW the measured branch minimum, and soft-branch modes with
 acoustic tau = 4.7 ps); the generation-3 fixes removed both — root cause
 of the omega_r artifact was the Gamma-point rank-pairing corruption, not
 interpolation.
@@ -116,7 +116,7 @@ v = 8000 m/s, q = 58 um^-1 -> omega = v*q = 4.64e11 rad/s):
 | LSMO sample, TDBS, cubic phase | ~2 | **6.1e-3** |
 | pre-registered decade upper edge (1e-3) | would require 0.33 | (not observed) |
 | pre-registered decade lower edge (1e-4) | would require 0.033 | (not observed) |
-| **our eta_xyxy(300 K)** | (predicts 1.28 at their q) | **3.89e-3** |
+| **our $\eta_{xyxy}$(300 K)** | (predicts 1.28 at their q) | **3.89e-3** |
 
 **Outcome: experiment sits at (3-6)e-3 Pa s — i.e., nearer 1e-2 than
 1e-3 — consistent with, and bracketing, our 3.89e-3** (factor 0.77-1.6
@@ -127,7 +127,7 @@ anything measured — below every measured point (the expectation band
 was accordingly revised to 1e-3..1e-2 Pa s). Two caveats, stated so
 they are not lost: (i) their phonons are LONGITUDINAL along [100], so
 the measured combination is the longitudinal viscosity eta_xxxx, while
-ours is the shear component eta_xyxy — the comparison is
+ours is the shear component $\eta_{xyxy}$ — the comparison is
 order-of-magnitude-exact only (computing eta_xxxx needs the tetragonal
 strain derivative gamma_xx, i.e. a uniaxial-strain pair we have not
 run); (ii) sample-to-sample spread (bare substrate 1 GHz vs

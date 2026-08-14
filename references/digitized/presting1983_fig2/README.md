@@ -1,4 +1,4 @@
-# Presting 1983 Fig. 2 — cubic BaTiO3 soft mode, $\Omega_0(T)$ and ABSOLUTE $\gamma(T)$
+# Presting 1983 Fig. 2 — cubic BaTiO₃ soft mode, $\Omega_0(T)$ and ABSOLUTE $\gamma(T)$
 
 Paper: H. Presting, J. A. Sanjurjo, and H. Vogt, Phys. Rev. B 28, 6097
 (1983) [references/PhysRevB.28.6097.pdf; crop references/Presting_Fig2.jpg].

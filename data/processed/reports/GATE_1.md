@@ -1,4 +1,4 @@
-# Gate G1 report — Stage A: harmonic audit and Grueneisen preparation
+# Gate G1 report — Stage A: harmonic audit and Grüneisen preparation
 
 Date: 2026-07-15. Covers A1-A5. The A5 Azure batch is prepared but NOT
 launched; spend approval and the Route S / Route H decision are open.
@@ -8,8 +8,8 @@ launched; spend approval and the Route S / Route H decision are open.
 - Functional PBE, kjpaw psl 1.0.0 PAW pseudos (MD5s match SOURCES.md),
   60/480 Ry cutoffs, 8x8x8 k-mesh, fixed occupations, tr2_ph 1e-14.
   Nothing below the audit thresholds; settings identical across materials.
-- Relaxed lattice constants: SrTiO3 3.9383 A (+0.85% vs 3.905 A at 300 K);
-  BaTiO3 4.0254 A (+0.63% vs ~4.00 A just above T_C). Expected PBE
+- Relaxed lattice constants: SrTiO₃ 3.9383 A (+0.85% vs 3.905 A at 300 K);
+  BaTiO₃ 4.0254 A (+0.63% vs ~4.00 A just above T_C). Expected PBE
   overestimates.
 - Flag: PBE (not PBEsol) exaggerates the soft-mode instabilities; a
   functional change later invalidates all force constants, so it must be
@@ -22,19 +22,19 @@ launched; spend approval and the Route S / Route H decision are open.
   `scripts/fig1_dispersion_linewidths.py` (linewidth panel deferred to
   Stage B).
 - Anchor availability: neither prescribed paper prints numeric dispersion
-  tables. Vogt 1995 (SrTiO3, hyper-Raman) anchors only the renormalized
-  zone-center soft mode (89.24 cm^-1 at 300 K, digitized series reused from
+  tables. Vogt 1995 (SrTiO₃, hyper-Raman) anchors only the renormalized
+  zone-center soft mode (89.24 cm⁻¹ at 300 K, digitized series reused from
   the ferroelectric-ins-ml anchoring set; damping convention confirmed FULL
-  gamma, HWHM = gamma/2). Tomeno 2020 (BaTiO3, INS at 453 K) was digitized
+  gamma, HWHM = gamma/2). Tomeno 2020 (BaTiO₃, INS at 453 K) was digitized
   from Fig. 1 (+/-0.7 meV) plus two printed text values ->
   `ins_reference_points_{SrTiO3,BaTiO3}.csv`.
-- Acceptance (stable branches within 10-15%): BaTiO3 PASSES — all 10
+- Acceptance (stable branches within 10-15%): BaTiO₃ PASSES — all 10
   stable-branch anchors agree within 11% (TA at X -8.8%, TA at M -7.1%,
   TA at R -9.1%, TO Gamma15 -9.4%, others smaller). The three apparent
   outliers (TO Sigma4 at M, zone-center soft TO) are modes whose harmonic
   counterparts are imaginary — not comparable by construction; they anchor
   the renormalized (Route H) treatment.
-- SrTiO3 stable-branch validation could not use Vogt (no stable-branch
+- SrTiO₃ stable-branch validation could not use Vogt (no stable-branch
   numbers); acoustic branches are instead validated through A3. Adding a
   printed-table source (Servoin 1980 IR; Stirling 1972 INS) would close
   this gap — needs approval since it extends the prescribed anchor set.
@@ -45,15 +45,15 @@ Slopes fitted through the origin over the four smallest |q| per direction.
 
 | Material | Direction/branch | calc (m/s) | lit (m/s) | dev |
 |---|---|---|---|---|
-| SrTiO3 | [100] TA / LA | 4657 / 7916 | 4916 / 7884 | -5.3% / +0.4% |
-| SrTiO3 | [110] TA / TA(001) / LA | 4664 / 4704 / 7867 | 4588 / 4916 / 8079 | +1.7% / -4.3% / -2.6% |
-| SrTiO3 | [111] TA / LA | 4672 / 7852 | 4700 / 8143 | -0.6% / -3.6% |
-| BaTiO3 | [100] TA / LA | 4472 / 6927 | 4246 / 5374 | +5.3% / +28.9% |
-| BaTiO3 | [110] TA / TA(001) / LA | 3892 / 4464 / 7220 | 2756 / 4246 / 6270 | +41.2% / +5.1% / +15.2% |
-| BaTiO3 | [111] TA / LA | 4079 / 7287 | 3328 / 6542 | +22.6% / +11.4% |
+| SrTiO₃ | [100] TA / LA | 4657 / 7916 | 4916 / 7884 | -5.3% / +0.4% |
+| SrTiO₃ | [110] TA / TA(001) / LA | 4664 / 4704 / 7867 | 4588 / 4916 / 8079 | +1.7% / -4.3% / -2.6% |
+| SrTiO₃ | [111] TA / LA | 4672 / 7852 | 4700 / 8143 | -0.6% / -3.6% |
+| BaTiO₃ | [100] TA / LA | 4472 / 6927 | 4246 / 5374 | +5.3% / +28.9% |
+| BaTiO₃ | [110] TA / TA(001) / LA | 3892 / 4464 / 7220 | 2756 / 4246 / 6270 | +41.2% / +5.1% / +15.2% |
+| BaTiO₃ | [111] TA / LA | 4079 / 7287 | 3328 / 6542 | +22.6% / +11.4% |
 
-- SrTiO3 PASSES (all within 5.3% of Bell-Rupprecht 1963).
-- BaTiO3: TA[100] and TA(001)[110] (both = C44) within 5.3%, but C11- and
+- SrTiO₃ PASSES (all within 5.3% of Bell-Rupprecht 1963).
+- BaTiO₃: TA[100] and TA(001)[110] (both = C44) within 5.3%, but C11- and
   (C11-C12)/2-type velocities exceed +10% vs Li et al. 1991 cubic-phase
   Brillouin data taken near T_C, where strong precursor softening of C11
   and C' is established. The implied static C11 = 285 GPa is in the range
@@ -61,25 +61,25 @@ Slopes fitted through the origin over the four smallest |q| per direction.
   temperature/physics mismatch (harmonic 0 K theory vs 443 K experiment
   near the transition), not an input error. Reported as-is per failure
   etiquette; Akhiezer conversions in Stage C should use measured
-  velocities for BaTiO3, or the discrepancy must be propagated.
+  velocities for BaTiO₃, or the discrepancy must be propagated.
 
 ## A4 — Instability map (`data/processed/instability_map.csv`)
 
-| Material | q | irrep | |omega| (cm^-1) | degeneracy |
+| Material | q | irrep | |omega| (cm⁻¹) | degeneracy |
 |---|---|---|---|---|
-| SrTiO3 | Gamma | Gamma15 (F1u, FE) | 137.7 | 2 (+ hardened LO partner) |
-| SrTiO3 | X | X5 (FE branch) | 30.7 | 2 |
-| SrTiO3 | M | M3 (AFD, in-phase rotation) | 13.5 | 1 |
-| SrTiO3 | R | R25 (AFD rotation) | 76.3 | 3 |
-| BaTiO3 | Gamma | Gamma15 (F1u, FE) | 244.8 | 2 (+ hardened LO partner) |
-| BaTiO3 | X | X5 (FE chain) | 214.6 | 2 |
-| BaTiO3 | M | M3' (FE chain) | 190.3 | 1 |
-| BaTiO3 | R | stable (128.2 lowest) | - | - |
+| SrTiO₃ | Gamma | Gamma15 (F1u, FE) | 137.7 | 2 (+ hardened LO partner) |
+| SrTiO₃ | X | X5 (FE branch) | 30.7 | 2 |
+| SrTiO₃ | M | M3 (AFD, in-phase rotation) | 13.5 | 1 |
+| SrTiO₃ | R | R25 (AFD rotation) | 76.3 | 3 |
+| BaTiO₃ | Gamma | Gamma15 (F1u, FE) | 244.8 | 2 (+ hardened LO partner) |
+| BaTiO₃ | X | X5 (FE chain) | 214.6 | 2 |
+| BaTiO₃ | M | M3' (FE chain) | 190.3 | 1 |
+| BaTiO₃ | R | stable (128.2 lowest) | - | - |
 
-Exactly the textbook pattern: SrTiO3 shows FE (Gamma, weakly X) plus AFD
-(R, weakly M) instabilities; BaTiO3 shows the FE chain instability
-(Gamma-X-M, flat branch) with R stable. Unstable path fractions: SrTiO3
-~37%, BaTiO3 ~75% of the sampled path. Nothing was "fixed"; negative
+Exactly the textbook pattern: SrTiO₃ shows FE (Gamma, weakly X) plus AFD
+(R, weakly M) instabilities; BaTiO₃ shows the FE chain instability
+(Gamma-X-M, flat branch) with R stable. Unstable path fractions: SrTiO₃
+~37%, BaTiO₃ ~75% of the sampled path. Nothing was "fixed"; negative
 frequencies are preserved in all CSVs.
 
 ## A5 — Strained-cell batch (PREPARED, NOT LAUNCHED)
@@ -92,14 +92,14 @@ coordinates (inversion symmetry keeps forces zero under homogeneous
 strain, so clamped = relaxed here).
 
 Spend estimate (calibration: completed cubic 4x4x4 DFPT dispersions on
-Standard_F16s_v2, mpirun -np 8 — SrTiO3 ~8 VM-h, BaTiO3 ~9.3 VM-h):
+Standard_F16s_v2, mpirun -np 8 — SrTiO₃ ~8 VM-h, BaTiO₃ ~9.3 VM-h):
 
 | Job type | Count | Atoms | Est. VM-h each | Subtotal |
 |---|---|---|---|---|
-| SrTiO3 shear (Oh -> D2h, ~2.5-3.5x baseline) | 4 | 5 | 20-28 | 96-112 |
-| SrTiO3 hydrostatic (symmetry unchanged) | 2 | 5 | ~8 | 16 |
-| BaTiO3 shear | 4 | 5 | 23-33 | 110-132 |
-| BaTiO3 hydrostatic | 2 | 5 | ~9.3 | 19 |
+| SrTiO₃ shear (Oh -> D2h, ~2.5-3.5x baseline) | 4 | 5 | 20-28 | 96-112 |
+| SrTiO₃ hydrostatic (symmetry unchanged) | 2 | 5 | ~8 | 16 |
+| BaTiO₃ shear | 4 | 5 | 23-33 | 110-132 |
+| BaTiO₃ hydrostatic | 2 | 5 | ~9.3 | 19 |
 | **Total** | **12** | 5 | | **~240 (range 205-280) VM-h** |
 
 At the Standard_F16s_v2 pay-as-you-go rate (~$0.68/h East US; verify
@@ -116,12 +116,12 @@ uncertainty is the symmetry-reduction multiplier for the sheared cells
 
 | | Route S — stable phases | Route H — cubic + hybrid |
 |---|---|---|
-| Cells | SrTiO3 tetragonal AFD (I4/mcm, 10 atoms); BaTiO3 rhombohedral R3m (5 atoms) | Cubic 5-atom cells for both |
+| Cells | SrTiO₃ tetragonal AFD (I4/mcm, 10 atoms); BaTiO₃ rhombohedral R3m (5 atoms) | Cubic 5-atom cells for both |
 | Theory status | Clean: no imaginary modes anywhere; RTA valid throughout | Soft branches (Gamma-X-M for BTO, Gamma+R for STO) excluded from phono3py and replaced by renormalized frequencies from published SCPH (Tadano-Tsuneyuki PRB 92, 054301 for STO) + measured omega_s(T), Gamma_s(T) (Vogt/Tomeno anchor sets, `softmode_inputs_<material>.csv`) |
 | Instability burden | None by construction, but low-T phase results must be argued relevant near T_C (STO AFD phase only below 105 K; BTO R3m only below 183 K) | 37% (STO) / 75% (BTO) of cubic-path modes belong to the unstable manifold; the hybrid split is the paper's central methodological argument |
 | Prereq compute | Relax both phases + harmonic verification first (~2 x 10-20 VM-h) — neither phase exists in the repo yet | None beyond A5 (cubic data complete) |
 | phono3py fc2+fc3 estimate (2x2x2 supercells) | STO 80-atom supercells, ~400-800 displacements x ~1.5-3 VM-h = **~800-2000 VM-h**; BTO 40-atom, ~200-400 x ~0.5-1 VM-h = **~150-400 VM-h**; total **~1000-2400 VM-h (~$700-1600)** | ~100-150 displacements per material x ~0.5-1 VM-h = **~120-300 VM-h (~$80-200)** total |
-| Grueneisen strain runs | Must be redone in each low-T phase (lower symmetry, costlier; the A5 cubic batch only partially transfers) | A5 batch is exactly what is needed |
+| Grüneisen strain runs | Must be redone in each low-T phase (lower symmetry, costlier; the A5 cubic batch only partially transfers) | A5 batch is exactly what is needed |
 | Main risk | Cost; relevance-near-T_C argument; 10-atom STO cell doubles all Stage B/C bookkeeping | Rigor of the stable-manifold restriction near the instability pockets; dependence on external SCPH/experimental inputs |
 
 Displacement counts and per-job times in the phono3py rows are planning
@@ -129,7 +129,7 @@ estimates (no phono3py run exists yet); Stage B1 re-reports exact counts
 from the actual displacement generation before any launch, per the spend
 gate.
 
-3. **SrTiO3 stable-branch anchors**: approve adding Servoin 1980 (IR
+3. **SrTiO₃ stable-branch anchors**: approve adding Servoin 1980 (IR
    printed table) and/or Stirling 1972 (INS) to the anchor set, or accept
    velocity-only validation for SrTiO3.
 4. Reminder — open project question: whether existing 5-atom harmonic data
@@ -143,12 +143,12 @@ gate.
    nothing is deleted).
 2. Route H adopted for both materials (cubic cells; phono3py restricted to
    the stable manifold; soft branches from published SCPH and measured
-   omega_s(T), Gamma_s(T)). The BaTiO3 masked-branch fraction will be
+   omega_s(T), Gamma_s(T)). The BaTiO₃ masked-branch fraction will be
    reported as a stated systematic limitation. Route S is closed as a
    follow-up-paper option, not pursued here.
 3. Spend approved for the PBEsol harmonic redo and the regenerated
-   Grueneisen batch (planning estimate ~$165), with exact job counts and
+   Grüneisen batch (planning estimate ~$165), with exact job counts and
    VM-hours re-reported before every launch.
-4. SrTiO3 anchor set extended with Servoin, Luspin, Gervais, Phys. Rev. B
+4. SrTiO₃ anchor set extended with Servoin, Luspin, Gervais, Phys. Rev. B
    22, 5501 (1980) and Stirling, J. Phys. C 5, 2711 (1972) printed-table
    values.
