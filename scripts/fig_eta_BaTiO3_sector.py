@@ -2,9 +2,11 @@
 """Figure 5 — BaTiO3 zone-center soft-mode sector viscosity eta_soft(T)
 (numbering assigned 2026-07-25; manuscript text update deferred).
 
-Caption (for the manuscript):
+Caption (for the manuscript, section 4.5 "Data-anchored extension to the
+critical soft sector of BaTiO3"):
   Figure 5. Critical enhancement of the BaTiO3 soft-mode sector viscosity.
-  Zone-center soft-mode sector of eta_44 (circles, left log axis) computed
+  eta_44^soft, the zone-center soft-mode sector of the full coefficient
+  (circles, left log axis), computed
   from the strained-cell coupling Lambda, the measured hyper-Raman
   soft-mode frequency omega_s(T) and damping (Vogt, Sanjurjo & Rossbroich
   [32]; squares, right axis show omega_s), and the neutron branch

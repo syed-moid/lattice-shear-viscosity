@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Fig. 5 — experimental adjudication of eta(300 K) against the GHz
-Brillouin damping of Maerten et al. (arXiv:1810.00381; no published
-journal version exists as of 2026-07-24 — cite as preprint).
+"""Manuscript Fig. 4 — order-of-magnitude consistency check of eta(300 K)
+against the GHz Brillouin damping of Maerten et al. (arXiv:1810.00381; no
+published journal version exists as of 2026-07-24 — cite as preprint).
+The measured quantity is the longitudinal-acoustic damping rate, not the
+same tensor component as the computed eta_xyxy.
 
-This validation figure has no slot in the original 4-figure skeleton plan
-(Figs 1-4 = spectra/eta(T)/isotope/near-T_C); it is added as Fig. 5.
+This comparison figure has no slot in the original 4-figure skeleton plan
+(Figs 1-4 = spectra/eta(T)/isotope/near-T_C); the script filename keeps
+its historical fig5_ prefix.
 
 Data provenance (committed CSVs only, no hand-edited data):
   data/processed/maerten2018_damping_300K.csv  (transcribed text values +
@@ -66,7 +69,7 @@ ax.loglog(q_axis, gamma_ghz(ETA_OURS, q_axis), "-", color="#4878a8", lw=1.8,
 ax.fill_between(q_axis, gamma_ghz(1e-4, q_axis), gamma_ghz(1e-3, q_axis),
                 color="#c86a6a", alpha=0.25,
                 label=r"old $10^{-4}$–$10^{-3}$ Pa s decade"
-                      "\n(excluded by the measurement)")
+                      "\n(below every measured point)")
 
 # their measured band at q ~ 52-58 um^-1
 q_lo, q_hi = 50, 60
@@ -87,12 +90,12 @@ ax.plot([q_ref], [g_pred], "*", color="#a84848", ms=14,
 
 ax.set_xlabel(r"acoustic wavevector $q$ ($\mu$m$^{-1}$)")
 ax.set_ylabel(r"damping rate $\Gamma$ (GHz)")
-ax.set_title(r"$\eta$(300 K) vs GHz Brillouin damping "
-             "(Maerten et al., arXiv:1810.00381)", fontsize=8.5)
+ax.set_title(r"consistency check: $\eta$(300 K) vs GHz Brillouin damping "
+             "(Maerten et al., arXiv:1810.00381)", fontsize=8)
 ax.text(0.03, 0.97,
         "their LA phonons probe $\\eta_{xxxx}$; ours is $\\eta_{xyxy}$\n"
-        "(order-of-magnitude comparison; their Fig. 6\n"
-        "confirms the $q^2$ law at 300 K)",
+        "(order-of-magnitude consistency check; their Fig. 6\n"
+        "shows an approximately $q^2$ dependence at 300 K)",
         transform=ax.transAxes, fontsize=6.5, va="top", color="0.35")
 ax.legend(fontsize=6.3, loc="lower right", framealpha=0.95)
 ax.set_xlim(q_axis[0], q_axis[-1])
