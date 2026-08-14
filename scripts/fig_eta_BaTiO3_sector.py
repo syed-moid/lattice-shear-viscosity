@@ -8,15 +8,16 @@ critical soft sector of BaTiO3"):
   eta_44^soft, the zone-center soft-mode sector of the full coefficient
   (circles, left log axis), computed
   from the strained-cell coupling Lambda, the measured hyper-Raman
-  soft-mode frequency omega_s(T) and damping (Vogt, Sanjurjo & Rossbroich
-  [32]; squares, right axis show omega_s), and the neutron branch
-  dispersion of Harada, Axe & Shirane [33], with the overdamped effective
-  lifetime of Eq. (12). The sector viscosity rises nearly three
-  hundredfold between 700 K and 410 K (T_C + 17 K) as omega_s collapses
+  soft-mode frequency omega_s(T) and damping (Vogt, Sanjurjo & Rossbroich;
+  squares, right axis show omega_s), and the neutron branch
+  dispersion of Harada, Axe & Shirane, with the two-pole effective
+  lifetime of Eq. (12). The sector viscosity rises 125-fold between
+  700 K and 410 K (T_C + 17 K) as omega_s collapses
   — the mechanism of Eq. (13) realized with measured inputs. The sector
-  is a lower bound on the full eta_44: the stable manifold lies outside
-  the zone-center-only scope of section 3.2 (every zone-center point is
-  overdamped). Dotted line: T_C = 393 K.
+  is a lower bound on the full eta_44 (mode-diagonal approximation):
+  the stable manifold lies outside the zone-center-only scope of
+  section 3.2 (every zone-center point is overdamped). Dotted line:
+  T_C = 393 K.
 
 Data provenance (committed CSVs only, no hand-edited data):
   data/processed/eta_BaTiO3.csv

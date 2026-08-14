@@ -11,7 +11,8 @@ eta_44 anchored entirely at the zone center:
 
   gamma_b(q) = Lambda_b / (2 w_q^2)      [Route H, Eq. (11)]
   w_q^2      = omega_s^2(T) + A_par q_par^2 + A_perp q_perp^2
-  tau_eff    = overdamped-safe Eq. (12)  [latvisc.viscosity.tau_effective]
+  tau        = exact two-pole (Gamma^2+omega^2)/(2 Gamma omega^2)
+               [latvisc.viscosity.tau_two_pole_exact]
 
 Inputs, all with per-row provenance:
   * Lambda_b: OWN strained-cell couplings of the two soft-TO components
@@ -40,7 +41,8 @@ Stated approximations, with bias directions:
     SrTiO3: ~90% of eta) is NOT included — this is a PARTIAL, sector
     viscosity, lower bound with respect to the full-zone sum.
 
-PRE-REGISTERED TEST (revised gate, GATE_1p 2026-07-24): full-zone
+SCALE-EXPECTATION TEST (revised band 2026-07-24; see
+data/processed/reports/eta_SrTiO3_stageC.md section B): full-zone
 eta(300K-ish) expected in 1e-3..1e-2 Pa s. The zone-center sector alone
 CANNOT reach that band if BaTiO3 resembles SrTiO3 (where the equivalent
 sector carries ~3.5%); the test therefore reports (i) the sector value
@@ -68,7 +70,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_shear_nonlinearity import MASSES, MODES_DIR, compute_dataset  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.viscosity import bose_einstein, tau_effective  # noqa: E402
+from latvisc.viscosity import bose_einstein, tau_two_pole_exact  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 CM1 = 2.0 * np.pi * speed_of_light * 100.0     # rad/s per cm-1
@@ -119,7 +121,7 @@ def eta_sector(T, omega_s, gamma_hwhm, lambdas, u_cap):
     w = omega * CM1
     lw = gamma_hwhm * CM1
     occupation = bose_einstein(w, T)
-    tau = tau_effective(w, lw)
+    tau = tau_two_pole_exact(w, lw)
     integrand = u**2 * (HBAR * w) ** 2 * gam_sq_sum * occupation * (occupation + 1.0) * tau
     radial = np.trapezoid(integrand, u)                   # J^2 s cm-3
     # d^3q [A^-3] = d^3u / sqrt(A_par A_perp^2); 1 A^-3 = 1e30 m^-3
@@ -151,11 +153,11 @@ def main() -> None:
               f"{100 * (eta_15 / eta - 1):+.0f}%)")
         out.append(f"{T},{eta:.6e},{om:.2f},{ga:.2f},{int(od)},{u_cap:.1f}")
 
-    # pre-registered test, reported unadjusted
+    # scale-expectation test, reported unadjusted
     etas = np.array([r[1] for r in results])
     t_arr = np.array([r[0] for r in results])
     i_ref = int(np.argmin(np.abs(t_arr - 410)))
-    print(f"\nPRE-REGISTERED TEST vs the revised 1e-3..1e-2 Pa s expectation "
+    print(f"\nScale-expectation test vs the revised 1e-3..1e-2 Pa s band "
           f"(full-zone quantity):")
     print(f"  zone-center soft-sector value: {etas[i_ref]:.2e} (at {t_arr[i_ref]} K), "
           f"range {etas.min():.2e}..{etas.max():.2e} over {t_arr.min()}-{t_arr.max()} K")

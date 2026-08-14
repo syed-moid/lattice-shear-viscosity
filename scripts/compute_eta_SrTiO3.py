@@ -5,8 +5,9 @@ Central formula (manuscript Eq. 5, project guardrails):
 
     eta = (1 / (V_cell N_q k_B T)) sum_qs (hbar*omega)^2 gamma_xy^2 n(n+1) tau
 
-with the overdamped-safe tau_eff = 1/(2[Gamma - Re sqrt(Gamma^2 - omega^2)])
-(latvisc.viscosity.tau_effective). Units come out Pa s.
+with the exact two-pole lifetime tau = (Gamma^2 + omega^2)/(2 Gamma omega^2)
+(latvisc.viscosity.tau_two_pole_exact; reduces to 1/(2 Gamma) underdamped,
+Gamma/(2 omega^2) deep overdamped). Units come out Pa s.
 
 Partitioned pipeline (Route S / Route H, cutoff omega0 = 175 cm-1 —
 Richardson-validated for SrTiO3, see GATE_1p.md):
@@ -64,7 +65,7 @@ from check_shear_nonlinearity import MASSES, MODES_DIR, compute_dataset  # noqa:
 from crosscheck_alamode_sto_tau import parse_result  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.viscosity import bose_einstein, tau_effective  # noqa: E402
+from latvisc.viscosity import bose_einstein, tau_two_pole_exact  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 ALAMODE_DIR = REPO / "data" / "raw" / "alamode_sto"
@@ -300,7 +301,7 @@ def assemble(temperature: int, rows, vogt, extra_gamma_hwhm_cm1=None,
         w = omega_r * CM1                       # rad/s
         lw = gamma_hwhm * CM1                   # rad/s (HWHM)
         occupation = bose_einstein(w, temperature)
-        tau = float(tau_effective(w, lw))
+        tau = float(tau_two_pole_exact(w, lw))
         contrib = (HBAR * w) ** 2 * gru * gru * occupation * (occupation + 1.0) * tau
         sectors[sector] += contrib
         if return_details:

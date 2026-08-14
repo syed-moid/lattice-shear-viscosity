@@ -21,6 +21,7 @@ from .viscosity import (
     shear_viscosity,
     shear_viscosity_tensor,
     tau_effective,
+    tau_two_pole_exact,
     tau_from_linewidth,
     thz_to_rad_per_s,
 )
@@ -44,6 +45,7 @@ __all__ = [
     "shear_viscosity",
     "shear_viscosity_tensor",
     "tau_effective",
+    "tau_two_pole_exact",
     "tau_from_linewidth",
     "thz_to_rad_per_s",
     "write_matdyn_input",

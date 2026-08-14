@@ -28,6 +28,7 @@ __all__ = [
     "bose_einstein",
     "tau_from_linewidth",
     "tau_effective",
+    "tau_two_pole_exact",
     "shear_viscosity",
     "shear_viscosity_tensor",
 ]
@@ -58,18 +59,42 @@ def tau_from_linewidth(linewidth):
 
 
 def tau_effective(omega, linewidth):
-    """Effective lifetime valid through the overdamped regime.
+    """Slow-pole effective lifetime (retained as a limiting form).
 
     tau_eff = 1 / (2 * [linewidth - Re sqrt(linewidth^2 - omega^2)])
 
     Underdamped (linewidth < omega): reduces to 1 / (2 * linewidth).
     Overdamped (linewidth > omega): tends to linewidth / omega^2.
+
+    This is the dominant slow-pole contribution to the time-integrated
+    two-pole occupation correlator with the full fluctuation weight
+    assigned to the slow pole; the exact integral is tau_two_pole_exact,
+    which production uses. Both share the deep-overdamped limiting power
+    linewidth/omega^2 (up to the factor 2 in the weight).
     """
     omega = np.asarray(omega, dtype=float)
     linewidth = np.asarray(linewidth, dtype=float)
     root = np.sqrt((linewidth**2 - omega**2).astype(complex))
     denominator = 2.0 * (linewidth - root.real)
     return 1.0 / denominator
+
+
+def tau_two_pole_exact(omega, linewidth):
+    """Exact time-integrated two-pole (damped-oscillator) lifetime.
+
+    tau = (linewidth^2 + omega^2) / (2 * linewidth * omega^2)
+        = 1/(2*linewidth) + linewidth/(2*omega^2)
+
+    Exact closed form of the time-integrated energy-fluctuation
+    correlator of the damped oscillator (classical/Wick evaluation of
+    the full two-pole spectral form; manuscript Appendix A.3), valid
+    uniformly: it reduces to the sharp-resonance 1/(2*linewidth) for
+    linewidth << omega and to linewidth/(2*omega^2) deep overdamped,
+    with no regime switch. Production formula for every mode.
+    """
+    omega = np.asarray(omega, dtype=float)
+    linewidth = np.asarray(linewidth, dtype=float)
+    return (linewidth**2 + omega**2) / (2.0 * linewidth * omega**2)
 
 
 def _mode_weights(omega, temperature):

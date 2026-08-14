@@ -17,6 +17,7 @@ from latvisc.viscosity import (
     shear_viscosity,
     tau_effective,
     tau_from_linewidth,
+    tau_two_pole_exact,
     thz_to_rad_per_s,
 )
 from latvisc.validation import kinetic_viscosity_estimate
@@ -91,6 +92,26 @@ def test_bose_einstein_limits():
     n_hot = bose_einstein(omega, 20000.0)
     assert n_hot == pytest.approx(K_B * 20000.0 / (hbar * omega) - 0.5, rel=0.01)
     assert bose_einstein(omega, 1.0) < 1e-100
+
+
+def test_tau_two_pole_exact_limits_and_crossover():
+    # underdamped: reduces to the sharp-resonance 1/(2*Gamma) with a
+    # relative correction (Gamma/omega)^2
+    omega, linewidth = 1.0e13, 1.0e11
+    assert tau_two_pole_exact(omega, linewidth) == pytest.approx(
+        tau_from_linewidth(linewidth) * (1.0 + (linewidth / omega) ** 2)
+    )
+    # deep overdamped: Gamma/(2*omega^2) — half the slow-pole form
+    omega, linewidth = 1.0e11, 1.0e13
+    assert tau_two_pole_exact(omega, linewidth) == pytest.approx(
+        linewidth / (2.0 * omega**2), rel=1e-3
+    )
+    assert tau_two_pole_exact(omega, linewidth) == pytest.approx(
+        0.5 * tau_effective(omega, linewidth), rel=1e-3
+    )
+    # no regime switch: smooth and finite at critical damping
+    omega = linewidth = 1.0e12
+    assert tau_two_pole_exact(omega, linewidth) == pytest.approx(1.0 / linewidth)
 
 
 def test_tau_effective_underdamped_limit():
