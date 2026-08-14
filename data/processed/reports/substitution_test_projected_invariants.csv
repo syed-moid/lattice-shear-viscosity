@@ -1,0 +1,15 @@
+# substitution_test_projected_invariants.csv -
+# scripts/substitute_projected_invariants.py
+# Tracked-assignment D replaced by projected-subspace block eigenvalues
+# for the 9 audited bare-degenerate multiplets (18 mode-slots).
+# eta_xyxy(300 K): tracked 3.886195e-03 Pa s, substituted 3.922997e-03 Pa s, Delta = +0.947%.
+multiplet_q_index,branches,D_tracked_sorted,block_eigvals_sorted
+0,"1;2","-231482.1;230605.8","-230052.2;229075.4"
+133,"1;2","-31467.4;236590.7","-36507.1;252911.5"
+142,"1;2","-31467.4;236590.7","-36507.3;252910.7"
+232,"1;2","-239094.3;31416.1","-254978.4;36541.7"
+241,"1;2","-239094.3;31416.1","-254977.8;36541.7"
+1222,"1;2","-239094.3;31416.1","-254977.8;36541.7"
+1231,"1;2","-239094.3;31416.1","-254977.9;36541.8"
+1321,"1;2","-31467.4;236590.7","-36507.3;252910.4"
+1330,"1;2","-31467.4;236590.7","-36507.3;252911.1"
