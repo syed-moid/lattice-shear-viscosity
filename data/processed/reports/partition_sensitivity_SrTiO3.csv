@@ -1,0 +1,9 @@
+# partition_sensitivity_SrTiO3.csv - scripts/scan_partition_sensitivity.py
+# Route S/H partition moved to 150/175/200 cm-1 with all other inputs fixed;
+# 300 K totals and sector decomposition. Shell coverage: 1193 modes in [150,175), 930 in [175,200], 0 renormalized-map failures.
+# Route agreement over [150,200] (2123 modes, both routes): median |(gamma_H-gamma_S)/gamma_S| = 26.86%, mean = 27.06%, p90 = 31.78%, max = 39.54%
+# Total spread across the scan: 6.48% of the production value.
+cutoff_cm1,eta_total_Pas,eta_routeS_Pas,eta_routeH_stable_Pas,eta_routeH_unstable_Pas,eta_gamma_sector_Pas,delta_vs_175_percent
+150,4.080511e-03,6.669164e-04,3.281207e-03,1.271872e-04,5.201235e-06,+5.000
+175,3.886195e-03,2.550559e-04,3.498751e-03,1.271872e-04,5.201235e-06,+0.000
+200,3.828588e-03,1.321200e-04,3.564079e-03,1.271872e-04,5.201235e-06,-1.482

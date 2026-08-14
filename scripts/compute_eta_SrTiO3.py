@@ -208,7 +208,7 @@ def load_vogt():
 
 
 def assemble(temperature: int, rows, vogt, extra_gamma_hwhm_cm1=None,
-             return_details=False):
+             return_details=False, cutoff_cm1: float = CUTOFF_CM1):
     """eta_xyxy at one temperature. Returns (eta_total, sector dict, flags)
     — plus a per-mode details list when return_details is True (audit use:
     (iq, branch, sector, omega0, omega_r, gamma_hwhm, gruneisen, tau_s,
@@ -217,6 +217,10 @@ def assemble(temperature: int, rows, vogt, extra_gamma_hwhm_cm1=None,
     extra_gamma_hwhm_cm1: optional callable omega_r_cm1 -> additional HWHM
     (cm-1) added to the anharmonic linewidth (Matthiessen) — used for the
     Tamura isotope channel.
+
+    cutoff_cm1: Route S / Route H partition frequency. The production value
+    is CUTOFF_CM1 = 175; scripts/scan_partition_sensitivity.py varies it to
+    quantify the sensitivity of the total to the partition choice.
     """
     (map_lambda, map_gamma, soft_gamma_median, soft_floor_theory,
      lam_bare_min) = build_maps(temperature)
@@ -268,7 +272,7 @@ def assemble(temperature: int, rows, vogt, extra_gamma_hwhm_cm1=None,
             sector = "routeH_stable"
         else:
             gamma_hwhm = float(map_gamma(omega_r))
-            sector = "routeS" if omega0 >= CUTOFF_CM1 else "routeH_stable"
+            sector = "routeS" if omega0 >= cutoff_cm1 else "routeH_stable"
 
         if extra_gamma_hwhm_cm1 is not None:
             gamma_hwhm = gamma_hwhm + float(extra_gamma_hwhm_cm1(omega_r))
