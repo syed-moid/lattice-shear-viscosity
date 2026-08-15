@@ -14,9 +14,10 @@ $$
 form $\tau = (\Gamma^2 + \omega^2)/(2\Gamma\omega^2)$ from anharmonic
 linewidths, which reduces to $1/(2\Gamma)$ for underdamped modes)
 using first-principles strain couplings and anharmonic lattice dynamics.
-The microscopic inputs — frequencies, strain couplings, and lifetimes —
-are computed throughout for SrTiO₃; for BaTiO₃ the soft-mode frequencies
-and dampings are taken from measurement. No viscosity parameter is fitted
+The full-zone SrTiO₃ calculation is based primarily on computed
+anharmonic lattice-dynamical inputs, with selected soft-mode anchors
+taken from published data where explicitly stated; for BaTiO₃ the
+soft-mode frequencies and dampings are taken from measurement. No viscosity parameter is fitted
 to acoustic attenuation data; the result is cross-checked against kinetic
 theory and, as an order-of-magnitude consistency check, against measured
 gigahertz Akhiezer attenuation.
