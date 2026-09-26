@@ -1,0 +1,12 @@
+# shear_normalization_toy.csv - .A analytic check (check_shear_normalization.py)
+# One-mode toy omega^2 = omega0^2 + Lambda_t (eps_xy + eps_yx) pushed through the production
+# cell builder (eps_xy = eps_yx = s), latvisc.gruneisen.mode_gruneisen_finite_strain and the
+# D = d(omega^2)/ds route. ratio 2 for gamma means the pipeline returns the PATH derivative
+# -d ln omega/ds = 2 gamma_xy(tensor); eta then carries a factor 4.
+quantity,pipeline_value,true_tensor_value,ratio_pipeline_over_true
+gamma_xy_omega_route,2.000100,1.000000,2.000100
+gamma_xy_D_route,2.000000,1.000000,2.000000
+Lambda_routeH,40000.000000,20000.000000,2.000000
+eta_factor_from_gamma_squared,4.000000,1,4.000000
+gamma_vol_control,2.000000,2.000000,1.000000
+force_conjugate_to_s_over_sigma_xy,0.019998,0.010000,1.999800

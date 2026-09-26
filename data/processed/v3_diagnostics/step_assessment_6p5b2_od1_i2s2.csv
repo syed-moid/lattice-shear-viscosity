@@ -1,0 +1,14 @@
+# (step_assessment_6p5b2.py): strain-step assessment of Lambda_C on 11^3; asymptotic =
+# |Lambda(0.020)/Lambda(0.010)-1| < 0.25 and same sign; Richardson formed on the derivative before squaring.
+label,eta_C_h010,eta_C_richardson_asymptotic_only,eta_C_richardson_all_sensitivity,eta_C_h020_only,eta_weight_non_asymptotic,frac_modes_asymptotic
+od1_i2s2,0.000585482,0.000590395,0.000641127,0.000480405,0.31282,0.319808
+
+omega0_bin,n,eta_C_h010,frac_asymptotic_modes,eta_weight_non_asymptotic,eta_C_rich_asym_only,eta_C_rich_all
+"[0,25)",72,8.98203e-06,0.222222,0.993697,8.98818e-06,1.21434e-05
+"[100,150)",3948,0.000294035,0.539514,0.0565499,0.000295011,0.00029742
+"[150,175)",1211,5.03311e-05,0.252684,0.830301,5.06372e-05,6.50347e-05
+"[175,300)",3777,3.17025e-05,0.327509,0.707164,3.20453e-05,3.82335e-05
+"[25,50)",124,1.28756e-05,0.225806,0.776328,1.29949e-05,1.6148e-05
+"[300,inf)",9275,1.49702e-05,0.223181,0.835954,1.51391e-05,1.91931e-05
+"[50,100)",1432,0.000157934,0.381285,0.429097,0.000160068,0.00017677
+imaginary,123,1.46507e-05,0.414634,0.212242,1.55111e-05,1.61843e-05

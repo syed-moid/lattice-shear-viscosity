@@ -6,7 +6,10 @@ Pinned here:
    eigenbasis is complete;
 2. gauge_check recovers the exact perturbation eigenvalues for a
    degenerate doublet with a known, analytically solvable strain
-   perturbation (Sigma mu^2 = Sigma D_exact^2);
+   perturbation (Sigma mu^2 = Sigma D_exact^2); the perturbation is applied
+   along the symmetric shear path (+/-h on both epsilon_xy and epsilon_yx),
+   so the tensor-convention eigenvalues returned by gauge_check are
+   D_exact / 2 (latvisc.gruneisen.path_to_tensor_shear);
 3. gauge invariance: mixing the reference doublet eigenvectors by an
    arbitrary unitary rotation (the gauge freedom the audit exists to
    bound) leaves the projected-block eigenvalue-squared sum unchanged;
@@ -76,8 +79,9 @@ def test_gauge_check_recovers_exact_perturbation_eigenvalues():
     minus = [_modes_entry(dyn0 - h * pert)]
     block_sum, eigvals = audit.gauge_check(0, [1, 2], reference, plus, minus,
                                            MASSES)
-    assert block_sum == pytest.approx(float(np.sum(d_exact**2)), rel=1e-6)
-    assert sorted(eigvals) == pytest.approx(sorted(d_exact), rel=1e-6)
+    d_tensor = d_exact / 2.0     # path derivative -> tensor component
+    assert block_sum == pytest.approx(float(np.sum(d_tensor**2)), rel=1e-6)
+    assert sorted(eigvals) == pytest.approx(sorted(d_tensor), rel=1e-6)
 
 
 def test_gauge_check_invariant_under_doublet_rotation():
@@ -94,7 +98,7 @@ def test_gauge_check_invariant_under_doublet_rotation():
     rotated = [(q, freqs, z_rot.reshape(DIM, NAT, 3))]
 
     block_sum, _ = audit.gauge_check(0, [1, 2], rotated, plus, minus, MASSES)
-    assert block_sum == pytest.approx(float(np.sum(d_exact**2)), rel=1e-6)
+    assert block_sum == pytest.approx(float(np.sum((d_exact / 2.0) ** 2)), rel=1e-6)
 
 
 def test_group_by_tolerance_chains():

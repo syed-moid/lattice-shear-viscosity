@@ -7,8 +7,13 @@ strained and reference calculations by mass-weighted eigenvector overlap
 |<z_ref | z_strained>| (never by frequency ordering), and evaluates
 central differences:
 
-    gamma_xy(qs)  = - (omega[+eps] - omega[-eps]) / (2 * eps * omega_ref)
+    gamma_xy(qs)  = - (omega[+eps] - omega[-eps]) / (2 * eps * omega_ref) / 2
     gamma_vol(qs) = - (ln omega[+d] - ln omega[-d]) / (ln V+ - ln V-)
+
+The shear cells apply epsilon_xy = epsilon_yx = eps, so the central
+difference is the derivative along that path; the trailing / 2 (applied by
+latvisc.gruneisen.path_to_tensor_shear inside mode_gruneisen_finite_strain)
+converts it to the tensor component gamma_xy = -d ln omega / d epsilon_xy.
 
 Degenerate reference subspaces (|domega| < DEGEN_TOL) are matched as a
 block: strained frequencies are assigned to the subspace by total overlap
@@ -33,7 +38,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.gruneisen import match_modes_by_overlap  # noqa: E402
+from latvisc.gruneisen import match_modes_by_overlap, mode_gruneisen_finite_strain  # noqa: E402
 from latvisc.qe_modes import read_modes  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
@@ -57,7 +62,8 @@ def gamma_from_pair(freq_ref, matched_plus, matched_minus, amplitude, volumetric
             dln = np.log(matched_plus) - np.log(matched_minus)
             dlnv = 3.0 * (np.log1p(amplitude) - np.log1p(-amplitude))
             return -dln / dlnv
-        return -(matched_plus - matched_minus) / (2.0 * amplitude * freq_ref)
+        return mode_gruneisen_finite_strain(freq_ref, matched_plus, matched_minus, amplitude,
+                                            symmetric_shear_path=True)
 
 
 def process(material: str) -> None:
@@ -106,7 +112,8 @@ def process(material: str) -> None:
     out = REPO / "data" / "processed" / f"gruneisen_{material}.csv"
     header = [
         f"# gruneisen_{material}.csv - produced by scripts/compute_gruneisen.py",
-        "# PBEsol strained-cell central differences on the 11x11x11 mesh;",
+        "# PBEsol strained-cell central differences on the 11x11x11 mesh; gamma_xy in",
+        "# the tensor convention (symmetric-path derivative / 2, see latvisc.gruneisen);",
         "# modes matched by mass-weighted eigenvector overlap, degenerate",
         "# subspaces block-matched and sorted (invariant combinations).",
         "# gamma undefined (nan) for the unstable manifold (omega_ref < 5 cm^-1)",

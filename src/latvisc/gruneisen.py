@@ -4,8 +4,18 @@ The mode Grueneisen tensor component for mode (q, s) and strain epsilon_ij is
 
     gruneisen_ij(q, s) = - (1 / omega(q, s)) * d omega(q, s) / d epsilon_ij
 
-evaluated here by central finite differences from two strained phonon runs
-(+delta and -delta applied to the same strain component).
+in the nine-component convention dH = V sum_ij sigma_ij d epsilon_ij, in which
+sigma_xy is the physical shear stress (sigma_xy = 2 eta d epsilon_xy/dt) and the
+Green-Kubo eta_xyxy equals the Newtonian eta_44 used in the acoustic
+conversions. It is evaluated by central finite differences from two strained
+phonon runs (+delta and -delta applied to the same strain component).
+
+Shear cells in this project are built with the SYMMETRIC deformation
+F = I + s (x y + y x), i.e. epsilon_xy = epsilon_yx = s, so a central
+difference over the pair gives the derivative along the path s, not the
+tensor derivative: d omega/ds = 2 d omega/d epsilon_xy. The conversion is
+done in exactly one place, path_to_tensor_shear below; nothing downstream
+divides by the path multiplicity again.
 """
 
 from __future__ import annotations
@@ -14,6 +24,8 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 __all__ = [
+    "SYMMETRIC_SHEAR_PATH_MULTIPLICITY",
+    "path_to_tensor_shear",
     "mode_gruneisen_finite_strain",
     "mode_gruneisen_volume",
     "orthonormal_eigenvectors",
@@ -23,7 +35,52 @@ __all__ = [
 ]
 
 
-def mode_gruneisen_finite_strain(omega_reference, omega_plus, omega_minus, strain_amplitude):
+# Number of tensor components that move together along the strain path of the
+# shear cells (epsilon_xy = epsilon_yx = s): the stress conjugate to s is
+# dH/ds = 2 V sigma_xy, and every derivative along the path is 2 x the tensor
+# derivative with respect to epsilon_xy.
+SYMMETRIC_SHEAR_PATH_MULTIPLICITY = 2
+
+# Call counter, used by tests/test_strain_convention.py to assert that the
+# production path applies the conversion exactly once.
+_CONVERSION_CALLS = [0]
+
+
+def path_to_tensor_shear(derivative_along_path, order: int = 1):
+    """Convert a derivative taken along the symmetric shear path
+    epsilon_xy = epsilon_yx = s into the tensor derivative with respect to
+    the single component epsilon_xy (nine-component convention).
+
+        d^n f / d epsilon_xy^n = (d^n f / d s^n) / 2^n
+
+    since f(epsilon_xy, epsilon_yx) along the path is f(s, s). This is the only
+    place in the package where the path multiplicity enters. The hydrostatic
+    path (three diagonal components, ln V = tr epsilon) has no such ambiguity
+    and never passes through here.
+
+    Parameters
+    ----------
+    derivative_along_path : array_like
+        d^n f/ds^n from the +/-s central differences (any unit).
+    order : int or array_like
+        Derivative order n (1 for the linear coefficient and for the strain
+        derivative of omega^2; 2 for curvature coefficients). An array of
+        orders is broadcast against the leading axis of the input, so that
+        one call converts a stack of mixed-order coefficients.
+    """
+    _CONVERSION_CALLS[0] += 1
+    order = np.asarray(order, dtype=float)
+    divisor = float(SYMMETRIC_SHEAR_PATH_MULTIPLICITY) ** order
+    values = np.asarray(derivative_along_path)
+    if not np.iscomplexobj(values):
+        values = values.astype(float)
+    if divisor.ndim:
+        divisor = divisor.reshape((-1,) + (1,) * (values.ndim - 1))
+    return values / divisor
+
+
+def mode_gruneisen_finite_strain(omega_reference, omega_plus, omega_minus, strain_amplitude,
+                                 symmetric_shear_path: bool = False):
     """Central-difference mode Grueneisen parameter per mode.
 
     Parameters
@@ -35,16 +92,24 @@ def mode_gruneisen_finite_strain(omega_reference, omega_plus, omega_minus, strai
         matched (same mode ordering) across the three runs.
     strain_amplitude : float
         The strain delta (dimensionless).
+    symmetric_shear_path : bool
+        True when the strained cells apply epsilon_xy = epsilon_yx = delta
+        (this project's shear cells); the derivative along that path is then
+        converted to the tensor component by path_to_tensor_shear. False for
+        a single-component strain (uniaxial) where no conversion applies.
 
     Returns
     -------
     ndarray
-        Dimensionless gruneisen_ij per mode, expected O(1).
+        Dimensionless gruneisen_ij per mode (tensor convention), expected O(1)
+        for ordinary modes.
     """
     omega_reference = np.asarray(omega_reference, dtype=float)
     domega = (np.asarray(omega_plus, dtype=float) - np.asarray(omega_minus, dtype=float)) / (
         2.0 * float(strain_amplitude)
     )
+    if symmetric_shear_path:
+        domega = path_to_tensor_shear(domega)
     return -domega / omega_reference
 
 

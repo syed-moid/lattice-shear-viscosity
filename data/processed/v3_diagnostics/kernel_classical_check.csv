@@ -1,0 +1,11 @@
+# kernel_classical_check.csv - .C.1 (overdamped_kernel_check.py)
+# Classical DHO, omega0 = 1, mass 1. int_energy_corr = int_0^inf <dE(t)dE(0)>dt/(kT)^2;
+# int_stress_corr = int_0^inf <dS(t)dS(0)>dt/(gamma^2 (kT)^2) with S = -gamma omega0^2 x^2.
+# Both reproduce their closed forms to 1e-6 (asserted).
+Gamma_over_omega,ode_spot_check_maxerr,int_energy_corr,tau_two_pole_exact,int_stress_corr,tau_two_pole_stress,ratio_stress_over_energy
+0.1,4.94e-11,5.05000000,5.05000000,5.20000000,5.20000000,1.029703
+1.0,4.48e-07,1.00000000,1.00000000,2.50000150,2.50000000,2.500001
+2.7,1.62e-11,1.53518519,1.53518519,5.58518519,5.58518519,3.638118
+5.0,2.34e-11,2.60000000,2.60000000,10.10000000,10.10000000,3.884615
+8.5,5.61e-13,4.30882353,4.30882353,17.05882353,17.05882353,3.959044
+10.0,3.77e-13,5.05000000,5.05000000,20.05000000,20.05000000,3.970297

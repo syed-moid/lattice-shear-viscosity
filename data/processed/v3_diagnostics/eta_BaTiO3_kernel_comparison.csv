@@ -1,0 +1,14 @@
+# eta_BaTiO3_kernel_comparison.csv - .C.3 (recompute_eta_stress_kernel.py)
+# compute_eta_BaTiO3.py logic (VSR 1982 omega_s/Gamma, Harada dispersion, own Lambda) with the
+# lifetime kernel swapped; exact column must reproduce data/processed/eta_BaTiO3.csv.
+# enhancement 700->410 K: exact 125.05, stress 170.98
+T_K,omega_s_cm1,Gamma_HWHM_cm1,Gamma_over_omega_s,eta_exact_Pas,eta_stress_Pas,ratio_stress_over_exact
+410,10.77,45.41,4.216,1.434382e-04,5.023145e-04,3.501958
+425,16.05,45.71,2.847,5.296700e-05,1.656428e-04,3.127283
+450,25.25,51.99,2.059,1.957858e-05,5.404618e-05,2.760475
+475,32.58,55.97,1.718,1.153578e-05,2.946887e-05,2.554563
+500,43.53,77.16,1.772,6.206014e-06,1.669005e-05,2.689335
+550,54.59,86.71,1.589,3.864744e-06,1.007753e-05,2.607554
+600,67.08,97.13,1.448,2.427200e-06,6.189527e-06,2.550069
+650,82.62,118.77,1.437,1.444624e-06,3.791098e-06,2.624279
+700,91.15,122.31,1.342,1.147072e-06,2.937803e-06,2.561133

@@ -1,0 +1,9 @@
+# bto_stable_manifold_estimate.csv - (bto_stable_manifold_estimate.py)
+# ORDER-OF-MAGNITUDE estimate of the BaTiO3 stable-manifold eta_xyxy missing from the zone-
+# center-anchored soft sector: bare BaTiO3 frequencies and own shear couplings, lifetimes
+# transferred from SrTiO3 (a) or Klemens-scaled (b); see script docstring for the assumptions.
+# Pre-revision convention throughout (symmetric-path strain derivative and energy-variable kernel, as in the submitted
+# version); only the ratios to the sector are used and they are convention independent. Letter-only order-of-magnitude estimate.
+T_K,eta_soft_sector_Pas,eta_stable_a_STO_tau_transfer_Pas,eta_stable_b_Klemens_Pas,ratio_a_over_sector,ratio_b_over_sector,frac_a_from_omega0_lt_100,frac_b_from_omega0_lt_100
+410,5.737527e-04,3.250496e-03,3.829034e-03,5.665,6.674,0.2353,0.4805
+453,6.981197e-05,3.262639e-03,3.840516e-03,46.735,55.012,0.2346,0.4795

@@ -1,5 +1,6 @@
 # richardson_5pt_SrTiO3.csv - produced by scripts/check_5point_richardson.py
-# 5-point omega^2(eps) analysis, match_four_strains_by_overlap canonical labeling
+# 5-point omega^2(eps) analysis, match_four_strains_by_overlap canonical labeling;
+# D in the tensor convention (symmetric-path derivative / 2)
 # 18 sign-change-under-strain entries excluded (see script docstring)
 # proposed_cutoff_cm1=175, flag_above_pct=0.74, flag_below_pct=10.95, verdict=CONFIRMED
 omega0_bin_cm1,n_usable,flag_rate_pct,median_resid,p90_resid

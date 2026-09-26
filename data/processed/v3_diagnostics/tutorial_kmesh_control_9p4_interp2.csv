@@ -1,0 +1,8 @@
+# (tutorial_kmesh_control.py): tutorial surface (example STO222.xml harmonic set + example anharmonic set,
+# cell 7.363 bohr), unstrained, SELF_OFFDIAG = 1, 300 K, TOL 1e-10; frequencies from anphon (cm-1); imaginary count
+# on the interpolated 8^3 list excluding the three Gamma translations (threshold -0.5 cm-1).
+mesh,iterations,final_DIFF,wall_s,TO1_cm1,TO2_cm1,LO1_cm1,F2u_cm1,X_lowest_cm1,M_lowest_cm1,R_AFD_cm1,R_second_cm1,R5+_cm1,n_imaginary_8x8x8
+2/4,48,7.969088e-11,48.2383,136.4176,186.4268,170.6241,248.6011,113.0901,86.0397,41.9540,41.9540,140.3079,0
+2/8,47,9.605078e-11,86.3928,134.0383,185.3767,169.9591,247.0904,112.5939,80.8183,28.9293,28.9293,139.8252,0
+2/12,56,9.420917e-11,219.8287,133.6894,185.3040,169.8474,246.8010,112.5024,79.8554,25.8238,25.8238,139.7346,0
+2/16,47,9.856749e-11,431.9335,133.6007,185.2901,169.8181,246.7225,112.4778,79.6003,24.9287,24.9287,139.7101,0

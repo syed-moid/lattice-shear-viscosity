@@ -1,0 +1,14 @@
+# (k5b_indicator_11p3.py): the SAME K_QE (bare QE +-0.005 pair, h = 0.010) projected on e_QE (own bare set) and on e_tut
+# (Z reference = tutorial set re-expressed on 4x4x4), 11^3; trK2 = Tr K_sub^2 / multiplet size (gauge invariant); QE<->tutorial
+# bare modes paired by maximum multiplet overlap; weights = production eta (mode table v5) by bare QE partner.
+# LABEL: sensitivity to the reference eigenbasis; does NOT bound K5a.
+scope,n_modes,ratio_sum_eta_trK2_tut_over_QE,ratio_plain_sum_trK2_tut_over_QE,eta_weighted_mean_abs_domega0_cm1,frac_eta_overlap_lt_0p9,frac_eta_overlap_lt_0p99,eta_covered_frac_of_production,eta_share,eta_weighted_median_ratio
+all modes (eta-weighted),19962,1.14476,1.02143,4.2715,0.147109,0.709275,1,,
+"bin [0,25)",72,1.7214,,4.58368,0,,,0.0153699,1.72268
+"bin [100,150)",3888,0.944665,,2.96119,0.21057,,,0.503085,0.987969
+"bin [150,175)",1193,1.05423,,2.88731,0.145163,,,0.0860207,1.03118
+"bin [175,300)",3777,0.815784,,5.49905,0.132833,,,0.0539305,0.938076
+"bin [25,50)",124,1.63846,,10.6366,0,,,0.0220324,1.83619
+"bin [300,inf)",9275,0.949951,,8.65508,0.0906749,,,0.0256076,0.936094
+"bin [50,100)",1498,1.70616,,4.79256,0.0714112,,,0.268883,1.44272
+bin imaginary,135,0.955023,,16.8228,0,,,0.0250704,0.985714

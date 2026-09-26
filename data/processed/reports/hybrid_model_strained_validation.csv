@@ -1,0 +1,10 @@
+# build_hybrid_model.py strain: strained Z sets D_Z(q,+-h) = D_tut(q) +- h K_QE(q) built in real space on the 4x4x4 grid;
+# XML frequencies (builder) vs the in-memory sum at 20 random q + Gamma; Gamma soft-triplet Lambda = [omega^2(+h) - omega^2(-h)]/(2h)
+# (sorted-order proxy) for Z vs the QE bare pair; odd part of D(+h) - D(-h) after the distributed sum rule vs K_QE.
+set,h,n_test_q,max_abs_domega_xml_vs_memory_cm1,max_abs_domega_vs_memory_without_sumrule_cm1,sumrule_residual_before_Ry_bohr2,sumrule_max_change_Ry_bohr2,gamma_translations_max_cm1,gamma_soft_triplet_cm1,gamma_lambda_Z_cm2_soft_triplet,gamma_lambda_QE_cm2_soft_triplet,odd_part_rel_diff_vs_own_converted_sets_gridq,odd_part_rel_diff_vs_raw_qe_K_gridq
+z_p005,0.01,64,7.20544e-05,1.35729,0.00190616,0.00187419,6.51681e-05,-67.342 -58.500 -48.520,,,,
+z_m005,-0.01,64,6.89604e-05,1.3566,0.00190616,0.00187421,6.58638e-05,-67.307 -58.462 -48.469,,,,
+pair_005,0.01,,,,,,,,-237.9 -222.1 -246.4,-69.4 -225.1 -368.7,0.00480081,0.362637
+z_p010,0.02,64,4.42591e-05,1.81709,0.00380801,0.00375176,4.0909e-05,-75.488 -58.438 -36.190,,,,
+z_m010,-0.02,64,4.48638e-05,1.81633,0.00380801,0.00375174,4.36754e-05,-75.497 -58.461 -36.215,,,,
+pair_010,0.02,,,,,,,,33.8 69.3 44.8,140.5 70.7 -3.4,0.362747,0.362747

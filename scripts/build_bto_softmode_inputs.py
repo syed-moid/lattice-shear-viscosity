@@ -14,9 +14,12 @@ Sources (all cubic phase; per-row provenance):
     omega_s(T) inputs — context anchors).
 
 Conventions applied HERE, in code (raw and canonical files untouched):
-  * gamma quantities are classical-dispersion-oscillator FULL damping
-    constants -> Gamma_HWHM = gamma_full/2 (pipeline convention,
-    tau = 1/(2 Gamma_HWHM));
+  * gamma quantities are the classical damped-oscillator damping constants
+    gamma of x'' + gamma x' + Omega0^2 x -> the column named Gamma_HWHM holds
+    gamma/2, which is the DHO FRICTION parameter Gamma of the kernel form
+    x'' + 2 Gamma x' + ... (equal to the spectral half width only for
+    underdamped modes; every VSR zone-center point is overdamped, so the
+    halving is the oscillator-parameter mapping, not a width conversion);
   * overdamped flag per instruction: gamma_full/Omega0 > 1 (every VSR
     zone-center point trips it; the tau_eff of Eq. (12) handles the
     regimes continuously regardless);
@@ -72,7 +75,8 @@ def main() -> None:
         "# Presting 1983 Fig. 2; 4/4 consistency checks passed) plus the retained",
         "# Harada 1971 finite-q neutron anchors and Ehsan 2021 SCP anchors from the",
         "# 2026-07-23 import. Conventions applied in code, never in raw files:",
-        "# Gamma_HWHM = gamma_full/2 (classical-oscillator FULL damping halved);",
+        "# Gamma_HWHM = gamma_full/2: the DHO friction parameter Gamma of x''+2Gamma x'+...",
+        "# (VSR quote gamma of x''+gamma x'+...); a spectral half width only when underdamped;",
         "# overdamped_flag = 1 where gamma_full/Omega0 > 1. All T in Kelvin (axis",
         "# units verified against the figure images; see references/digitized/*/README.md).",
         "# omega_s(T) is to be interpolated from the MEASURED points — VSR observe",

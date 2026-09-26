@@ -2,16 +2,20 @@
 """Free 3-point shear-strain curvature diagnostic (A5' scope-cut substitute).
 
 Given the unstrained reference and the +/-0.5% shear pair, this computes
-for every mode:
-
-  * gamma_xy, via the same central-difference formula used everywhere else
-    in the pipeline (latvisc.gruneisen.mode_gruneisen_finite_strain), so
-    the diagnostic and scripts/compute_gruneisen.py can never disagree on
-    the definition of gamma.
-  * the standard central-difference linear and curvature coefficients
+for every mode the central-difference coefficients along the strain path
+(the cells apply epsilon_xy = epsilon_yx = h)
 
         a1 = (omega(+h) - omega(-h)) / (2h)                    [linear slope]
         a2 = (omega(+h) + omega(-h) - 2*omega(0)) / (2*h^2)     [curvature]
+
+and the same in the eigenvalue variable (D, b2 below), then converts them
+ONCE, together, to the tensor convention (derivative with respect to the
+single component epsilon_xy) with latvisc.gruneisen.path_to_tensor_shear:
+first-order coefficients / 2, curvature coefficients / 4. Every consumer
+(compute_eta_SrTiO3.py, compute_eta_BaTiO3.py, the audits) reads the
+converted D from the rows of compute_dataset and must not convert again.
+gamma_xy = -a1/omega_ref is then the tensor Grueneisen component, the one
+for which the Green-Kubo eta_xyxy equals the Newtonian eta_44.
 
 +/-h branches are paired by latvisc.gruneisen.match_strain_pair_by_overlap,
 which handles reference-degenerate subspaces by DIRECT +eps<->-eps mutual
@@ -24,9 +28,11 @@ large curvature. See the G1' incident log,
 data/processed/reports/GATE_1p.md, for the full history of this and the
 earlier (separately fixed) Cartesian-vs-fractional q-coordinate bug.
 
-Flag metric: |a2*h/omega_ref| (the curvature-induced perturbation to gamma
-at the sampled strain, dimensionless) compared to rms(gamma_xy) over the
-full Brillouin zone — NOT the ratio to a1, which is guaranteed to blow up
+Flag metric: |a2*(2h)/omega_ref| (the curvature-induced perturbation to
+gamma at the sampled strain — the tensor strain spanned by the pair is
+epsilon_xy + epsilon_yx = 2h — dimensionless) compared to rms(gamma_xy)
+over the full Brillouin zone; the ratio is the same as in the former path
+convention (both halve) — NOT the ratio to a1, which is guaranteed to blow up
 wherever gamma_xy passes through zero (a large fraction of the BZ by
 symmetry); those modes contribute ~nothing to eta (which enters as
 gamma^2) and must not dominate the flag count.
@@ -72,31 +78,33 @@ import numpy as np
 from scipy.constants import speed_of_light
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.gruneisen import match_strain_pair_by_overlap, mode_gruneisen_finite_strain  # noqa: E402
+from latvisc.gruneisen import match_strain_pair_by_overlap, orthonormal_eigenvectors, path_to_tensor_shear  # noqa: E402
 from latvisc.qe_modes import read_modes  # noqa: E402
 from latvisc.viscosity import bose_einstein  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 MODES_DIR = REPO / "data" / "raw" / "gruneisen_modes"
-H = 0.005
+H = 0.005            # path parameter s of the +/-s cells (= the tensor step epsilon_xy = h)
+STRAIN_SPAN = 2.0 * H  # tensor strain epsilon_xy + epsilon_yx spanned by one cell of the pair
 OMEGA_MIN = 5.0  # cm^-1; below this the mode belongs to the unstable manifold
 DEGEN_TOL = 0.5  # cm^-1; same convention as scripts/compute_gruneisen.py
 ACOUSTIC_SKIP = 1e-3  # |q| below this: acoustic modes are translations
 FLAG_FRACTION = 0.10  # |a2*h/omega_ref| / rms(gamma_xy) above this is flagged
 # ABSOLUTE omega^2-basis flag threshold (project convention since 2026-07-23,
 # user decision recorded in data/processed/reports/GATE_1p.md): a mode is
-# flagged when its curvature-induced gamma perturbation |b2*h/omega_ref^2|
+# flagged when its curvature-induced gamma perturbation |b2*(2h)/omega_ref^2|
 # exceeds this value. Calibrated on SrTiO3 — the material where the 5-point
 # Richardson analysis validated the eps05 estimate — as FLAG_FRACTION *
 # rms(gamma_xy, eps05) over that analysis's 19812 usable mode-slots
-# (richardson_5pt_SrTiO3.csv, rms = 4.182536), and applied IDENTICALLY to
-# every material. A per-material relative (BZ-rms-normalized) criterion
+# (richardson_5pt_SrTiO3.csv; rms = 2.091268 in the tensor convention, i.e.
+# half the 4.182536 of the former path convention — the relative criterion
+# is unchanged), and applied IDENTICALLY to every material. A per-material relative (BZ-rms-normalized) criterion
 # misleads across materials: the normalizer depends on how much of the
 # large-gamma soft manifold happens to be excluded as unstable (BaTiO3's rms
 # came out 3.8x smaller than SrTiO3's for exactly that reason, inflating its
 # apparent flag rate ~4x at identical absolute curvature — see the
 # 2026-07-23 audit in GATE_1p.md).
-ABS_FLAG_THRESHOLD_GAMMA_OMEGA2 = 0.10 * 4.182536
+ABS_FLAG_THRESHOLD_GAMMA_OMEGA2 = 0.10 * 2.091268
 ETA_SENSITIVITY_FAIL = 0.05  # |Delta eta / eta| at or above this fails the pin test
 TEMPERATURE_K = 300.0
 CM1_TO_RAD_PER_S = 2.0 * np.pi * speed_of_light * 100.0  # omega[rad/s] = this * freq[cm-1]
@@ -143,9 +151,14 @@ def compute_dataset(directory: Path, masses: np.ndarray, mesh_n: int):
         matched_p, matched_m = match_strain_pair_by_overlap(
             freq_ref, vec_ref, freq_p, vec_p, freq_m, vec_m, masses, DEGEN_TOL
         )
-        gamma_xy = mode_gruneisen_finite_strain(freq_ref, matched_p, matched_m, H)
-        a1 = (matched_p - matched_m) / (2.0 * H)
-        a2 = (matched_p + matched_m - 2.0 * freq_ref) / (2.0 * H**2)
+        # strain-pair tracking quality: best overlap of each reference mode
+        # with the +h and -h calculations (1.0 = clean)
+        z_ref = orthonormal_eigenvectors(vec_ref, masses)
+        ov_p = np.abs(z_ref.conj() @ orthonormal_eigenvectors(vec_p, masses).T).max(axis=1)
+        ov_m = np.abs(z_ref.conj() @ orthonormal_eigenvectors(vec_m, masses).T).max(axis=1)
+        pair_overlap = np.minimum(ov_p, ov_m)
+        a1_path = (matched_p - matched_m) / (2.0 * H)
+        a2_path = (matched_p + matched_m - 2.0 * freq_ref) / (2.0 * H**2)
 
         # omega^2 reparameterization: shear couples ~linearly to omega^2
         # (the dynamical-matrix perturbation is linear in strain, and
@@ -163,8 +176,14 @@ def compute_dataset(directory: Path, masses: np.ndarray, mesh_n: int):
         ev_p = np.sign(matched_p) * matched_p**2
         ev_m = np.sign(matched_m) * matched_m**2
         ev_ref = np.sign(freq_ref) * freq_ref**2
-        D = (ev_p - ev_m) / (2.0 * H)
-        b2 = (ev_p + ev_m - 2.0 * ev_ref) / (2.0 * H**2)
+        D_path = (ev_p - ev_m) / (2.0 * H)
+        b2_path = (ev_p + ev_m - 2.0 * ev_ref) / (2.0 * H**2)
+        # the ONE conversion from the symmetric-path derivatives to the tensor
+        # convention (first order / 2, curvature / 4); nothing downstream
+        # divides again
+        a1, D, a2, b2 = path_to_tensor_shear(np.stack([a1_path, D_path, a2_path, b2_path]), order=[1, 1, 2, 2])
+        with np.errstate(divide="ignore", invalid="ignore"):
+            gamma_xy = -a1 / freq_ref          # as mode_gruneisen_finite_strain(symmetric_shear_path=True)
         gamma_omega2 = -D / (2.0 * omega_ref_safe**2)
         a2_pred_sqrt = -D**2 / (8.0 * omega_ref_safe**3)
 
@@ -183,7 +202,7 @@ def compute_dataset(directory: Path, masses: np.ndarray, mesh_n: int):
                 "gamma_omega2": float(gamma_omega2[branch]),
                 "a2_pred_sqrt": float(a2_pred_sqrt[branch]),
                 "unstable": unstable, "degenerate": bool(degen[branch]),
-                "acoustic": is_acoustic,
+                "acoustic": is_acoustic, "pair_overlap": float(pair_overlap[branch]),
             })
     return rows
 
@@ -205,7 +224,7 @@ def neighbor_q_correlation(rows, mesh_n: int) -> float:
 
 
 def eta_sensitivity(rows) -> tuple[float, float]:
-    """Delta-eta/eta at 300 K from gamma -> gamma +/- (a2*h/omega_ref).
+    """Delta-eta/eta at 300 K from gamma -> gamma +/- (a2*2h/omega_ref).
 
     tau is assumed mode-independent (real linewidths are not yet available
     at this stage) and cancels out of the ratio; weight is
@@ -214,7 +233,7 @@ def eta_sensitivity(rows) -> tuple[float, float]:
     usable = [r for r in rows if not r["unstable"] and not r["acoustic"]]
     omega_rad = np.array([r["omega_ref"] for r in usable]) * CM1_TO_RAD_PER_S
     gamma = np.array([r["gamma_xy"] for r in usable])
-    delta_gamma = np.array([r["a2"] * H / r["omega_ref"] for r in usable])
+    delta_gamma = np.array([r["a2"] * STRAIN_SPAN / r["omega_ref"] for r in usable])
 
     n_occ = bose_einstein(omega_rad, TEMPERATURE_K)
     weight = (omega_rad) ** 2 * n_occ * (n_occ + 1.0)  # hbar cancels in the ratio
@@ -241,7 +260,7 @@ def report_flags_omega2(rows, rms_gamma_omega2_bz: float, label: str):
     def flagged(subset):
         out = []
         for r in subset:
-            curvature_gamma2 = abs(r["b2"] * H / r["omega_ref"] ** 2)
+            curvature_gamma2 = abs(r["b2"] * STRAIN_SPAN / r["omega_ref"] ** 2)
             if np.isfinite(curvature_gamma2) and curvature_gamma2 > ABS_FLAG_THRESHOLD_GAMMA_OMEGA2:
                 out.append((r["iq"], r["branch"], r["omega_ref"],
                             curvature_gamma2 / ABS_FLAG_THRESHOLD_GAMMA_OMEGA2))
@@ -259,11 +278,11 @@ def report_flags_omega2(rows, rms_gamma_omega2_bz: float, label: str):
 
 
 def eta_sensitivity_omega2(rows) -> tuple[float, float]:
-    """Delta-eta/eta at 300 K using gamma_omega2 -> gamma_omega2 +/- (b2*h/omega_ref^2)."""
+    """Delta-eta/eta at 300 K using gamma_omega2 -> gamma_omega2 +/- (b2*2h/omega_ref^2)."""
     usable = [r for r in rows if not r["unstable"] and not r["acoustic"] and np.isfinite(r["gamma_omega2"])]
     omega_rad = np.array([r["omega_ref"] for r in usable]) * CM1_TO_RAD_PER_S
     gamma = np.array([r["gamma_omega2"] for r in usable])
-    delta_gamma = np.array([r["b2"] * H / r["omega_ref"] ** 2 for r in usable])
+    delta_gamma = np.array([r["b2"] * STRAIN_SPAN / r["omega_ref"] ** 2 for r in usable])
 
     n_occ = bose_einstein(omega_rad, TEMPERATURE_K)
     weight = omega_rad ** 2 * n_occ * (n_occ + 1.0)
@@ -333,7 +352,7 @@ def report_flags(rows, rms_gamma_bz: float, label: str):
     def flagged(subset):
         out = []
         for r in subset:
-            curvature_gamma = abs(r["a2"] * H / r["omega_ref"])
+            curvature_gamma = abs(r["a2"] * STRAIN_SPAN / r["omega_ref"])
             ratio = curvature_gamma / rms_gamma_bz if rms_gamma_bz > 0 else float("nan")
             if np.isfinite(ratio) and ratio > FLAG_FRACTION:
                 out.append((r["iq"], r["branch"], r["omega_ref"], ratio))
@@ -442,7 +461,9 @@ def process(material: str) -> None:
     header = [
         f"# nonlinearity_{material}.csv - produced by scripts/check_shear_nonlinearity.py",
         "# (A5' scope cut, 2026-07-18; q-convention + degenerate-pairing fixed 2026-07-20,",
-        "# see G1' incident log in data/processed/reports/GATE_1p.md)",
+        "# see G1' incident log in data/processed/reports/GATE_1p.md);",
+        "# strain derivatives in the TENSOR convention (path derivative / 2, curvature / 4;",
+        "# latvisc.gruneisen.path_to_tensor_shear)",
         f"# BZ-weighted <gamma_xy>={mean_gxy:.6f} rms(gamma_xy)={rms_gxy:.6f} "
         f"|<gamma_xy>|/rms={pin_ratio:.6f} ({'FAIL' if pin_ratio > 0.01 else 'pass'})",
         f"# off-grid 11^3: non-degenerate {n_nd_off} stable, {len(fnd_off)} flagged "
@@ -471,7 +492,7 @@ def process(material: str) -> None:
                    "a2_pred_sqrt,unstable_flag,degenerate_flag,flag_gt_threshold")
     rows_out = []
     for r in offgrid_rows:
-        curvature_gamma = abs(r["a2"] * H / r["omega_ref"])
+        curvature_gamma = abs(r["a2"] * STRAIN_SPAN / r["omega_ref"])
         ratio = curvature_gamma / rms_gxy if rms_gxy > 0 else float("nan")
         flag = (not r["unstable"]) and np.isfinite(ratio) and ratio > FLAG_FRACTION
         q = r["q"]

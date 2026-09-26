@@ -21,6 +21,8 @@ see check_shear_nonlinearity.py's docstring for why not omega itself):
       of D_richardson using all the data at once rather than a two-term
       combination)
 
+All four D estimators are converted together from the symmetric-path
+derivative to the tensor convention (/ 2, latvisc.gruneisen.path_to_tensor_shear);
 gamma_xy is then -D/(2*omega_ref^2) for each estimator. Disagreement
 between D_eps05 and D_richardson (relative to the BZ rms of gamma_xy, the
 same well-posed metric used throughout this diagnostic family) measures
@@ -47,7 +49,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.gruneisen import match_four_strains_by_overlap  # noqa: E402
+from latvisc.gruneisen import match_four_strains_by_overlap, path_to_tensor_shear  # noqa: E402
 from latvisc.qe_modes import read_modes  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
@@ -109,6 +111,8 @@ def process(material: str) -> None:
 
         coeffs = PINV_VANDER @ omega2  # (4, nmodes): c0,c1,c2,c3
         D_cubic = coeffs[1]
+        D_eps05, D_eps10, D_richardson, D_cubic = path_to_tensor_shear(
+            np.stack([D_eps05, D_eps10, D_richardson, D_cubic]))
 
         sign_change = (omega2.min(axis=0) <= 0.0) & (omega2_ref > 0.0)
         acoustic_q = np.linalg.norm(q) < ACOUSTIC_SKIP
@@ -177,7 +181,8 @@ def process(material: str) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     text = (
         f"# richardson_5pt_{material}.csv - produced by scripts/check_5point_richardson.py\n"
-        f"# 5-point omega^2(eps) analysis, match_four_strains_by_overlap canonical labeling\n"
+        f"# 5-point omega^2(eps) analysis, match_four_strains_by_overlap canonical labeling;\n"
+        f"# D in the tensor convention (symmetric-path derivative / 2)\n"
         f"# {n_sign_change} sign-change-under-strain entries excluded (see script docstring)\n"
         f"# proposed_cutoff_cm1={PROPOSED_CUTOFF:.0f}, flag_above_pct={flag_above:.2f}, "
         f"flag_below_pct={flag_below:.2f}, verdict={verdict}\n"

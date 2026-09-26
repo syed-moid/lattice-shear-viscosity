@@ -1,4 +1,30 @@
-# Stage C — BaTiO₃ zone-center (Route H) viscosity assembly: provenance and scale-test report (2026-07-24; tau updated 2026-08-14)
+# Stage C — BaTiO₃ zone-center (Route H) viscosity assembly: provenance and scale-test report (2026-07-24; tau updated 2026-08-14; conventions revised 2026-09-22)
+
+**Revision update (2026-09-22, numbers only).** (D1) Λ is now the tensor strain derivative
+dω²/dε_xy = ∓0.58×10⁵ cm⁻² (the July ∓1.17×10⁵ was the derivative along the symmetric path ε_xy = ε_yx = s,
+2× the tensor value), so every sector value is 1/4 of the July one; (D2) the lifetime is the stress-correlator
+two-pole kernel τ = 1/(2Γ) + 2Γ/ω² (exact classical time integral of the stiffness-conjugate stress correlator
+of an effective damped oscillator with friction 2Γ; every zone-center point is deeply overdamped, Γ/ω_s =
+1.3–4.2, where this kernel exceeds the energy-variable form by 2.6–3.5×), so the series is 2.6–3.5× the
+August one and the 700→410 K rise is 171-fold; (D5) the result is an exploratory sector quantity — the
+"scale-expectation test" and the STO-share-scaled inference below are withdrawn, no total-viscosity value is
+inferred; (D9) T_C of the VSR (melt-grown) samples is 403 K, so 410 K is T_C + 7 K. The damping column
+Gamma_HWHM = γ_VSR/2 is the DHO friction parameter Γ of ẍ + 2Γẋ + …, not a spectral half width. Regenerated
+table: `data/processed/eta_BaTiO3.csv`.
+
+| T (K) | omega_s (cm⁻¹) | Gamma (cm⁻¹, DHO friction) | eta44_soft_sector (Pa s), 2026-09-22 | cap x1.5 |
+|---|---|---|---|---|
+| 410 | 10.8 | 45.4 | 5.02e-4 | +0% |
+| 425 | 16.1 | 45.7 | 1.66e-4 | +1% |
+| 450 | 25.2 | 52.0 | 5.41e-5 | +3% |
+| 475 | 32.6 | 56.0 | 2.95e-5 | +5% |
+| 500 | 43.5 | 77.2 | 1.67e-5 | +8% |
+| 550 | 54.6 | 86.7 | 1.01e-5 | +12% |
+| 600 | 67.1 | 97.1 | 6.19e-6 | +19% |
+| 650 | 82.6 | 118.8 | 3.79e-6 | +28% |
+| 700 | 91.2 | 122.3 | 2.94e-6 | +34% |
+
+The historical narrative below (August numbers, path convention, energy-variable kernel) is unchanged.
 
 (2026-08-14 update: the lifetime entering the sector integral was changed from
 the slow-pole form to the exact two-pole closed form

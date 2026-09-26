@@ -1,0 +1,15 @@
+# (kmesh_interp_9p2.py): interpolation-mesh sensitivity at fixed inner mesh (12^3, 16^3), own surface, SELF_OFFDIAG = 1, 300 K;
+# rows copied from kmesh_convergence_9p1.csv; peak memory = 2 x n_irred(KMESH_INTERPOLATE) x KMESH_SCPH^3 x 15^4 x 16 B per MPI rank
+# (anphon v4_array_all + v4_mpi). ALAMODE 1.5.0 documentation (docs/source/anphondir/inputanphon.rst, KMESH_SCPH): 'This k mesh is used
+# for the inner loop of the SCPH equation. Each value of KMESH_SCPH must be equal to or a multiple of the number of KMESH_INTERPOLATE
+# in the same direction.' n_irred of the 6x6x6/12x12x12/16x16x16 grids (20/84/172) estimated from the cubic point group.
+mesh,KMESH_INTERPOLATE,KMESH_SCPH,eta_C_a_Pas,eta_C_b_Pas,eta_B_a_Pas,eta_A_a_Pas,R_AFD_cm1,TO1_cm1,X_lowest_cm1,M_lowest_cm1,kappa_300K_W_mK,n_imag_solution_grid,n_imag_8cubed,n_imag_11cubed,iter_ref,resid_ref,wall_s_ref,status,peak_GB_per_rank
+i2s12,2,12,0.000362881,0.000680547,0.000699143,0.00138114,13.0778,125.904,111.871,77.238,6.3231,0,0,0,48,8.46322e-11,248.5,run,11.1974
+i3s12,3,12,0.00330061,0.00538598,0.00147113,0.00200505,-32.4654,125.932,111.851,96.3808,6.8938,9,3,0,47,8.4655e-11,215.6,run,11.1974
+i4s12,4,12,,,,,13.0848,125.915,111.872,77.2388,6.3258,0,0,0,47,8.24577e-11,369.9,run,27.9936
+i6s12,6,12,,,,,,,,,,,,,,,,not run: 56 GB peak per rank (28 GB persistent) vs 36 GB RAM,55.9872
+i12s12,12,12,,,,,,,,,,,,,,,,not run: 235 GB peak per rank (118 GB persistent) vs 36 GB RAM,235.146
+i2s16,2,16,,,,,10.1241,125.763,111.833,76.8426,5.833,0,0,0,49,8.47893e-11,486.9,run,26.5421
+i4s16,4,16,,,,,,,,,,,,,,,,not run: 66 GB peak per rank (33 GB persistent) vs 36 GB RAM,66.3552
+i8s16,8,16,,,,,,,,,,,,,,,,not run: 232 GB peak per rank (116 GB persistent) vs 36 GB RAM,232.243
+i16s16,16,16,,,,,,,,,,,,,,,,not run: 1141 GB peak per rank (571 GB persistent) vs 36 GB RAM,1141.31

@@ -71,6 +71,7 @@ def _synthetic_parse_result(path, target_temp=300):
 @pytest.fixture()
 def maps(monkeypatch):
     monkeypatch.setattr(eta_mod, "parse_result", _synthetic_parse_result)
+    monkeypatch.setattr(eta_mod, "OMEGA_R_SOURCE", "rankmap")   # synthetic files exist for the rank-map path only
     return eta_mod.build_maps(300)
 
 
@@ -84,17 +85,34 @@ def test_gamma_point_rank_pairing_survives_reordering(maps):
     assert lam_min == pytest.approx(-3600.0)
 
 
-def test_sanity_gate_uses_revised_band():
-    # revised 2026-07-24 expectation band (eta_SrTiO3_stageC.md, section
-    # B): 1e-3..1e-2 Pa s. The old 1e-4..1e-3 decade came from an
-    # O(1)-gamma estimate and sits below every measured damping point —
-    # the production value 3.89e-3 must PASS and the old decade's
-    # midpoint must not.
-    assert eta_mod.ETA_300K_BAND_PAS == (1e-3, 1e-2)
-    ok, label = eta_mod.sanity_gate(3.89e-3)
-    assert ok and label == "PASS"
-    ok, label = eta_mod.sanity_gate(3e-4)
-    assert not ok and label == "OUTSIDE EXPECTED BAND"
+def test_no_expectation_band_gate_remains():
+    # the former eta(300 K) expectation band was removed; the physics
+    # checks are numbers, not a pass/fail band
+    assert not hasattr(eta_mod, "ETA_300K_BAND_PAS")
+    assert not hasattr(eta_mod, "sanity_gate")
+    assert callable(eta_mod.sanity_checks)
+
+
+def test_sanity_checks_convention_and_positivity():
+    # the revised checks take the per-mode details of the construction-C assembly
+    details = [{"iq": 5, "nu": 1, "sector": "[100,175)", "eta_contrib": 3e-4, "lam_C": -8000.0},
+               {"iq": 5, "nu": 2, "sector": "[175,inf)", "eta_contrib": 1e-4, "lam_C": 5000.0}]
+    out = eta_mod.sanity_checks(details, mesh_etas={9: 3.9e-4, 11: 4.0e-4, 13: 4.05e-4})
+    assert out["toy_gamma_pipeline_over_tensor"] == pytest.approx(1.0, rel=1e-9)
+    assert out["toy_engineering_over_symmetric_path"] == pytest.approx(0.5, rel=1e-9)
+    assert out["all_contributions_positive"]
+    assert out["mesh_11_vs_13_pct"] == pytest.approx(100.0 * (4.0 / 4.05 - 1.0))
+    assert out["mesh_spread_pct"] == pytest.approx(100.0 * 0.15 / 4.05)
+
+
+def test_legacy_sanity_checks_still_run():
+    rows = [{"iq": 5, "branch": 1, "omega_ref": 160.0, "D": -8000.0, "acoustic": False, "pair_overlap": 0.95},
+            {"iq": 5, "branch": 2, "omega_ref": 300.0, "D": 5000.0, "acoustic": False, "pair_overlap": 0.6}]
+    details = [{"iq": 5, "branch": 1, "sector": "routeH_stable", "eta_contrib": 3e-4},
+               {"iq": 5, "branch": 2, "sector": "routeS", "eta_contrib": 1e-4}]
+    out = eta_mod.sanity_checks_legacy(rows, details, 4e-4)
+    assert out["toy_gamma_pipeline_over_tensor"] == pytest.approx(1.0, rel=1e-5)
+    assert out["all_contributions_positive"]
 
 
 def test_character_aware_gamma_keeps_populations_separate(maps):

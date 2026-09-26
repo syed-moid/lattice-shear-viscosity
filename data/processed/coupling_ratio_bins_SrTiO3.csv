@@ -1,0 +1,23 @@
+# produced by scripts/export_coupling_constructions.py; SrTiO3, 300 K, 11^3 outer mesh, stress-correlator kernel,
+# Vogt Gamma exception; A = transferred coupling (retired), B = projected harmonic coupling, C = projected SCPH coupling;
+# surface hybrid = example harmonic set + QE strain perturbation (production); diagnostic = own QE-PBEsol harmonic set;
+# per bare-partner omega_0 bin (cm^-1) at inner mesh 12^3, consistent linewidths; ratio = eta ratio of the bin.
+surface,inner_mesh,partner_omega0_bin,n_modes,eta_A_Pas,eta_B_Pas,eta_C_Pas,ratio_B_over_A,ratio_C_over_B
+hybrid,12,gamma_triplet,3,1.30742e-06,1.96508e-06,1.2441e-06,1.50302,0.633105
+hybrid,12,[150-175),1489,1.33507e-05,1.39086e-05,1.09626e-05,1.04179,0.788188
+hybrid,12,[175-300),4273,1.23792e-05,1.29901e-05,1.30435e-05,1.04935,1.00412
+hybrid,12,[300-inf),8907,3.70042e-06,3.40739e-06,4.25371e-06,0.92081,1.24838
+hybrid,12,[25-50),122,5.78218e-05,1.9473e-06,1.09469e-06,0.0336776,0.562158
+hybrid,12,[50-100),1470,0.000347597,0.000224908,0.000142983,0.647038,0.635737
+hybrid,12,imaginary,96,0.000129613,0.000131019,5.7454e-05,1.01085,0.438517
+hybrid,12,[100-150),3566,0.000378396,0.000351351,0.000275051,0.928526,0.78284
+hybrid,12,[0-25),36,8.68074e-07,2.22212e-06,1.49639e-06,2.55983,0.673404
+diagnostic,12,gamma_triplet,3,1.3665e-06,1.93362e-06,9.51535e-07,1.41502,0.4921
+diagnostic,12,[150-175),1203,3.06521e-05,2.32941e-05,2.49665e-05,0.759949,1.07179
+diagnostic,12,[175-300),3777,2.30613e-05,2.75727e-05,2.49041e-05,1.19563,0.903214
+diagnostic,12,[300-inf),9275,1.0216e-05,1.02154e-05,1.22714e-05,0.999946,1.20127
+diagnostic,12,[25-50),124,0.000175162,2.61544e-05,1.13194e-05,0.149315,0.432792
+diagnostic,12,[50-100),1486,0.000336344,0.000154425,9.24e-05,0.459128,0.598349
+diagnostic,12,imaginary,132,0.000241642,0.000227569,4.20942e-05,0.941759,0.184973
+diagnostic,12,[100-150),3890,0.000257477,0.000219577,0.000146232,0.852804,0.665969
+diagnostic,12,[0-25),72,0.000305219,8.4018e-06,7.74185e-06,0.0275271,0.921451

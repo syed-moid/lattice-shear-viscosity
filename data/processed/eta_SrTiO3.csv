@@ -1,14 +1,16 @@
-# eta_SrTiO3.csv - produced by scripts/compute_eta_SrTiO3.py (Stage C)
-# eta_xyxy(T), Pa s; Route S/H partition at 175 cm-1 (Richardson-validated);
-# gamma from eps05 strained cells (signed eigenvalues); omega_r/Gamma from
-# SCPH-coupled ALAMODE per-T runs (validated at 300 K, see
-# tadano2015_tau300K_crosscheck.md); Gamma-point soft sector from Vogt 1995
-# where covered. See data/processed/reports/eta_SrTiO3_stageC.md.
-T_K,eta_total_Pas,eta_routeS_Pas,eta_routeH_stable_Pas,eta_routeH_unstable_Pas,eta_gamma_sector_Pas,frac_lowomega,vogt_gamma_sector,n_extrapolated_modes,provisional_method_flag
-100,6.029670e-03,9.733933e-05,4.237379e-03,1.575555e-03,1.193973e-04,0.9839,1,2,method_validated_at_300K_only
-150,4.676080e-03,1.702455e-04,3.866821e-03,6.093588e-04,2.965487e-05,0.9636,1,2,method_validated_at_300K_only
-200,4.189228e-03,2.167361e-04,3.674359e-03,2.855676e-04,1.256470e-05,0.9483,1,2,method_validated_at_300K_only
-250,3.951126e-03,2.300792e-04,3.537049e-03,1.765885e-04,7.409622e-06,0.9418,1,2,method_validated_at_300K_only
-300,3.886827e-03,2.551019e-04,3.499206e-03,1.272343e-04,5.285103e-06,0.9344,1,2,no
-350,3.682319e-03,2.762701e-04,3.393624e-03,1.041769e-05,2.006832e-06,0.9250,0,2,method_validated_at_300K_only
-400,3.617517e-03,2.797065e-04,3.327677e-03,8.496535e-06,1.636746e-06,0.9227,0,2,method_validated_at_300K_only
+# eta_SrTiO3.csv - produced by scripts/compute_eta_SrTiO3.py (hybrid model tut_z_od1)
+# eta_xyxy(T), Pa s. Hybrid model: ALAMODE v1.5.0 example harmonic set re-expressed on the 4x4x4 supercell +
+# QE-PBEsol strain perturbation K_QE; example anharmonic set (IFC supercell 2x2x2); SCPH with SELF_OFFDIAG = 1,
+# correction mesh 2x2x2 / inner mesh 12x12x12 (finest completed mesh; convergence of eta not established).
+# Only temperatures with converged unstrained and eps_xy = +-0.005 SCPH solutions and an own RTA are listed.
+# Coupling Lambda_C = e_r K_SCPH e_r with K_SCPH = [D(+h)-D(-h)]/(2h),
+# h = 0.010 engineering shear (= tensor eps_xy derivative); gamma = -Lambda_C/(2 omega_r^2); multiplets by
+# projected-block diagonalisation; lifetime = stress-correlator kernel 1/(2G) + 2G/w^2; linewidths from the
+# same-T own 8^3 RTA through the character-aware frequency-class map; Gamma-point TO1 triplet from Vogt 1995
+# (the one exception to the single-surface rule). Sectors = bare-omega_0 bin of the max-overlap bare partner.
+# See data/processed/reports/eta_SrTiO3_stageC.md.
+T_K,eta_total_Pas,eta_imaginary_Pas,eta_0_50_Pas,eta_50_100_Pas,eta_100_175_Pas,eta_175_inf_Pas,eta_gamma_sector_Pas,frac_below_100_cm1,vogt_gamma_sector,n_skipped,provisional_method_flag
+250,3.399336e-04,2.593239e-05,1.940661e-06,9.629579e-05,1.996643e-04,1.473612e-05,1.364361e-06,0.3693,1,0,linewidths_validated_at_300K_only
+300,5.075831e-04,5.745395e-05,2.591075e-06,1.429827e-04,2.860140e-04,1.729723e-05,1.244099e-06,0.4024,1,0,no
+350,5.246227e-04,5.479756e-05,2.653113e-06,1.491092e-04,2.973884e-04,1.966624e-05,1.008210e-06,0.3957,0,0,linewidths_validated_at_300K_only
+400,5.317531e-04,4.197373e-05,2.430819e-06,1.487162e-04,3.162900e-04,2.141493e-05,9.274324e-07,0.3649,0,0,linewidths_validated_at_300K_only

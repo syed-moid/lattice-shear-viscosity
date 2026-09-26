@@ -1,0 +1,21 @@
+# (T_stability_9p6.py): cubic SCPH model stability vs T on the internal meshes (own surface, SELF_OFFDIAG = 1,
+# unstrained). Imaginary counts on the KMESH_SCPH solution grid and on 11^3, threshold -0.5 cm^-1, Gamma translations excluded;
+# frequencies from the AlamodeSet builder on the dfc2-renormalised XML (asr_onsite). iterations = -1 if not parsed.
+mesh,T_K,iterations,stable,note,R_AFD_cm1,Gamma_TO1_cm1,n_imag_solution_grid,min_omega_solution_grid_cm1,n_imag_11cubed,min_omega_11cubed_cm1
+i2s2,100,58,True,,36.0507,113.684,0,36.0507,0,33.9014
+i2s2,150,41,True,,44.4098,121.666,0,44.4098,0,34.1695
+i2s2,200,32,True,,51.566,128.928,0,51.566,0,34.3852
+i2s2,250,31,True,,57.829,135.313,0,57.829,0,34.5571
+i2s2,300,30,True,,63.3913,140.873,0,63.3913,0,34.6958
+i2s2,350,30,True,,68.3914,145.709,0,68.3914,0,34.8096
+i2s2,400,51,True,,72.9328,149.925,0,72.9328,0,34.9045
+i4s12,100,-1,False,SCPH not converged (MAXITER) or not run,,,,,,
+i4s12,150,-1,False,SCPH not converged (MAXITER) or not run,,,,,,
+i4s12,200,-1,False,SCPH not converged (MAXITER) or not run,,,,,,
+i4s12,250,177,True,,7.81705,119.808,0,7.81705,0,33.8884
+i4s12,300,47,True,,13.0848,125.915,0,13.0848,0,34.0444
+i4s8,100,-1,False,SCPH not converged (MAXITER) or not run,,,,,,
+i4s8,150,-1,False,SCPH not converged (MAXITER) or not run,,,,,,
+i4s8,200,176,True,,9.52635,113.522,0,9.52635,0,33.7094
+i4s8,250,92,True,,13.1464,120.161,0,13.1464,0,33.8994
+i4s8,300,47,True,,18.8006,126.367,0,18.8006,0,34.0566

@@ -48,7 +48,7 @@ from check_shear_nonlinearity import H, MASSES, MODES_DIR, compute_dataset  # no
 from compute_eta_SrTiO3 import REPO, assemble, load_vogt  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.gruneisen import orthonormal_eigenvectors  # noqa: E402
+from latvisc.gruneisen import orthonormal_eigenvectors, path_to_tensor_shear  # noqa: E402
 from latvisc.qe_modes import read_modes  # noqa: E402
 from latvisc.viscosity import bose_einstein  # noqa: E402
 
@@ -99,7 +99,7 @@ def gauge_check(iq: int, branches: list[int], reference, plus, minus, masses):
     _, freq_m, vec_m = minus[iq]
     dyn_p = reconstruct_dynmat(freq_p, vec_p, masses)
     dyn_m = reconstruct_dynmat(freq_m, vec_m, masses)
-    delta = (dyn_p - dyn_m) / (2.0 * H)
+    delta = path_to_tensor_shear((dyn_p - dyn_m) / (2.0 * H))   # tensor convention, as compute_dataset's D
     z_ref = orthonormal_eigenvectors(vec_ref, masses)
     idx = [b - 1 for b in branches]
     # rows-as-bras convention, consistent with reconstruct_dynmat

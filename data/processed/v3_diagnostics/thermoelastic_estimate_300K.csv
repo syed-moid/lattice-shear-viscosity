@@ -1,0 +1,12 @@
+# thermoelastic_estimate_300K.csv - (thermoelastic_estimate.py)
+# Gamma_te = v_L Omega^2/(2 rho v_L^3) kappa(1/c_v - 1/c_p), Omega = v_L q; Zener column uses
+# Delta_te Omega tau_th/(1+Omega^2 tau_th^2) with tau_th = 1/(D q^2), Gamma = omega Q^-1/2.
+# Inputs: kappa = 12 W/m/K (300 K; e.g. Martelli et al. PRL 120, 125901 (2018) report ~11-12);
+# C_p = 98.9 J/mol/K (Todd & Lorenson, JACS 74, 2043 (1952); NIST-JANAF ~99); M = 183.49 g/mol;
+# rho = 5110 kg/m^3 and c11 = 316, c12 = 102.5 GPa (Bell & Rupprecht, Phys. Rev. 129, 90 (1963));
+# linear thermal expansion 9.4e-6 /K at 300 K (de Ligny & Richet, PRB 53, 3013 (1996));
+# v_L = 7900 m/s (Maerten et al. 7.9-8.1 nm/ps). Author to re-verify the cited values.
+q_um_inv,f_GHz,Omega_tau_th,Gamma_te_GHz,Gamma_te_zener_GHz,eta_thermal_equiv_Pas
+52,65.38,34.87,0.08996,0.08989,3.4003e-04
+55,69.15,32.97,0.10064,0.10055,3.4003e-04
+58,72.92,31.26,0.11192,0.11181,3.4003e-04

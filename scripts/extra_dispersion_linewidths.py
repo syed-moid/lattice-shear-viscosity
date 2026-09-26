@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Figure 1: harmonic phonon dispersions with experimental anchor points.
+"""Auxiliary figure (not in the paper; superseded by Fig. 1 composite): harmonic phonon dispersions with experimental anchor points.
 
 Panels: (a) SrTiO3, (b) BaTiO3, along Gamma-X-M-Gamma-R-X. PBEsol branches
 are drawn solid; the PBE audit-reference branches are the faint underlay.
@@ -15,9 +15,9 @@ linewidths exist.
 
 Reads : data/processed/harmonic_dispersion_<material>.csv
         data/processed/ins_reference_points_<material>.csv
-Writes: figures/fig1_dispersion_linewidths.pdf and .png
+Writes: figures/extra_dispersion_linewidths.pdf and .png
 
-Usage: uv run python scripts/fig1_dispersion_linewidths.py
+Usage: uv run python scripts/extra_dispersion_linewidths.py
 """
 
 from __future__ import annotations
@@ -126,7 +126,7 @@ def main() -> None:
     axes[1].set_ylim(-300, 850)
     fig.tight_layout()
     for suffix in ("pdf", "png"):
-        out = REPO / "figures" / f"fig1_dispersion_linewidths.{suffix}"
+        out = REPO / "figures" / f"extra_dispersion_linewidths.{suffix}"
         fig.savefig(out, dpi=300, bbox_inches="tight")
         print(f"-> {out.relative_to(REPO)}")
 

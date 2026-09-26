@@ -57,6 +57,7 @@ def _vogt(temperature):
 @pytest.fixture(autouse=True)
 def _patch(monkeypatch):
     monkeypatch.setattr(eta_mod, "parse_result", _synthetic_parse_result)
+    monkeypatch.setattr(eta_mod, "OMEGA_R_SOURCE", "rankmap")   # synthetic files exist for the rank-map path only
 
 
 def test_default_cutoff_is_production_175():

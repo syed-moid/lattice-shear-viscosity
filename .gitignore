@@ -37,8 +37,9 @@ __pycache__/
 # download sources + MD5s recorded in dft/qe/pseudopotentials/SOURCES.md
 *.UPF
 
-# heavy calculation outputs
-data/raw/
+# heavy calculation outputs (archived separately; only the manifest is committed)
+data/raw/*
+!data/raw/MANIFEST.md
 *.wfc*
 *.save/
 fc2.hdf5
@@ -48,4 +49,5 @@ kappa-*.hdf5
 
 # OS / editors
 .DS_Store
+.idea/
 ~$*

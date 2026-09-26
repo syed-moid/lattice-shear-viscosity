@@ -1,0 +1,9 @@
+# (tutorial_kmesh_control.py): tutorial surface (example STO222.xml harmonic set + example anharmonic set,
+# cell 7.363 bohr), unstrained, SELF_OFFDIAG = 1, 300 K, TOL 1e-10; frequencies from anphon (cm-1); imaginary count
+# on the interpolated 8^3 list excluding the three Gamma translations (threshold -0.5 cm-1).
+mesh,iterations,final_DIFF,wall_s,TO1_cm1,TO2_cm1,LO1_cm1,F2u_cm1,X_lowest_cm1,M_lowest_cm1,R_AFD_cm1,R_second_cm1,R5+_cm1,n_imaginary_8x8x8
+2/2,54,9.008201e-11,43.3120,145.1547,192.7344,172.8244,253.2416,114.6713,100.7808,68.2238,68.2238,141.7739,0
+4/4,46,8.847478e-11,53.7378,142.6815,253.4353,143.5025,319.3907,112.4668,32.5162,31.6276,31.6276,140.2448,24
+4/8,47,7.618290e-11,127.3980,142.0349,251.9514,142.8721,318.2406,111.9738,13.6595,8.7878,8.7878,139.7559,24
+4/12,54,9.007425e-11,362.0137,141.9243,251.6675,142.7691,318.0743,111.8834,5.6579,-9.6302,-9.6302,139.6642,39
+4/16,nan,not run: 66 GB peak per rank exceeds 36 GB RAM,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan

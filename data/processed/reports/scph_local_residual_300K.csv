@@ -1,0 +1,16 @@
+# scph_local_residual_300K.csv - self-consistent phonon (SCPH) residual at 300 K
+# Renormalised SrTiO3 frequencies on the 8x8x8 ALAMODE mesh (35 irreducible q,
+# 525 modes): anphon MODE = SCPH solved locally (ALAMODE 1.5.0, tutorial harmonic
+# STO222.xml + anharmonic STO_anharm.xml, KMESH_INTERPOLATE = KMESH_SCPH = 2x2x2,
+# SELF_OFFDIAG = 0, converged in 54 iterations) versus the precomputed corrections
+# STO_scph2-2.scph_dfc2 distributed with the ALAMODE SrTiO3 example, which the
+# production pipeline consumed through dfc2. eta_dev_pct: change of eta_xyxy(300 K)
+# when the locally converged set replaces the precomputed one in the production
+# assembly (frequencies identical to 1e-3 cm-1; the residual comes from the RTA
+# linewidths recomputed on the locally converged set). Inputs and hashes:
+# anharmonic/SrTiO3/alamode_tutorial_inputs/SHA256SUMS.txt.
+quantity,value
+max_abs_dev_cm1,0.0010
+rms_dev_cm1,0.0002
+eta_weighted_rms_dev_cm1,0.0001
+eta_dev_pct,-0.586

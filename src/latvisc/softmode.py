@@ -5,18 +5,18 @@ Cochran law for the soft TO mode frequency:
     omega_s(T)^2 = cochran_coefficient * (T - T_C)      (T > T_C)
 
 Near T_C the soft mode becomes overdamped (linewidth > omega_s); its
-lifetime must then be taken from the overdamped-safe effective form in
-`latvisc.viscosity.tau_effective`, which this module re-exports for the
-soft-mode workflow.
+lifetime is then the stress-correlator two-pole kernel
+`latvisc.viscosity.tau_two_pole_stress`, valid at every damping ratio,
+which this module re-exports for the soft-mode workflow.
 """
 
 from __future__ import annotations
 
 import numpy as np
 
-from .viscosity import tau_effective
+from .viscosity import tau_two_pole_stress
 
-__all__ = ["cochran_frequency", "is_overdamped", "tau_effective"]
+__all__ = ["cochran_frequency", "is_overdamped", "tau_two_pole_stress"]
 
 
 def cochran_frequency(temperature, transition_temperature, cochran_coefficient):

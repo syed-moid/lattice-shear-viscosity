@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stage C (BaTiO3): zone-center-anchored Route-H viscosity assembly.
+"""Stage C (BaTiO3): zone-center-anchored soft-branch sector of eta_44 (EXPLORATORY).
 
 SCOPE (Gamma-point-only, section 3.2 of the manuscript): after the fc3
 cost-gate NO-GO, BaTiO3 has no full-zone Gamma_qs(T). What CAN be
@@ -7,22 +7,36 @@ computed with stated provenance is the soft-TO-branch contribution to
 eta_44 anchored entirely at the zone center:
 
   eta_44^soft(T) = (1/k_B T) sum_b INT d^3q/(2pi)^3 (hbar w_q)^2
-                   gamma_b(q)^2 n(n+1) tau_eff(w_q, Gamma_s)
+                   gamma_b(q)^2 n(n+1) tau(w_q, Gamma_s)
 
-  gamma_b(q) = Lambda_b / (2 w_q^2)      [Route H, Eq. (11)]
+  gamma_b(q) = Lambda_b / (2 w_q^2)      [Route H, Eq. (11); tensor convention]
   w_q^2      = omega_s^2(T) + A_par q_par^2 + A_perp q_perp^2
-  tau        = exact two-pole (Gamma^2+omega^2)/(2 Gamma omega^2)
-               [latvisc.viscosity.tau_two_pole_exact]
+  tau        = stress-correlator two-pole kernel 1/(2 Gamma) + 2 Gamma/omega^2
+               [latvisc.viscosity.tau_two_pole_stress], the exact classical
+               time integral of the stiffness-conjugate stress correlator of
+               an effective damped harmonic oscillator with friction 2 Gamma
+
+This is a sector quantity within the stated diagonal model. It is NOT a
+total viscosity, and no statement about the size of the omitted stable
+manifold is made here (its rough order of magnitude is discussed in the
+response letter only).
 
 Inputs, all with per-row provenance:
   * Lambda_b: OWN strained-cell couplings of the two soft-TO components
-    at Gamma (D of the bare-imaginary doublet, +/-1.17e5 cm-2/strain,
-    symmetric split as E-symmetry requires — internal check);
+    at Gamma (tensor-convention D of the bare-imaginary doublet,
+    +/-0.58e5 cm-2 per unit epsilon_xy, symmetric split as E-symmetry
+    requires — internal check; the conversion from the symmetric-path
+    derivative happens once, in check_shear_nonlinearity.compute_dataset);
   * omega_s(T), Gamma_s(T): MEASURED zone-center hyper-Raman series
     (VSR 1982 this-work, PRIMARY; softmode_inputs_BaTiO3.csv), linearly
     interpolated between measured points — NO Cochran/Curie-Weiss fit is
-    imposed (VSR observe systematic deviation from the linear law);
-    Gamma is HWHM (full damping already halved at build);
+    imposed (VSR observe systematic deviation from the linear law).
+    DAMPING MAPPING: VSR quote the classical damped-oscillator damping
+    constant gamma of x'' + gamma x' + Omega0^2 x; the kernel's friction
+    parameter is Gamma = gamma/2 (x'' + 2 Gamma x' + ...). The halving done
+    at build (column Gamma_HWHM of the CSV) is therefore the DHO friction
+    mapping, not a half-width conversion — for these deeply overdamped
+    points no spectral half width exists;
   * soft-branch dispersion: Harada 1971 neutron, A_par = 972 meV^2 A^2
     along the soft [100] axis (checked: predicts 79 cm-1 at
     q = 0.313 A^-1 / 423 K = Harada's own point), A_perp = 4750 (stiff);
@@ -37,17 +51,13 @@ Stated approximations, with bias directions:
   * single-damped-oscillator parameterization of a response that is in
     reality two overlapping components (Presting Fig. 3, qualitatively;
     Hlinka 2008) — stated, not correctable at this scope;
-  * the stable low-frequency manifold away from the soft branch (in
-    SrTiO3: ~90% of eta) is NOT included — this is a PARTIAL, sector
-    viscosity, lower bound with respect to the full-zone sum.
+  * the stable low-frequency manifold away from the soft branch is NOT
+    included — this is a PARTIAL, sector quantity; within the same
+    diagonal additive model the omitted terms are non-negative.
 
-SCALE-EXPECTATION TEST (revised band 2026-07-24; see
-data/processed/reports/eta_SrTiO3_stageC.md section B): full-zone
-eta(300K-ish) expected in 1e-3..1e-2 Pa s. The zone-center sector alone
-CANNOT reach that band if BaTiO3 resembles SrTiO3 (where the equivalent
-sector carries ~3.5%); the test therefore reports (i) the sector value
-unadjusted, (ii) the STO-sector-share-scaled inference, clearly labeled
-as an inference. No inputs are tuned either way.
+T_C: the VSR samples are melt-grown crystals with T_C ~ 403 K
+(latvisc.materials.BATIO3_TC_VSR1982; VSR contrast this with ~395 K for
+flux-grown material), so 410 K is T_C + 7 K.
 
 Reads : data/processed/softmode_inputs_BaTiO3.csv,
         data/raw/gruneisen_modes/BaTiO3/*.modes (Lambda extraction)
@@ -70,7 +80,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_shear_nonlinearity import MASSES, MODES_DIR, compute_dataset  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from latvisc.viscosity import bose_einstein, tau_two_pole_exact  # noqa: E402
+from latvisc.materials import BATIO3_TC_VSR1982  # noqa: E402
+from latvisc.viscosity import bose_einstein, tau_two_pole_stress  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 CM1 = 2.0 * np.pi * speed_of_light * 100.0     # rad/s per cm-1
@@ -121,7 +132,7 @@ def eta_sector(T, omega_s, gamma_hwhm, lambdas, u_cap):
     w = omega * CM1
     lw = gamma_hwhm * CM1
     occupation = bose_einstein(w, T)
-    tau = tau_two_pole_exact(w, lw)
+    tau = tau_two_pole_stress(w, lw)
     integrand = u**2 * (HBAR * w) ** 2 * gam_sq_sum * occupation * (occupation + 1.0) * tau
     radial = np.trapezoid(integrand, u)                   # J^2 s cm-3
     # d^3q [A^-3] = d^3u / sqrt(A_par A_perp^2); 1 A^-3 = 1e30 m^-3
@@ -137,7 +148,7 @@ def main() -> None:
     print(f"zone-center series (VSR this-work) covers T in [{rng[0]:.0f}, {rng[1]:.0f}] K")
     u_cap = np.sqrt(A_PAR) * Q_CAP_PAR
 
-    out = ["T_K,eta_soft_sector_Pas,omega_s_cm1,Gamma_HWHM_cm1,overdamped,u_cap_cm1"]
+    out = ["T_K,eta44_soft_sector_zc_anchored_Pas,omega_s_cm1,Gamma_dho_friction_cm1,overdamped,u_cap_cm1,T_minus_TC_VSR_K"]
     results = []
     for T in TEMPS:
         if not (rng[0] <= T <= rng[1]):
@@ -147,38 +158,27 @@ def main() -> None:
         eta_15 = eta_sector(T, om, ga, lambdas, 1.5 * u_cap)
         od = ga > om
         results.append((T, eta, om, ga, eta_15))
-        print(f"T={T:3d} K: omega_s={om:5.1f}  Gamma_HWHM={ga:5.1f} cm-1 "
-              f"({'overdamped' if od else 'underdamped'})  "
-              f"eta_soft = {eta:.3e} Pa s  (cap x1.5: {eta_15:.3e}, "
+        print(f"T={T:3d} K (T_C+{T - BATIO3_TC_VSR1982:.0f}): omega_s={om:5.1f}  Gamma={ga:5.1f} cm-1 "
+              f"(DHO friction; {'overdamped' if od else 'underdamped'})  "
+              f"eta44_soft_sector = {eta:.3e} Pa s  (cap x1.5: {eta_15:.3e}, "
               f"{100 * (eta_15 / eta - 1):+.0f}%)")
-        out.append(f"{T},{eta:.6e},{om:.2f},{ga:.2f},{int(od)},{u_cap:.1f}")
+        out.append(f"{T},{eta:.6e},{om:.2f},{ga:.2f},{int(od)},{u_cap:.1f},{T - BATIO3_TC_VSR1982:.0f}")
 
-    # scale-expectation test, reported unadjusted
     etas = np.array([r[1] for r in results])
     t_arr = np.array([r[0] for r in results])
-    i_ref = int(np.argmin(np.abs(t_arr - 410)))
-    print(f"\nScale-expectation test vs the revised 1e-3..1e-2 Pa s band "
-          f"(full-zone quantity):")
-    print(f"  zone-center soft-sector value: {etas[i_ref]:.2e} (at {t_arr[i_ref]} K), "
-          f"range {etas.min():.2e}..{etas.max():.2e} over {t_arr.min()}-{t_arr.max()} K")
-    in_band = 1e-3 <= etas[i_ref] <= 1e-2
-    print(f"  sector value in band: {'YES' if in_band else 'NO'} — but the sector is "
-          f"PARTIAL by scope (in SrTiO3 the equivalent formerly-unstable+Gamma "
-          f"sector carries ~3.5% of the full sum).")
-    inferred = etas[i_ref] / 0.035
-    print(f"  STO-sector-share-scaled INFERENCE (not a computation): full-zone "
-          f"eta ~ {inferred:.1e} Pa s if BaTiO3 partitions like SrTiO3 "
-          f"-> {'inside' if 1e-3 <= inferred <= 1e-2 else 'OUTSIDE'} the band.")
-    print("  Verdict logged unadjusted; scope-qualified. Decision on how to report "
-          "the test in section 4.5 rests with the author.")
+    print(f"\nZone-center-anchored soft-branch sector (exploratory): {etas.max():.2e} Pa s at "
+          f"{t_arr[np.argmax(etas)]:.0f} K, {etas.min():.2e} Pa s at {t_arr[np.argmin(etas)]:.0f} K "
+          f"({etas.max() / etas.min():.0f}-fold over the series). No total-viscosity inference is made.")
 
     path = REPO / "data" / "processed" / "eta_BaTiO3.csv"
     header = [
         "# eta_BaTiO3.csv - produced by scripts/compute_eta_BaTiO3.py",
-        "# ZONE-CENTER-ANCHORED soft-TO sector of eta_44 (Gamma-point-only scope,",
-        "# manuscript 3.2): PARTIAL viscosity, lower bound wrt the full-zone sum.",
-        "# Lambda from own strained cells; omega_s/Gamma from VSR 1982 hyper-Raman",
-        "# (measured points, no Cochran fit); Harada dispersion, cap q_par<=0.47 A^-1.",
+        "# ZONE-CENTER-ANCHORED soft-TO-branch SECTOR of eta_44 (Gamma-point-only scope,",
+        "# manuscript 3.2): an exploratory PARTIAL quantity, not a total viscosity.",
+        "# Lambda (tensor convention) from own strained cells; omega_s and the DHO",
+        "# friction Gamma = gamma_VSR/2 from VSR 1982 hyper-Raman (measured points, no",
+        "# Cochran fit); Harada dispersion, cap q_par<=0.47 A^-1; stress-correlator",
+        f"# two-pole kernel. T_C of the VSR (melt-grown) samples = {BATIO3_TC_VSR1982:.0f} K.",
         "# See data/processed/reports/eta_BaTiO3_stageC.md for the full provenance.",
     ]
     path.write_text("\n".join(header) + "\n" + "\n".join(out) + "\n")

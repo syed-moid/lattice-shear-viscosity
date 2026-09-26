@@ -10,7 +10,7 @@ near the lattice instabilities, where the bare cubic-harmonic surface is
 already a poor description — rather than being uniform across the zone.
 
 Also confirms the omega^2-native flag metric used in
-check_shear_nonlinearity.py is well-posed: |b2*h/omega_ref^2| (the
+check_shear_nonlinearity.py is well-posed: |b2*2h/omega_ref^2| (the
 curvature-induced perturbation to gamma_omega2) compared against
 rms(gamma_omega2) over the BZ, never the ratio to D (which — like the
 original a1-denominator ratio — blows up wherever gamma passes through
@@ -39,8 +39,8 @@ from scipy.constants import speed_of_light
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_shear_nonlinearity import (  # noqa: E402
-    ABS_FLAG_THRESHOLD_GAMMA_OMEGA2, FLAG_FRACTION, H, MASSES, MODES_DIR,
-    TEMPERATURE_K, compute_dataset,
+    ABS_FLAG_THRESHOLD_GAMMA_OMEGA2, FLAG_FRACTION, MASSES, MODES_DIR,
+    STRAIN_SPAN, TEMPERATURE_K, compute_dataset,
 )
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
@@ -80,15 +80,15 @@ def stratify(material: str) -> None:
     rms_gxy2 = float(np.sqrt(np.mean(gxy2 ** 2)))
 
     usable_om, eta0_om, dplus_om, dminus_om = mode_eta_contribution(
-        rows, "gamma_xy", lambda r: r["a2"] * H / r["omega_ref"]
+        rows, "gamma_xy", lambda r: r["a2"] * STRAIN_SPAN / r["omega_ref"]
     )
     usable_om2, eta0_om2, dplus_om2, dminus_om2 = mode_eta_contribution(
-        rows, "gamma_omega2", lambda r: r["b2"] * H / r["omega_ref"] ** 2
+        rows, "gamma_omega2", lambda r: r["b2"] * STRAIN_SPAN / r["omega_ref"] ** 2
     )
     eta0_total_om = np.sum(eta0_om)
     eta0_total_om2 = np.sum(eta0_om2)
 
-    print(f"{material}: omega^2 flag metric is |b2*h/omega_ref^2| vs the ABSOLUTE "
+    print(f"{material}: omega^2 flag metric is |b2*2h/omega_ref^2| vs the ABSOLUTE "
           f"threshold {ABS_FLAG_THRESHOLD_GAMMA_OMEGA2:.4f} (SrTiO3-Richardson-calibrated, "
           f"identical for all materials, see check_shear_nonlinearity.py; this material's "
           f"own rms(gamma_omega2)={rms_gxy2:.4f} is printed for context only — a "
@@ -113,10 +113,10 @@ def stratify(material: str) -> None:
 
         flagged_om = sum(1 for r in bin_stable
                           if np.isfinite(r["a2"]) and rms_gxy > 0
-                          and abs(r["a2"] * H / r["omega_ref"]) / rms_gxy > FLAG_FRACTION)
+                          and abs(r["a2"] * STRAIN_SPAN / r["omega_ref"]) / rms_gxy > FLAG_FRACTION)
         flagged_om2 = sum(1 for r in bin_stable
                            if np.isfinite(r["gamma_omega2"])
-                           and abs(r["b2"] * H / r["omega_ref"] ** 2) > ABS_FLAG_THRESHOLD_GAMMA_OMEGA2)
+                           and abs(r["b2"] * STRAIN_SPAN / r["omega_ref"] ** 2) > ABS_FLAG_THRESHOLD_GAMMA_OMEGA2)
 
         bin_mask_om = np.array([lo <= r["omega_ref"] < hi for r in usable_om])
         bin_mask_om2 = np.array([lo <= r["omega_ref"] < hi for r in usable_om2])
@@ -156,7 +156,7 @@ def stratify(material: str) -> None:
         n_above = len(above) or 1
         flagged_above = sum(1 for r in above
                              if np.isfinite(r["gamma_omega2"])
-                             and abs(r["b2"] * H / r["omega_ref"] ** 2) > ABS_FLAG_THRESHOLD_GAMMA_OMEGA2)
+                             and abs(r["b2"] * STRAIN_SPAN / r["omega_ref"] ** 2) > ABS_FLAG_THRESHOLD_GAMMA_OMEGA2)
         flag_pct_above = 100.0 * flagged_above / n_above
 
         mask_above = np.array([r["omega_ref"] >= cutoff for r in usable_om2])

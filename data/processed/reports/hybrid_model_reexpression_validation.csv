@@ -1,0 +1,28 @@
+# build_hybrid_model.py reexpress: STO222.xml (2x2x2 supercell) vs STO444_tut.xml (4x4x4 re-expression), both evaluated
+# with the same builder (minimum-image Fourier sum, rigid-ion dipole subtraction on each set's own supercell, rigid-ion NA term,
+# tutorial BORN); frequencies in cm^-1 with the standard atomic masses; multiplet overlap = minimum over degenerate
+# multiplets (|d omega| < 0.5 cm^-1) of the summed eigenspace overlap.
+check,n_q,max_abs_domega_cm1,max_rel_dynmat_norm,min_multiplet_overlap,gamma_translation_max_cm1,q
+band_path_255,255,1.24411e-05,1.47412e-14,1,1.77944e-05,
+mesh_11cubed,1331,1.24411e-05,1.47412e-14,1,1.77944e-05,
+offgrid_q0,1,6.89226e-13,8.28777e-16,1,,(0.3300 0.4389 0.3903)
+offgrid_q1,1,1.03739e-12,6.30545e-16,1,,(0.4294 0.0821 0.4085)
+offgrid_q2,1,3.97904e-13,8.94069e-16,1,,(0.2672 0.2012 0.1914)
+offgrid_q3,1,7.67386e-13,6.26206e-16,1,,(0.2818 0.3014 0.4782)
+offgrid_q4,1,5.68434e-13,1.42546e-15,1,,(0.3289 0.4756 0.1661)
+offgrid_q5,1,1.13687e-12,2.87746e-15,1,,(0.0976 0.0943 0.2860)
+offgrid_q6,1,5.68434e-13,1.09993e-15,1,,(0.4469 0.3317 0.2856)
+offgrid_q7,1,4.54747e-13,1.14841e-15,1,,(0.0847 0.1570 0.3568)
+offgrid_q8,1,7.38964e-13,1.0527e-15,1,,(0.2278 0.0815 0.4120)
+offgrid_q9,1,1.08713e-12,7.35993e-16,1,,(0.4321 0.2839 0.4189)
+offgrid_q10,1,5.68434e-13,1.1174e-15,1,,(0.3767 0.1166 0.2965)
+offgrid_q11,1,8.2423e-13,9.74546e-16,1,,(0.2245 0.3193 0.1037)
+offgrid_q12,1,4.83169e-13,8.6897e-16,1,,(0.2092 0.1401 0.4065)
+offgrid_q13,1,5.96856e-13,7.79724e-16,1,,(0.3160 0.3220 0.3352)
+offgrid_q14,1,9.80549e-13,1.32928e-15,1,,(0.1403 0.2561 0.1758)
+offgrid_q15,1,4.83169e-13,1.48723e-15,1,,(0.4671 0.1660 0.3487)
+offgrid_q16,1,4.83169e-13,8.43114e-16,1,,(0.4296 0.3449 0.1326)
+offgrid_q17,1,1.77636e-12,8.49623e-16,1,,(0.4416 0.3079 0.1382)
+offgrid_q18,1,3.69482e-13,1.03148e-15,1,,(0.4512 0.3009 0.1522)
+offgrid_q19,1,7.53175e-13,7.70149e-16,1,,(0.3079 0.2305 0.2444)
+grid_4cubed_exactness,64,1.24411e-05,,,,

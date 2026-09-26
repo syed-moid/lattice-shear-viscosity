@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Manuscript Fig. 4 — order-of-magnitude consistency check of eta(300 K)
-against the GHz Brillouin damping of Maerten et al. (arXiv:1810.00381; no
-published journal version exists as of 2026-07-24 — cite as preprint).
-The measured quantity is the longitudinal-acoustic damping rate, not the
-same tensor component as the computed eta_xyxy.
+"""Scale illustration (no longer a validation figure) — computed shear
+eta_xyxy(300 K) converted to a static Akhiezer damping rate against the
+GHz Brillouin damping of Maerten et al. (arXiv:1810.00381; cite as
+preprint). The measured quantity is the LONGITUDINAL-acoustic damping rate
+(eta_xxxx plus a thermoelastic term), not the computed shear component,
+and at 70 GHz the shear-carrying modes have Omega tau of order 1 (about
+half of the static response survives); the figure therefore only places
+the two damping scales side by side.
 
 This comparison figure has no slot in the original 4-figure skeleton plan
 (Figs 1-4 = spectra/eta(T)/isotope/near-T_C); the script filename keeps
@@ -22,8 +25,8 @@ Caveat rendered on the figure: their LA phonons probe the longitudinal
 component eta_xxxx; ours is the shear eta_xyxy (order-of-magnitude
 comparison; same-polarization sharpening = deferred uniaxial pair).
 
-Writes figures/fig5_maerten_validation.{png,pdf}.
-Usage: uv run python scripts/fig5_maerten_validation.py
+Writes figures/extra_maerten_scale.{png,pdf}.
+Usage: uv run python scripts/extra_maerten_scale.py
 """
 
 from __future__ import annotations
@@ -36,7 +39,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
-OUT = REPO / "figures" / "fig5_maerten_validation"
+OUT = REPO / "figures" / "extra_maerten_scale"
 RHO = 5110.0  # kg/m^3, measured (Bell & Rupprecht 1963)
 
 # our eta(300 K)
@@ -65,12 +68,8 @@ ax.loglog(q_axis, gamma_ghz(ETA_OURS, q_axis), "-", color="#4878a8", lw=1.8,
           label=rf"this work: $\eta_{{xyxy}}$ = {ETA_OURS * 1e3:.2f}$\times10^{{-3}}$ Pa s"
                 "\n" r"($\Gamma = \eta q^2/2\rho$, Akhiezer)")
 
-# old pre-registered decade, shown as excluded
-ax.fill_between(q_axis, gamma_ghz(1e-4, q_axis), gamma_ghz(1e-3, q_axis),
-                color="#c86a6a", alpha=0.25,
-                label="order-unity-Grüneisen estimate\n"
-                      r"($10^{-4}$–$10^{-3}$ Pa s; below the"
-                      "\nreported experimental range)")
+# finite-frequency (single-Debye per mode) response is about half the static
+# value at 70 GHz: show the static line only and state it in the caveat
 
 # their measured band at q ~ 52-58 um^-1
 q_lo, q_hi = 50, 60
@@ -91,13 +90,13 @@ ax.plot([q_ref], [g_pred], "*", color="#a84848", ms=14,
 
 ax.set_xlabel(r"acoustic wavevector $q$ ($\mu$m$^{-1}$)")
 ax.set_ylabel(r"damping rate $\Gamma$ (GHz)")
-ax.set_title(r"consistency check: $\eta$(300 K) vs GHz Brillouin damping "
-             "(Maerten et al., arXiv:1810.00381)", fontsize=8)
+ax.set_title(r"damping scales: computed shear $\eta$(300 K) vs GHz LA Brillouin damping "
+             "(Maerten et al., arXiv:1810.00381)", fontsize=7.5)
 ax.text(0.03, 0.97,
-        "their LA phonons probe $\\eta_{xxxx}$; ours is $\\eta_{xyxy}$\n"
-        "(order-of-magnitude consistency check; their Fig. 6\n"
-        "shows an approximately $q^2$ dependence at 300 K)",
-        transform=ax.transAxes, fontsize=6.5, va="top", color="0.35")
+        "their LA phonons probe $\\eta_{xxxx}$ (+ thermoelastic term); ours is the shear $\\eta_{xyxy}$\n"
+        "static Akhiezer conversion; at 70 GHz the shear-carrying modes have $\\Omega\\tau \\sim 1$\n"
+        "(finite-frequency response about half the static value) — scale illustration only",
+        transform=ax.transAxes, fontsize=6.0, va="top", color="0.35")
 ax.legend(fontsize=6.3, loc="lower right", framealpha=0.95)
 ax.set_xlim(q_axis[0], q_axis[-1])
 fig.tight_layout()

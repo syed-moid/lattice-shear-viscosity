@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-__all__ = ["Material", "SRTIO3", "BATIO3"]
+__all__ = ["Material", "SRTIO3", "BATIO3", "BATIO3_TC_VSR1982"]
 
 BOHR_TO_M = 5.29177210903e-11
 
@@ -39,7 +39,14 @@ SRTIO3 = Material(
 
 # BaTiO3: relaxed a = 7.570 * 1.004851461 bohr = 4.0254 Angstrom,
 # V = 65.222 Angstrom^3 (dft/qe/BaTiO3/relax/vc_relax.out).
-# Cubic-to-tetragonal ferroelectric transition at 393 K.
+# Cubic-to-tetragonal ferroelectric transition: 393 K is the standard
+# literature value for flux-grown crystals and is kept here as the generic
+# material constant. The zone-center soft-mode series used for the
+# BaTiO3 sector calculation comes from the melt-grown samples of Vogt,
+# Sanjurjo and Rossbroich, Phys. Rev. B 26, 5904 (1982), whose T_C is
+# about 403 K; that value (BATIO3_TC_VSR1982) is the one against which the
+# distance to the transition of the VSR-anchored series must be quoted
+# (410 K = T_C + 7 K).
 BATIO3 = Material(
     name="BaTiO3",
     atoms_per_cell=5,
@@ -48,3 +55,9 @@ BATIO3 = Material(
     mass_density=6.02e3,
     transition_temperature=393.0,
 )
+
+# T_C of the melt-grown BaTiO3 crystals of the VSR 1982 hyper-Raman study,
+# the source of the soft-mode frequencies and dampings in
+# data/processed/softmode_inputs_BaTiO3.csv (VSR contrast their ~403 K with
+# ~395 K for flux-grown crystals).
+BATIO3_TC_VSR1982 = 403.0

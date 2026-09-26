@@ -1,0 +1,19 @@
+# table_sensitivity_SrTiO3.csv - produced by scripts/table_sensitivity.py
+# construction and model sensitivity of eta_xyxy(300 K), 11^3 outer mesh; production row (hybrid model) first; legacy rows
+# are different surfaces and different models (ledger), not the same model with one switch changed.
+row,eta_300K_Pas,ratio_to_production,note
+"hybrid model 2x2x2/12x12x12, projected SCPH coupling C (production)",5.075831e-04,1.0000,"h = 0.010; finite-mesh result"
+"hybrid model 2x2x2/12x12x12, projected harmonic coupling B",7.437184e-04,1.4652,"same surface, same basis"
+"hybrid model 2x2x2/12x12x12, transferred coupling A",9.450334e-04,1.8618,"transferred bare coupling (retired)"
+"C, coupling from the 0.010-amplitude pair (h = 0.020)",4.723165e-04,0.9305,"outside the linear regime for the near-unstable manifold"
+"C, Richardson (0.010/0.020) on asymptotic modes only",5.208859e-04,1.0262,"47 % of modes asymptotic"
+"C, Richardson everywhere",5.242102e-04,1.0328,"sensitivity, not an extrapolation"
+"C, nearest-q linewidths (8^3 -> 11^3)",5.180347e-04,1.0206,"instead of the frequency-class map"
+"diagnostic surface 2x2x2/2x2x2, C",5.842256e-04,1.1510,"diagnostic surface (different input model)"
+"diagnostic surface 2x2x2/12x12x12, C, consistent linewidths",3.628805e-04,0.7149,"diagnostic surface (different input model)"
+"diagnostic surface 2x2x2/12x12x12, C, linewidths fixed at 2x2x2/2x2x2",6.805467e-04,1.3408,"diagnostic surface (different input model)"
+"own 4x4x4/4x4x4, SELF_OFFDIAG=1, C",4.981387e-04,0.9814,"diagnostic surface (different input model)"
+"own 4x4x4/8x8x8, SELF_OFFDIAG=1, C",4.110618e-04,0.8098,"diagnostic surface (different input model)"
+"diagnostic surface 2x2x2/2x2x2, symmetrised strained inputs, C",6.109809e-04,1.2037,"diagnostic surface (different input model)"
+"legacy: tutorial surface, direct matching, transferred bare coupling",1.148259e-03,2.2622,"earlier model, direct matching"
+"legacy: tutorial surface, rank map",9.721807e-04,1.9153,"earlier model, rank map"

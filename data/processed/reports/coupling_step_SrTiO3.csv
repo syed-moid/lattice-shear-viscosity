@@ -1,0 +1,13 @@
+# coupling_step_SrTiO3.csv - produced by scripts/check_coupling_step.py
+# strain-step statistics of the production coupling Lambda_C (hybrid model tut_z_od1, SELF_OFFDIAG = 1) at 300 K, 11^3;
+# h = 0.010 (production) vs h = 0.020; asymptotic = |ratio - 1| < 0.25 and same sign; Richardson on the derivative.
+omega0_bin,n_modes,eta_C_h010_Pas,frac_modes_asymptotic,eta_weight_non_asymptotic,median_ratio_h020_over_h010,eta_C_h020_Pas,eta_C_richardson_asymptotic_only_Pas,eta_C_richardson_all_Pas
+imaginary,99,5.869805e-05,0.4343,0.1458,0.7262,3.798718e-05,6.505063e-05,6.675780e-05
+[0-25),36,1.496386e-06,0.1111,0.0416,0.6271,1.405012e-06,1.531477e-06,1.541618e-06
+[25-50),122,1.094689e-06,0.2213,0.1204,0.3671,1.200130e-06,1.093305e-06,1.116559e-06
+[50-100),1470,1.429827e-04,0.5776,0.0146,0.9624,1.418399e-04,1.445950e-04,1.447731e-04
+[100-150),3566,2.750514e-04,0.6568,0.0170,0.9614,2.646097e-04,2.793314e-04,2.799737e-04
+[150-175),1489,1.096261e-05,0.2740,0.1135,0.7050,1.004844e-05,1.134650e-05,1.153385e-05
+[175-300),4273,1.304352e-05,0.4720,0.1046,0.8740,1.177698e-05,1.357526e-05,1.378325e-05
+[300-inf),8907,4.253709e-06,0.4053,0.3375,0.7941,3.449136e-06,4.362348e-06,4.730307e-06
+all,19962,5.075831e-04,0.4659,0.0385,0.8569,4.723165e-04,5.208859e-04,5.242102e-04

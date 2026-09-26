@@ -1,0 +1,20 @@
+# produced by scripts/export_coupling_constructions.py; SrTiO3, 300 K, 11^3 outer mesh, stress-correlator kernel,
+# Vogt Gamma exception; A = transferred coupling (retired), B = projected harmonic coupling, C = projected SCPH coupling;
+# surface hybrid = example harmonic set + QE strain perturbation (production); diagnostic = own QE-PBEsol harmonic set;
+# correction mesh (KMESH_INTERPOLATE) 2^3, inner mesh (KMESH_SCPH) as listed; linewidths consistent (own RTA of each
+# surface) or fixed at the 2^3/2^3 values of the same input model. Finite-mesh model results; no converged limit implied.
+surface,correction_mesh,inner_mesh,linewidths,eta_A_Pas,eta_B_Pas,eta_C_Pas
+hybrid,2,2,consistent,0.0010289,0.000751629,0.000511106
+hybrid,2,4,consistent,0.000952481,0.000727527,0.000480474
+hybrid,2,4,fixed_at_2x2x2,0.00117071,0.000894914,0.000588966
+hybrid,2,8,consistent,0.000934336,0.000726658,0.000480824
+hybrid,2,8,fixed_at_2x2x2,0.00126621,0.000986103,0.000651687
+hybrid,2,12,consistent,0.000945033,0.000743718,0.000507583
+hybrid,2,12,fixed_at_2x2x2,0.00129534,0.00101666,0.00069124
+diagnostic,2,2,consistent,0.00191446,0.000848154,0.000584226
+diagnostic,2,4,consistent,0.0017388,0.000792818,0.000504469
+diagnostic,2,4,fixed_at_2x2x2,0.00214514,0.00102791,0.000662506
+diagnostic,2,8,consistent,0.00150529,0.000749936,0.000419363
+diagnostic,2,8,fixed_at_2x2x2,0.00231605,0.001183,0.000678356
+diagnostic,2,12,consistent,0.00138114,0.000699143,0.000362881
+diagnostic,2,12,fixed_at_2x2x2,0.0023719,0.00123755,0.000680547

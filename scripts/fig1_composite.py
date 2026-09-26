@@ -2,17 +2,18 @@
 """Figure 1 (composite): vibrational input and viscosity output.
 
 Panels:
-  (a) SrTiO3 harmonic dispersion (PBEsol solid, PBE audit underlay) with
-      the renormalized 300 K soft-mode anchor (Vogt 1995);
+  (a) SrTiO3, hybrid model: bare harmonic dispersion of the example harmonic set (grey) and its SCPH
+      renormalisation at 300 K (inner mesh 12^3; blue), with the 300 K soft-mode anchor (Vogt 1995);
   (b) BaTiO3 harmonic dispersion with the 453 K INS points (Tomeno 2020);
-  (c) mode-resolved decomposition of eta_xyxy(300 K) with the 175 cm-1
-      Route S / Route H partition line.
+  (c) mode-resolved decomposition of eta_xyxy(300 K) of the hybrid model by the bare frequency of each
+      renormalised mode's partner, for the three coupling constructions.
 The spectra show what the modes are; the decomposition shows where the
 viscosity lives.
 
 Data provenance (committed CSVs only, no hand-edited data):
   data/processed/harmonic_dispersion_<material>.csv
   data/processed/ins_reference_points_<material>.csv
+  data/processed/dispersion_hybrid_SrTiO3.csv  <- scripts/export_hybrid_dispersion.py
   data/processed/eta_spectral_density_SrTiO3.csv
     <- scripts/audit_eta_assembly.py::export_spectral_density
 
@@ -102,6 +103,30 @@ def draw_dispersion(ax, material, label):
     ax.tick_params(length=3)
 
 
+def draw_hybrid(ax, label):
+    d = pd.read_csv(REPO / "data" / "processed" / "dispersion_hybrid_SrTiO3.csv", comment="#")
+    ticks = [d[d.path_index == i].path_coord.iloc[0] for i in PATH_POINTS]
+    for b in sorted(d.branch.unique()):
+        blk = d[d.branch == b].sort_values("path_index")
+        ax.plot(blk.path_coord, blk.omega_bare_cm1, lw=0.6, color=BRANCH_PBE, zorder=1.5,
+                label="bare harmonic (example set)" if b == 1 else None)
+        ax.plot(blk.path_coord, blk.omega_scph300_cm1, lw=0.8, color=ANCHOR_RENORM, zorder=2,
+                label="SCPH 300 K (inner mesh $12^3$)" if b == 1 else None)
+    ax.axhline(0.0, lw=0.6, color=GRID, zorder=1)
+    for t in ticks[1:-1]:
+        ax.axvline(t, lw=0.5, color=GRID, zorder=1)
+    ax.scatter([0.0], [89.24], s=30, marker="D", facecolor=ANCHOR_INS, edgecolor="white", linewidth=0.6, zorder=4,
+               clip_on=False, label="soft mode 300 K (Vogt 1995)")
+    ax.legend(loc="upper right", frameon=False, fontsize=6.5, handletextpad=0.4)
+    ax.set_xticks(ticks)
+    ax.set_xticklabels(PATH_POINTS.values())
+    ax.set_xlim(ticks[0], ticks[-1])
+    ax.set_ylim(-300, 850)
+    ax.set_ylabel(r"$\omega$ (cm$^{-1}$)")
+    ax.set_title(f"({label}) SrTiO$_3$, hybrid model", loc="left", fontsize=9)
+    ax.tick_params(length=3)
+
+
 def draw_decomposition(ax, label):
     rows = [line.split(",") for line in
             (REPO / "data" / "processed" / "eta_spectral_density_SrTiO3.csv")
@@ -110,32 +135,27 @@ def draw_decomposition(ax, label):
     lo = np.array([float(r[0]) for r in rows])
     hi = np.array([float(r[1]) for r in rows])
     centers, width = 0.5 * (lo + hi), hi - lo
-    routeS = np.array([float(r[2]) for r in rows])
-    h_stab = np.array([float(r[3]) for r in rows])
-    h_unst = np.array([float(r[4]) for r in rows])
-    g_sec = np.array([float(r[5]) for r in rows])
-    bottom = np.zeros_like(centers)
-    for series, lab, color in [
-            (h_stab, "Route H, stable", "#4878a8"),
-            (h_unst + g_sec, r"Route H, formerly unstable + $\Gamma$ sector", "#a84848"),
-            (routeS, "Route S", "#6aa86a")]:
-        ax.bar(centers, series * 1e3, width=width * 0.92, bottom=bottom * 1e3,
-               label=lab, color=color, alpha=0.88)
-        bottom = bottom + series
-    peak = float((h_stab + h_unst + g_sec + routeS).max())
+    eta_c = np.array([float(r[2]) for r in rows])
+    eta_g = np.array([float(r[3]) for r in rows])
+    eta_b = np.array([float(r[4]) for r in rows])
+    eta_a = np.array([float(r[5]) for r in rows])
+    ax.bar(centers, eta_c * 1e3, width=width * 0.92, label="projected SCPH coupling (C)", color="#4878a8", alpha=0.88)
+    ax.bar(centers, eta_g * 1e3, width=width * 0.92, bottom=eta_c * 1e3, label=r"$\Gamma$ TO1 triplet (Vogt)",
+           color="#c8a848", alpha=0.88)
+    ax.step(np.append(lo, hi[-1]), np.append(eta_b, eta_b[-1]) * 1e3, where="post", color="#a84848", lw=1.0,
+            label="projected harmonic coupling (B)")
+    ax.step(np.append(lo, hi[-1]), np.append(eta_a, eta_a[-1]) * 1e3, where="post", color="0.3", lw=0.9, ls="--",
+            label="transferred coupling (A, retired)")
+    peak = float(max((eta_c + eta_g).max(), eta_b.max(), eta_a.max()))
     ax.set_ylim(0, peak * 1e3 * 1.12)
-    ax.axvline(CUTOFF, color="k", ls="--", lw=0.9)
-    ax.annotate("Route S / H partition\n175 cm$^{-1}$ (Richardson)",
-                xy=(CUTOFF, peak * 1e3 * 0.35), xytext=(300, peak * 1e3 * 0.55),
-                fontsize=6.8, arrowprops=dict(arrowstyle="->", lw=0.7))
     ax.axvspan(lo[0], 0.0, color="0.9", zorder=0)
-    ax.text(-50, peak * 1e3 * 0.98, "bare-imaginary\nmanifold",
+    ax.text(-50, peak * 1e3 * 0.98, "bare-imaginary\npartner manifold",
             fontsize=6.2, color="0.35", ha="center", va="top")
-    total = (routeS + h_stab + h_unst + g_sec).sum()
-    ax.set_xlabel(r"bare harmonic frequency $\omega_0$ (cm$^{-1}$)")
+    total = (eta_c + eta_g).sum()
+    ax.set_xlabel(r"bare frequency $\omega_0$ of the partner mode (cm$^{-1}$)")
     ax.set_ylabel(r"$\eta$ per 25 cm$^{-1}$ bin ($10^{-3}$ Pa s)")
-    ax.set_title(rf"(c) SrTiO$_3$ $\eta_{{xyxy}}$ decomposition, 300 K "
-                 rf"(total {total * 1e3:.2f}$\times 10^{{-3}}$ Pa s)",
+    ax.set_title(rf"(c) SrTiO$_3$ $\eta_{{xyxy}}$ decomposition, hybrid model, 300 K "
+                 rf"(C total {total * 1e3:.2f}$\times 10^{{-3}}$ Pa s, finite-mesh result)",
                  loc="left", fontsize=9)
     ax.legend(fontsize=6.8, loc="upper right", frameon=False)
     ax.set_xlim(lo[0], 900)
@@ -148,7 +168,7 @@ def main() -> None:
     ax_a = fig.add_subplot(gs[0, 0])
     ax_b = fig.add_subplot(gs[0, 1])
     ax_c = fig.add_subplot(gs[1, :])
-    draw_dispersion(ax_a, "SrTiO3", "a")
+    draw_hybrid(ax_a, "a")
     draw_dispersion(ax_b, "BaTiO3", "b")
     draw_decomposition(ax_c, "c")
     OUT.parent.mkdir(exist_ok=True)

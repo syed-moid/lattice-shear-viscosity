@@ -1,0 +1,15 @@
+# energy_projection_check_300K.csv - (energy_projection_check.py)
+# S1 = sum (hbar w)^2 n(n+1) gamma_xy, S_abs = same with |gamma_xy|; 300 K; gamma in the
+# production convention (the ratio is convention independent). gamma_xx - gamma_yy: NOT AVAILABLE
+# for SrTiO3 (needs the uniaxial pair, ).
+weights,sector,S1,S_abs,S1_over_S_abs,S1_over_sum_wt_gamma2_sqrt
+renormalised,routeS,-1.207073e-39,7.443264e-38,-1.621698e-02,-9.269798e-03
+renormalised,routeH_stable,-2.283444e-40,1.461794e-37,-1.562083e-03,-9.701372e-04
+renormalised,routeH_unstable,2.180526e-40,4.227650e-39,5.157774e-02,2.806363e-02
+renormalised,gamma_sector,9.344495e-43,4.932829e-40,1.894348e-03,1.894345e-03
+renormalised,ALL,-1.216430e-39,2.253329e-37,-5.398369e-03,-2.913514e-03
+bare_stable_only,routeS,-1.231285e-39,7.575428e-38,-1.625367e-02,-9.292580e-03
+bare_stable_only,routeH_stable,-2.222259e-40,1.480782e-37,-1.500733e-03,-9.317991e-04
+bare_stable_only,routeH_unstable,0.000000e+00,0.000000e+00,nan,nan
+bare_stable_only,gamma_sector,0.000000e+00,0.000000e+00,nan,nan
+bare_stable_only,ALL,-1.453511e-39,2.238325e-37,-6.493742e-03,-3.543517e-03

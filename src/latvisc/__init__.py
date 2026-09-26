@@ -6,8 +6,13 @@ Central formula (SI units throughout; eta in Pa s):
                * gruneisen_ij * gruneisen_lm * n (n + 1) * tau
 """
 
-from .gruneisen import mode_gruneisen_finite_strain, mode_gruneisen_volume
-from .isotope import isotope_scattering_rate, mass_variance_g2, matthiessen
+from .gruneisen import mode_gruneisen_finite_strain, mode_gruneisen_volume, path_to_tensor_shear
+from .isotope import (
+    isotope_scattering_rate,
+    isotope_scattering_rate_projected,
+    mass_variance_g2,
+    matthiessen,
+)
 from .materials import BATIO3, SRTIO3, Material
 from .matdyn_input import gamma_centered_mesh, write_matdyn_input
 from .softmode import cochran_frequency, is_overdamped
@@ -21,8 +26,9 @@ from .viscosity import (
     shear_viscosity,
     shear_viscosity_tensor,
     tau_effective,
-    tau_two_pole_exact,
     tau_from_linewidth,
+    tau_two_pole_exact,
+    tau_two_pole_stress,
     thz_to_rad_per_s,
 )
 
@@ -37,16 +43,19 @@ __all__ = [
     "inverse_quality_factor",
     "is_overdamped",
     "isotope_scattering_rate",
+    "isotope_scattering_rate_projected",
     "kinetic_viscosity_estimate",
     "mass_variance_g2",
     "matthiessen",
     "mode_gruneisen_finite_strain",
     "mode_gruneisen_volume",
+    "path_to_tensor_shear",
     "shear_viscosity",
     "shear_viscosity_tensor",
     "tau_effective",
-    "tau_two_pole_exact",
     "tau_from_linewidth",
+    "tau_two_pole_exact",
+    "tau_two_pole_stress",
     "thz_to_rad_per_s",
     "write_matdyn_input",
 ]

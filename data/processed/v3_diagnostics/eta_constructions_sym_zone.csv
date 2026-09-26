@@ -1,0 +1,6 @@
+# (eta_constructions.py): own-surface diagnostic model, 300 K; reference fixed (own SCPH omega_r,
+# freq-class linewidth map from the own 8^3 RTA of the same variant, stress kernel, Vogt Gamma anchor, no floor);
+# A = Route-H transfer, B = e_r K_HA e_r, C = e_r K_SCPH e_r (step h = 0.010; _rich = Richardson 0.010/0.020).
+# variant od0/od1 = SELF_OFFDIAG 0/1 (KMESH_INTERPOLATE 2x2x2, KMESH_SCPH 2x2x2, IFC supercell 2x2x2).
+variant,mesh,n_modes,eta_A_Pas,eta_B_Pas,eta_C_Pas,eta_B_rich_Pas,eta_C_rich_Pas,top20_share_A,shell1_frac_A,shell2_frac_A,routeS_A_Pas,routeH_stable_A_Pas,routeH_unstable_A_Pas,gamma_sector_A_Pas,top20_share_B,shell1_frac_B,shell2_frac_B,routeS_B_Pas,routeH_stable_B_Pas,routeH_unstable_B_Pas,gamma_sector_B_Pas,top20_share_C,shell1_frac_C,shell2_frac_C,routeS_C_Pas,routeH_stable_C_Pas,routeH_unstable_C_Pas,gamma_sector_C_Pas,frac_eta_A_overlap_lt_0p9,frac_eta_B_overlap_lt_0p9
+od1,11,19962,0.00191467,0.000848154,0.000610981,0.000904126,0.000610981,0.425612,0.33442,0.233473,4.0192e-05,0.00181154,6.15693e-05,1.3665e-06,0.0697095,0.0528932,0.156687,4.60094e-05,0.000756472,4.36284e-05,2.04458e-06,0.0723784,0.0617277,0.16962,4.6349e-05,0.000550495,1.30659e-05,1.07114e-06,0.634815,0.398374

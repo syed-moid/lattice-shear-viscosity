@@ -2,8 +2,8 @@
 # Route S/H partition moved to 150/175/200 cm-1 with all other inputs fixed;
 # 300 K totals and sector decomposition. Shell coverage: 1193 modes in [150,175), 930 in [175,200], 0 renormalized-map failures.
 # Route agreement over [150,200] (2123 modes, both routes): median |(gamma_H-gamma_S)/gamma_S| = 26.86%, mean = 27.06%, p90 = 31.78%, max = 39.54%
-# Total spread across the scan: 6.48% of the production value.
+# Total spread across the scan: 5.69% of the production value.
 cutoff_cm1,eta_total_Pas,eta_routeS_Pas,eta_routeH_stable_Pas,eta_routeH_unstable_Pas,eta_gamma_sector_Pas,delta_vs_175_percent
-150,4.081163e-03,6.670044e-04,3.281639e-03,1.272343e-04,5.285103e-06,+5.000
-175,3.886827e-03,2.551019e-04,3.499206e-03,1.272343e-04,5.285103e-06,+0.000
-200,3.829212e-03,1.321485e-04,3.564544e-03,1.272343e-04,5.285103e-06,-1.482
+150,1.199398e-03,1.572944e-04,1.012000e-03,2.871974e-05,1.384177e-06,+4.454
+175,1.148259e-03,6.504408e-05,1.053111e-03,2.871974e-05,1.384177e-06,+0.000
+200,1.134070e-03,3.352463e-05,1.070442e-03,2.871974e-05,1.384177e-06,-1.236

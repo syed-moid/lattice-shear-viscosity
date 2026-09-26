@@ -1,0 +1,7 @@
+# kappa(300 K) of the tutorial reproduction at 2/8 (SCPH), NONANALYTIC 3, RTA on the stated BTE mesh; T&T: SCPH q1 8^3, BTE 12^3,
+# calculated kappa(300 K) approximately 8.7 W/mK (Fig. 7); measured 11.0 (Martelli 2018).
+SELF_OFFDIAG,KMESH_SCPH,BTE_mesh,kappa_300K_W_mK,vs_TT_calc_8p7_pct,vs_meas_11p0_pct,wall_s
+1,8,8,7.6830,-11.6897,-30.1545,25.9098
+1,8,12,9.2382,6.1862,-16.0164,174.5621
+0,8,8,7.7365,-11.0747,-29.6682,27.4421
+0,8,12,8.9157,2.4793,-18.9482,177.0777
