@@ -25,8 +25,8 @@ measured values.
 
 This is release **v3.0** (git tag `v3.0`), the version of the revised manuscript. It is archived on Zenodo:
 
-- version DOI: 10.5281/zenodo.[VERSION DOI — inserted after deposit]
-- concept DOI (always resolves to the latest version): 10.5281/zenodo.21940877
+- version DOI: 10.5281/zenodo.22983132
+- concept DOI (always resolves to the latest version): 10.5281/zenodo.21940876
 
 The Zenodo record holds two files: the repository at tag v3.0 (`lattice-shear-viscosity-v3.0.zip`) and the raw SCPH/RTA
 runs (`lattice-shear-viscosity-v3.0-raw.zip`, contents in `data/raw/MANIFEST.md`).
