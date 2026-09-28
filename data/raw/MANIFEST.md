@@ -16,7 +16,7 @@ find data/raw/alamode_sto -mindepth 1 -type d -exec sh -c 'ls "$1"/*.in >/dev/nu
 ```
 
 Mesh tags `iNsM`: SCPH correction mesh N³ (`KMESH_INTERPOLATE`), inner mesh M³ (`KMESH_SCPH`). `od1` = SELF_OFFDIAG = 1. Set
-names: `reference` (unstrained), `shear_xy_p005`/`m005` (engineering shear ±0.005, h = 0.010), `p010`/`m010` (±0.010, h = 0.020);
+names: `reference` (unstrained), `shear_xy_p005`/`m005` (symmetric-path strain s = ±0.005, engineering shear h = 2s = ±0.010), `p010`/`m010` (s = ±0.010, h = ±0.020);
 prefix `z_` = hybrid model. File types per run: `renorm_*.xml` (dfc2 renormalised FC2), `mesh11_*.{in,log,npz}` (frequencies and
 eigenvectors on the 11³ outer mesh), `STO_RTA_*.{in,log,result,kl}` (8³ RTA linewidths), `scph_*`/`dfc2_*` logs, `runs.csv` (timing,
 iterations, final residual).
@@ -32,7 +32,7 @@ iterations, final residual).
 | `alamode_sto/own_od1/i2s2_sym, i2s2_sym_eval` | 15 M | diagnostic surface with symmetrised strained inputs; `i2s2_sym_eval` holds relative links to the evaluated set | `scripts/v3_diagnostics/make_symmetrised_inputs.py` + `run_scph_surface.py` | archived |
 | `alamode_sto/own_od1/i4s8_Tstab, i4s12_Tstab` | 27 M | diagnostic surface vs temperature | `run_scph_surface.py --temps ...` | archived |
 | `alamode_sto/own_od1/driver_*.log` | < 1 M | driver logs | `run_scph_surface.py` | archived |
-| `alamode_sto/own_surface_6p2/` | 67 M | diagnostic surface at 2³/2³, SELF_OFFDIAG 0 and 1, with the ±0.010 pair; input of the coupling-construction comparison and the acoustic-limit table | `run_scph_surface.py` (earlier layout) | archived |
+| `alamode_sto/own_surface_6p2/` | 67 M | diagnostic surface at 2³/2³, SELF_OFFDIAG 0 and 1, with the s = ±0.010 pair (h = ±0.020); input of the coupling-construction comparison and the acoustic-limit table | `run_scph_surface.py` (earlier layout) | archived |
 | `alamode_sto/own_surface_i2s2/` | 67 M | diagnostic surface 2³/2³ with the distributed sum rule (reference for the strain-step assessment) | `run_scph_surface.py` | archived |
 | `alamode_sto/surface_tutorial/` | 50 M | example set SCPH at 100–400 K on 11³ (submitted-model surface; benchmark) | ALAMODE anphon | archived |
 | `alamode_sto/example_set_benchmark/bench11/` | 12 M | example set under our settings: SELF_OFFDIAG × NONANALYTIC variants and κ | `scripts/v3_diagnostics/benchmark_variants_11p0.py` | archived |

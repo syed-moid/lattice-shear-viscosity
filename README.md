@@ -63,7 +63,7 @@ uv run pytest
 ## Reproduction workflow
 
 1. QE relax and DFPT runs (`dft/azure/` provisioning); inputs and small text outputs in `dft/qe/<material>/`,
-   including the shear-strained cells ε_xy = ±0.005, ±0.010.
+   including the shear-strained cells ε_xy = s = ±0.005, ±0.010 (engineering shear h = 2s = ±0.010, ±0.020).
 2. `scripts/scph/build_hybrid_model.py` re-expresses the example harmonic set on the 4×4×4 supercell and builds the
    strained sets D_tut ± h K_QE (ALAMODE 1.5.0 built locally; work directory in `DYNMAT_SCRATCH`).
 3. `scripts/scph/run_scph_surface.py` solves SCPH (SELF_OFFDIAG = 1) for the unstrained and strained sets at the chosen

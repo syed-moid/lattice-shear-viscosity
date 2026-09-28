@@ -98,8 +98,9 @@ def test_exact_vs_split_degeneracy_counterexample():
     For delta > 0 the correctly tracked eigenvalues lambda_+-(h) = a + delta/2 +- sqrt(delta^2/4 + h^2 k^2) are even in h,
     so their central differences vanish for every step h. A finite-step route that pairs the states at +-h by eigenvector
     overlap can switch branches once |h k| is comparable with delta (the strain mixes the two states and the overlap
-    pairs lambda_+(h) with lambda_-(-h)); it then returns +-k. That is an ambiguity of the matching, not a change of the
-    zero-strain perturbation rule."""
+    pairs lambda_+(h) with lambda_-(-h)); it then returns apparent slopes +-sqrt(delta^2/4 + h^2 k^2)/|h|, which approach
+    +-k for |h k| >> delta (300.67 for delta = 40, k = 300, h = 1) but are not exactly +-k. That is an ambiguity of the
+    matching, not a change of the zero-strain perturbation rule."""
     a, k = 1.0e4, 300.0
     K = np.array([[0.0, k], [k, 0.0]])
     # genuinely split pair: delta = 40 cm^-2 (splitting ~0.2 cm^-1 at 100 cm^-1)
@@ -114,7 +115,8 @@ def test_exact_vs_split_degeneracy_counterexample():
     for h in (0.01, 0.1, 1.0):
         lp, lm = np.linalg.eigvalsh(D0 + h * K), np.linalg.eigvalsh(D0 - h * K)
         assert np.allclose((lp - lm) / (2.0 * h), 0.0, atol=1e-9), (h, lp, lm)
-    # overlap-matched finite differences: zero while |h k| << delta; branch switching in the matching gives +-k for |h k| >> delta
+    # overlap-matched finite differences: zero while |h k| << delta; branch switching in the matching gives apparent slopes
+    # that approach +-k for |h k| >> delta (+-300.67 here at h = 1, within the 2 % tolerance)
     for h, expect in ((1e-4, [0.0, 0.0]), (1.0, [-k, k])):
         s = _matched_fd_slopes(D0 + h * K, D0 - h * K, h)
         tol = 0.02 * k if expect[1] else 1e-2 * k * (h * k / delta)

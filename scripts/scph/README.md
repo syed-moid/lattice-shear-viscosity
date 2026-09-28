@@ -89,7 +89,7 @@ for M in i2s2:4:2 i2s4:4:2 i2s8:2:5 i2s12:1:10 i3s12:1:10 i4s4:4:2 i4s8:2:5 i4s1
 done
 ```
 
-The 2³/2³ runs cover 100–400 K (`--temps 100 150 200 250 300 350 400`). The ±0.010 pair of the diagnostic surface was run at 2³/2³ only (`--sets shear_xy_p010 shear_xy_m010`); its outputs are in `data/raw/alamode_sto/own_surface_6p2/`. Temperature-stability runs: `--temps 200 250 300
+The 2³/2³ runs cover 100–400 K (`--temps 100 150 200 250 300 350 400`). The s = ±0.010 pair (h = ±0.020) of the diagnostic surface was run at 2³/2³ only (`--sets shear_xy_p010 shear_xy_m010`); its outputs are in `data/raw/alamode_sto/own_surface_6p2/`. Temperature-stability runs: `--temps 200 250 300
 350 400` with outputs in `own_od1/i4s8_Tstab` and `own_od1/i4s12_Tstab`. Symmetrised strained inputs:
 `scripts/v3_diagnostics/make_symmetrised_inputs.py`, then `run_scph_surface.py --mesh i2s2 --label i2s2sym --xml-dir <its
 output> --out data/raw/alamode_sto/own_od1/i2s2_sym`.
