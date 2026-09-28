@@ -37,7 +37,7 @@ HERE = Path(__file__).resolve().parent
 from _paths import DIAG, RAW, REPO, SCPH  # noqa: E402,F401  (sets sys.path)
 from coupling_kernel import Sets, evaluate_q  # noqa: E402
 from compute_eta_SrTiO3 import (  # noqa: E402
-    CM1, CUTOFF_CM1, OMEGA_MIN, SOFT_CHAR_CM1, V_CELL, _gamma_map_from_results, load_vogt,
+    CM1, CUTOFF_CM1, OMEGA_MIN, SOFT_CHAR_CM1, V_CELL, _gamma_map_from_results, average_degenerate_linewidths, load_vogt,
 )
 from crosscheck_alamode_sto_tau import parse_result  # noqa: E402
 from latvisc.viscosity import bose_einstein, tau_two_pole_stress  # noqa: E402
@@ -131,6 +131,7 @@ def main():
     zone_rows, bin_rows = [], []
     for variant in args.variants:
         freq_ren, gamma_ren = parse_result(args.rta or RTA[variant], target_temp=T)
+        gamma_ren, _ = average_degenerate_linewidths(freq_ren, gamma_ren)   # exact degenerate sets (TRISYM = 1)
         map_gamma, soft_median, _ = _gamma_map_from_results(freq_bare, freq_ren, gamma_ren)
         print(f"[{variant}] soft-manifold Gamma median {soft_median:.3f} cm-1; Vogt omega_s {vogt_w:.2f}, Gamma {vogt_g:.2f}")
         sets = Sets(variant, surface_dir=args.surface_dir, xml_pattern=args.xml_pattern)

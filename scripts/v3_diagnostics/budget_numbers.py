@@ -12,7 +12,8 @@ import numpy as np
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-from _paths import DIAG, RAW, REPO, SCPH  # noqa: E402,F401  (sets sys.path)
+from _paths import DIAG, RAW, REPO, SCPH, tee_stdout  # noqa: E402,F401  (sets sys.path)
+tee_stdout("budget_numbers_300K.txt")
 import compute_eta_SrTiO3 as em  # noqa: E402
 from latvisc.coupling import diagonalise, project_coupling, strain_derivative_matrix, transfer_bare_coupling  # noqa: E402
 from latvisc.viscosity import bose_einstein, tau_two_pole_exact, tau_two_pole_stress  # noqa: E402

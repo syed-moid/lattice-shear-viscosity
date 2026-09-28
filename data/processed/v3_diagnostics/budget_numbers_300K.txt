@@ -1,16 +1,16 @@
-eta(300 K) v5 = 5.0758e-04 Pa s, 19962 modes
+eta(300 K) v5 = 4.7494e-04 Pa s, 19962 modes
   finite-frequency eta'(1 GHz)/eta'(0) = 0.9998; eta-weighted <Omega tau> = 0.012
-  finite-frequency eta'(70 GHz)/eta'(0) = 0.5811; eta-weighted <Omega tau> = 0.862
-  coherence exposure (neighbour within Gamma / 2 Gamma at the same q): 35.0 % / 44.8 % of eta
+  finite-frequency eta'(70 GHz)/eta'(0) = 0.5829; eta-weighted <Omega tau> = 0.860
+  coherence exposure (neighbour within Gamma / 2 Gamma at the same q): 30.4 % / 40.9 % of eta
   noise floor delta Lambda = 100 cm-2 (uncorrelated): eta bias +0.00 %
   noise floor delta Lambda = 300 cm-2 (uncorrelated): eta bias +0.02 %
-  noise floor delta Lambda = 1000 cm-2 (uncorrelated): eta bias +0.24 %
-  kernel: energy-variable / stress-correlator = 0.99876 (eta ratio); max mode Gamma/omega = 0.127
-  eta share with Gamma/omega > 0.1: 0.25 %, > 0.3: 0.00 %
-  Gamma TO1 triplet (own od1 omega_r [133.7 133.7 133.7]): Lambda_A [-112515.  112031.    -222.], Lambda_B [-1.37737e+05 -6.90000e+01  1.37553e+05], Lambda_C [-109844.    1113.  109192.]; bare TO1 Lambda [-112515.    -222.  112031.] (omega0 [-58.5 -58.5 -58.5]); overlap [0.84 0.84 0.84]; sum B^2 / sum A^2 = 1.503
-  soft-branch taper [optical TO1 subspace (partner imaginary, omega_r >= 100)] q_t = 0.1: 12 modes, eta = 5.0774e-04 (+0.0 %); min omega on the set 136.7 cm-1 (was 140.3)
-  soft-branch taper [optical TO1 subspace (partner imaginary, omega_r >= 100)] q_t = 0.2: 24 modes, eta = 5.0915e-04 (+0.3 %); min omega on the set 117.1 cm-1 (was 140.3)
-  soft-branch taper [optical TO1 subspace (partner imaginary, omega_r >= 100)] q_t = 0.3: 24 modes, eta = 5.1005e-04 (+0.5 %); min omega on the set 109.7 cm-1 (was 140.3)
-  soft-branch taper [all bare-imaginary-partner modes near Gamma] q_t = 0.1: 12 modes, eta = 5.0774e-04 (+0.0 %); min omega on the set 136.7 cm-1 (was 140.3)
-  soft-branch taper [all bare-imaginary-partner modes near Gamma] q_t = 0.2: 24 modes, eta = 5.0915e-04 (+0.3 %); min omega on the set 117.1 cm-1 (was 140.3)
-  soft-branch taper [all bare-imaginary-partner modes near Gamma] q_t = 0.3: 24 modes, eta = 5.1005e-04 (+0.5 %); min omega on the set 109.7 cm-1 (was 140.3)
+  noise floor delta Lambda = 1000 cm-2 (uncorrelated): eta bias +0.25 %
+  kernel: energy-variable / stress-correlator = 0.99864 (eta ratio); max mode Gamma/omega = 0.127
+  eta share with Gamma/omega > 0.1: 0.26 %, > 0.3: 0.00 %
+  Gamma TO1 triplet (own od1 omega_r [133.7 133.7 133.7]): Lambda_A [-109296.    -222.  108812.], Lambda_B [-1.30915e+05 -6.90000e+01  1.30731e+05], Lambda_C [-109844.    1113.  109192.]; bare TO1 Lambda [-109296.    -222.  108812.] (omega0 [-58.5 -58.5 -58.5]); overlap [0.84 0.84 0.84]; sum B^2 / sum A^2 = 1.439
+  soft-branch taper [optical TO1 subspace (partner imaginary, omega_r >= 100)] q_t = 0.1: 12 modes, eta = 4.7509e-04 (+0.0 %); min omega on the set 136.7 cm-1 (was 140.3)
+  soft-branch taper [optical TO1 subspace (partner imaginary, omega_r >= 100)] q_t = 0.2: 24 modes, eta = 4.7641e-04 (+0.3 %); min omega on the set 117.1 cm-1 (was 140.3)
+  soft-branch taper [optical TO1 subspace (partner imaginary, omega_r >= 100)] q_t = 0.3: 24 modes, eta = 4.7726e-04 (+0.5 %); min omega on the set 109.7 cm-1 (was 140.3)
+  soft-branch taper [all bare-imaginary-partner modes near Gamma] q_t = 0.1: 12 modes, eta = 4.7509e-04 (+0.0 %); min omega on the set 136.7 cm-1 (was 140.3)
+  soft-branch taper [all bare-imaginary-partner modes near Gamma] q_t = 0.2: 24 modes, eta = 4.7641e-04 (+0.3 %); min omega on the set 117.1 cm-1 (was 140.3)
+  soft-branch taper [all bare-imaginary-partner modes near Gamma] q_t = 0.3: 24 modes, eta = 4.7726e-04 (+0.5 %); min omega on the set 109.7 cm-1 (was 140.3)

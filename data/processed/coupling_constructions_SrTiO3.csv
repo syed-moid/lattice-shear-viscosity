@@ -3,18 +3,21 @@
 # surface hybrid = example harmonic set + QE strain perturbation (production); diagnostic = own QE-PBEsol harmonic set;
 # correction mesh (KMESH_INTERPOLATE) 2^3, inner mesh (KMESH_SCPH) as listed; linewidths consistent (own RTA of each
 # surface) or fixed at the 2^3/2^3 values of the same input model. Finite-mesh model results; no converged limit implied.
+# Harmonic strained sets (A, B) in the ALAMODE convention (dipole term subtracted and restored in real space; Hermitian,
+# translationally invariant strain derivative). A takes the bare coupling of the maximum-overlap bare partner; inside an
+# exactly degenerate bare multiplet that partner depends on the eigenvector basis (sensitivity of eta_A about 1 %).
 surface,correction_mesh,inner_mesh,linewidths,eta_A_Pas,eta_B_Pas,eta_C_Pas
-hybrid,2,2,consistent,0.0010289,0.000751629,0.000511106
-hybrid,2,4,consistent,0.000952481,0.000727527,0.000480474
-hybrid,2,4,fixed_at_2x2x2,0.00117071,0.000894914,0.000588966
-hybrid,2,8,consistent,0.000934336,0.000726658,0.000480824
-hybrid,2,8,fixed_at_2x2x2,0.00126621,0.000986103,0.000651687
-hybrid,2,12,consistent,0.000945033,0.000743718,0.000507583
-hybrid,2,12,fixed_at_2x2x2,0.00129534,0.00101666,0.00069124
-diagnostic,2,2,consistent,0.00191446,0.000848154,0.000584226
-diagnostic,2,4,consistent,0.0017388,0.000792818,0.000504469
-diagnostic,2,4,fixed_at_2x2x2,0.00214514,0.00102791,0.000662506
-diagnostic,2,8,consistent,0.00150529,0.000749936,0.000419363
-diagnostic,2,8,fixed_at_2x2x2,0.00231605,0.001183,0.000678356
-diagnostic,2,12,consistent,0.00138114,0.000699143,0.000362881
-diagnostic,2,12,fixed_at_2x2x2,0.0023719,0.00123755,0.000680547
+hybrid,2,2,consistent,0.0009952502135,0.0006939766947,0.0004748165017
+hybrid,2,4,consistent,0.0009309405873,0.000677152143,0.0004485127218
+hybrid,2,4,fixed_at_2x2x2,0.001138258333,0.0008275043495,0.0005462818574
+hybrid,2,8,consistent,0.0009089240059,0.0006798765063,0.000450277196
+hybrid,2,8,fixed_at_2x2x2,0.001229214812,0.0009202750238,0.0006093073596
+hybrid,2,12,consistent,0.0009200385072,0.0006938524197,0.0004749411342
+hybrid,2,12,fixed_at_2x2x2,0.001257527722,0.0009445306335,0.0006437382321
+diagnostic,2,2,consistent,0.001875662299,0.0008185093358,0.0005733248623
+diagnostic,2,4,consistent,0.001734481335,0.0007793203079,0.0004986692678
+diagnostic,2,4,fixed_at_2x2x2,0.002104203251,0.0009982725486,0.000649444095
+diagnostic,2,8,consistent,0.001475882229,0.0007316198951,0.0004132564951
+diagnostic,2,8,fixed_at_2x2x2,0.002268892538,0.001152646079,0.0006693226473
+diagnostic,2,12,consistent,0.001228532917,0.0006397749516,0.0003492292128
+diagnostic,2,12,fixed_at_2x2x2,0.002322847021,0.001205079784,0.0006714007098

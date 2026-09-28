@@ -1,59 +1,59 @@
-== 10.1 scale: eta_C(300 K) = 5.0758e-04 Pa s over 19962 modes; V_cell = 5.9000e-29 m^3; 15/V_cell = 2.542e+29 = 3 n_at with n_at = 8.475e+28
-(a) O(1) benchmark 3 n_at k_B T <gamma^2> tau, n_at = 8.40e+28, <gamma^2> = 2, tau = 1 ps: 2.088e-03 Pa s; full sum / (a) = 0.243
-(b) eta-weighted <gamma_C^2> = 9.582, <tau> = 1.960 ps, <quantum weight (hbar w/kT)^2 n(n+1)> = 0.970;
-    3 n_at k_B T <gamma^2 tau>_plain = 5.195e-04 (classical weight), 5.030e-04 (quantum weight); eta/plain_q = 1.009; eta/(3 n_at k_B T <g2>_eta <tau>_eta <w>_eta) = 0.027
-    zone-rms gamma_C = 0.549; max |gamma_C| = 9.33; eta-weighted median |gamma_C| = 1.58
-    reference gamma^2 = 1 (same omega, Gamma, weights): eta_ref = 8.970e-04 Pa s; eta_C/eta_ref = 0.566
-       sector imaginary   : eta_C 5.745e-05 (11.3 % of eta_C) vs ref 5.093e-06 (0.6 % of ref); ratio C/ref = 11.281
-       sector [0,50)      : eta_C 2.591e-06 (0.5 % of eta_C) vs ref 8.405e-06 (0.9 % of ref); ratio C/ref = 0.308
-       sector gamma_sector: eta_C 1.244e-06 (0.2 % of eta_C) vs ref 3.898e-08 (0.0 % of ref); ratio C/ref = 31.914
-    reference gamma^2 = 2 (same omega, Gamma, weights): eta_ref = 1.794e-03 Pa s; eta_C/eta_ref = 0.283
-       sector imaginary   : eta_C 5.745e-05 (11.3 % of eta_C) vs ref 1.019e-05 (0.6 % of ref); ratio C/ref = 5.640
-       sector [0,50)      : eta_C 2.591e-06 (0.5 % of eta_C) vs ref 1.681e-05 (0.9 % of ref); ratio C/ref = 0.154
-       sector gamma_sector: eta_C 1.244e-06 (0.2 % of eta_C) vs ref 7.797e-08 (0.0 % of ref); ratio C/ref = 15.957
+== 10.1 scale: eta_C(300 K) = 4.7494e-04 Pa s over 19962 modes; V_cell = 5.9000e-29 m^3; 15/V_cell = 2.542e+29 = 3 n_at with n_at = 8.475e+28
+(a) O(1) benchmark 3 n_at k_B T <gamma^2> tau, n_at = 8.40e+28, <gamma^2> = 2, tau = 1 ps: 2.088e-03 Pa s; full sum / (a) = 0.228
+(b) eta-weighted <gamma_C^2> = 9.517, <tau> = 1.954 ps, <quantum weight (hbar w/kT)^2 n(n+1)> = 0.969;
+    3 n_at k_B T <gamma^2 tau>_plain = 4.863e-04 (classical weight), 4.706e-04 (quantum weight); eta/plain_q = 1.009; eta/(3 n_at k_B T <g2>_eta <tau>_eta <w>_eta) = 0.025
+    zone-rms gamma_C = 0.535; max |gamma_C| = 9.33; eta-weighted median |gamma_C| = 1.56
+    reference gamma^2 = 1 (same omega, Gamma, weights): eta_ref = 8.970e-04 Pa s; eta_C/eta_ref = 0.529
+       sector imaginary   : eta_C 5.403e-05 (11.4 % of eta_C) vs ref 4.788e-06 (0.5 % of ref); ratio C/ref = 11.286
+       sector [0,50)      : eta_C 2.469e-06 (0.5 % of eta_C) vs ref 8.001e-06 (0.9 % of ref); ratio C/ref = 0.309
+       sector gamma_sector: eta_C 1.244e-06 (0.3 % of eta_C) vs ref 3.898e-08 (0.0 % of ref); ratio C/ref = 31.914
+    reference gamma^2 = 2 (same omega, Gamma, weights): eta_ref = 1.794e-03 Pa s; eta_C/eta_ref = 0.265
+       sector imaginary   : eta_C 5.403e-05 (11.4 % of eta_C) vs ref 9.575e-06 (0.5 % of ref); ratio C/ref = 5.643
+       sector [0,50)      : eta_C 2.469e-06 (0.5 % of eta_C) vs ref 1.600e-05 (0.9 % of ref); ratio C/ref = 0.154
+       sector gamma_sector: eta_C 1.244e-06 (0.3 % of eta_C) vs ref 7.797e-08 (0.0 % of ref); ratio C/ref = 15.957
     sectors present: ['[0-50)', '[100-175)', '[175-inf)', '[50-100)', 'gamma_sector', 'imaginary']
-    top-20 share C = 0.1081
-    construction A on the same surface: eta_A = 9.450e-04; eta-weighted <gamma_A^2> = 29.16; top-20 share A = 0.153; A/C = 1.86
+    top-20 share C = 0.1090
+    construction A on the same surface: eta_A = 9.200e-04; eta-weighted <gamma_A^2> = 27.63; top-20 share A = 0.141; A/C = 1.94
               axis             bin  n_modes  eta_C_Pas    frac_C  eta_A_Pas    frac_A  eta_wt_gamma_C2  eta_wt_tau_ps
-0   omega0_partner     [-inf, 0.0)       99   5.87e-05    0.1156  0.0001309    0.1385            63.21          1.008
-1   omega0_partner     [0.0, 25.0)       36  1.496e-06  0.002948  8.681e-07 0.0009186            6.671          1.017
-2   omega0_partner    [25.0, 50.0)      122  1.095e-06  0.002157  5.782e-05   0.06118           0.9988          1.023
-3   omega0_partner   [50.0, 100.0)     1470   0.000143    0.2817  0.0003476    0.3678            3.492          2.241
-4   omega0_partner  [100.0, 150.0)     3566  0.0002751    0.5419  0.0003784    0.4004            2.234          2.154
-5   omega0_partner  [150.0, 175.0)     1489  1.096e-05    0.0216  1.335e-05   0.01413            1.637         0.8597
-6   omega0_partner  [175.0, 300.0)     4273  1.304e-05    0.0257  1.238e-05    0.0131           0.7254         0.6313
-7   omega0_partner    [300.0, inf)     8907  4.254e-06   0.00838    3.7e-06  0.003916            0.219         0.5822
+0   omega0_partner     [-inf, 0.0)       99  5.528e-05    0.1164  0.0001231    0.1338             63.2         0.9478
+1   omega0_partner     [0.0, 25.0)       36  1.406e-06   0.00296  8.188e-07 0.0008899            6.671         0.9553
+2   omega0_partner    [25.0, 50.0)      124  1.063e-06  0.002238  5.388e-05   0.05857           0.9848         0.9622
+3   omega0_partner   [50.0, 100.0)     1464  0.0001218    0.2565  0.0003321     0.361            3.293          2.252
+4   omega0_partner  [100.0, 150.0)     3572  0.0002676    0.5634  0.0003808    0.4139            2.195          2.166
+5   omega0_partner  [150.0, 175.0)     1487  1.069e-05   0.02251  1.325e-05   0.01441            1.633          0.843
+6   omega0_partner  [175.0, 300.0)     4273  1.306e-05    0.0275   1.23e-05   0.01337           0.7227          0.631
+7   omega0_partner    [300.0, inf)     8907  4.058e-06  0.008544  3.689e-06   0.00401           0.2107         0.5925
 8          omega_r     [0.0, 25.0)        0          0         0          0         0              NaN            NaN
-9          omega_r    [25.0, 50.0)       24  1.268e-07 0.0002498  1.244e-05   0.01316           0.5303           1.12
-10         omega_r   [50.0, 100.0)      570  7.795e-05    0.1536  0.0003301    0.3493             47.1          1.448
-11         omega_r  [100.0, 150.0)     3967  0.0003915    0.7713  0.0005632     0.596            2.934          2.174
-12         omega_r  [150.0, 175.0)     1028    1.2e-05   0.02364  1.614e-05   0.01708            1.726          1.169
-13         omega_r  [175.0, 300.0)     5062  2.147e-05    0.0423  1.907e-05   0.02018            1.026         0.6646
-14         omega_r    [300.0, inf)     9311  4.558e-06  0.008979  4.022e-06  0.004256           0.2105         0.5801
+9          omega_r    [25.0, 50.0)       24  1.195e-07 0.0002516  7.293e-06  0.007927           0.5301          1.057
+10         omega_r   [50.0, 100.0)      570  7.374e-05    0.1553  0.0003084    0.3352            46.83          1.399
+11         omega_r  [100.0, 150.0)     3967  0.0003632    0.7648  0.0005648    0.6139            2.816          2.186
+12         omega_r  [150.0, 175.0)     1028  1.198e-05   0.02523  1.654e-05   0.01798            1.729          1.169
+13         omega_r  [175.0, 300.0)     5062  2.147e-05   0.04521  1.894e-05   0.02059            1.025          0.664
+14         omega_r    [300.0, inf)     9311  4.379e-06  0.009221  4.029e-06  0.004379            0.202         0.5919
 == 10.2 Maerten (production lifetimes, stress kernel, eta_xyxy as the shear proxy; rho = 5110, v_L = 8000 m/s)
-    q = 52 um^-1 (f = 66.2 GHz): Gamma_static = 0.134 GHz, Gamma_dynamic = 0.081 GHz, eta'(Omega)/eta'(0) = 0.606
-    q = 55 um^-1 (f = 70.0 GHz): Gamma_static = 0.150 GHz, Gamma_dynamic = 0.087 GHz, eta'(Omega)/eta'(0) = 0.581
-    q = 58 um^-1 (f = 73.8 GHz): Gamma_static = 0.167 GHz, Gamma_dynamic = 0.093 GHz, eta'(Omega)/eta'(0) = 0.557
+    q = 52 um^-1 (f = 66.2 GHz): Gamma_static = 0.126 GHz, Gamma_dynamic = 0.076 GHz, eta'(Omega)/eta'(0) = 0.608
+    q = 55 um^-1 (f = 70.0 GHz): Gamma_static = 0.141 GHz, Gamma_dynamic = 0.082 GHz, eta'(Omega)/eta'(0) = 0.583
+    q = 58 um^-1 (f = 73.8 GHz): Gamma_static = 0.156 GHz, Gamma_dynamic = 0.087 GHz, eta'(Omega)/eta'(0) = 0.559
     local exponent d ln Gamma_dyn / d ln q at 0.4 um^-1: 2.00
     local exponent d ln Gamma_dyn / d ln q at 1.0 um^-1: 2.00
     local exponent d ln Gamma_dyn / d ln q at 3.1 um^-1: 1.99
     local exponent d ln Gamma_dyn / d ln q at 9.6 um^-1: 1.95
     local exponent d ln Gamma_dyn / d ln q at 29.6 um^-1: 1.65
-    local exponent d ln Gamma_dyn / d ln q at 51.9 um^-1: 1.27
-    local exponent d ln Gamma_dyn / d ln q at 57.0 um^-1: 1.20
-    local exponent d ln Gamma_dyn / d ln q at 100.0 um^-1: 0.85
+    local exponent d ln Gamma_dyn / d ln q at 51.9 um^-1: 1.28
+    local exponent d ln Gamma_dyn / d ln q at 57.0 um^-1: 1.21
+    local exponent d ln Gamma_dyn / d ln q at 100.0 um^-1: 0.87
 == 10.4 isotope
  f_18O       g2  eta_total_Pas  eta_over_eta0  eta_over_eta0_bare_eigenvectors
-  0.00 0.000000       0.000508       1.000000                         1.000000
-  0.01 0.000154       0.000507       0.999572                         0.999567
-  0.05 0.000733       0.000507       0.998059                         0.998034
-  0.10 0.001372       0.000506       0.996519                         0.996469
-  0.15 0.001920       0.000505       0.995281                         0.995208
-    Step-0 DOS-form series (submitted model, sigma 10): [[0.01, 0.99384], [0.05, 0.971628], [0.1, 0.94862], [0.15, 0.930032]]
-    eta-weighted Gamma_iso(f = 0.15) = 0.0247 cm-1 vs eta-weighted Gamma_anh = 1.5852 cm-1; ratio = 0.0156; eta-weighted <Gamma_iso/Gamma_anh> = 0.0054; modes with Gamma_iso available: 19962
+  0.00 0.000000       0.000475       1.000000                         1.000000
+  0.01 0.000154       0.000475       0.999561                         0.999557
+  0.05 0.000733       0.000474       0.998008                         0.997987
+  0.10 0.001372       0.000473       0.996429                         0.996387
+  0.15 0.001920       0.000473       0.995160                         0.995098
+    DOS-form series (submitted model, sigma 10): [[0.01, 0.99384], [0.05, 0.971628], [0.1, 0.94862], [0.15, 0.930032]]
+    eta-weighted Gamma_iso(f = 0.15) = 0.0254 cm-1 vs eta-weighted Gamma_anh = 1.6129 cm-1; ratio = 0.0158; eta-weighted <Gamma_iso/Gamma_anh> = 0.0056; modes with Gamma_iso available: 19962
     npz/mode-table frequency match: max |d omega| = 0.011 cm-1 (Gamma triplet uses Vogt: excluded -> 0.011)
     layout check at q index 7 [0.         0.         0.63636364]: builder O-share per mode [0.026 0.026 0.022 0.157 0.157 0.82  0.82  0.535 1.    1.    1.    0.517
  0.997 0.997 0.926]; npz [mode,comp] [0.026 0.026 0.022 0.157 0.157 0.82  0.82  0.535 1.    1.    1.    0.517
  0.997 0.997 0.926]; npz [comp,mode] [0.001 0.001 0.026 0.093 0.093 0.997 0.98  0.98  0.991 0.554 0.873 0.993
  0.873 0.554 0.993]
-    eta-weighted O-site share (own eigenvectors): layout [iq,mode,comp] 0.227; layout [iq,comp,mode] 0.179; plain mean 0.600/0.600 (physical mean = 9/15 = 0.6)
+    eta-weighted O-site share (own eigenvectors): layout [iq,mode,comp] 0.229; layout [iq,comp,mode] 0.185; plain mean 0.600/0.600 (physical mean = 9/15 = 0.6)

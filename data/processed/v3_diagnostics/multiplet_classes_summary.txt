@@ -1,0 +1,8 @@
+eta_C(300 K) production = 4.749411e-04 Pa s; groups on the 11^3 mesh with tolerance 0.5 cm^-1 (exactness threshold 0.001 cm^-1; groups with spread in (1e-4, 1e-2) cm^-1: 0):
+  near-degenerate cluster: 332 groups, eta share 4.3591%
+  singlet: 18586 groups, eta share 80.8900%
+  symmetry-enforced: 355 groups, eta share 14.7509%
+raw 8^3 RTA linewidths (TRISYM = 1) inside degenerate sets (|d omega| <= 1e-6 cm^-1): 60 sets; relative spread max 7.52e-01, median 1.66e-01; production linewidths are averaged over exact degenerate sets before the frequency-class map (compute_eta_SrTiO3.average_degenerate_linewidths)
+grouping tolerance 0.05 cm^-1: eta_C = 4.856897e-04 Pa s (+2.263 % vs production)
+grouping tolerance 0.5 cm^-1: eta_C = 5.050969e-04 Pa s (+6.349 % vs production)
+grouping tolerance 2.0 cm^-1: eta_C = 5.674751e-04 Pa s (+19.483 % vs production)

@@ -1,6 +1,6 @@
 # eta_BaTiO3.csv - produced by scripts/compute_eta_BaTiO3.py
-# ZONE-CENTER-ANCHORED soft-TO-branch SECTOR of eta_44 (Gamma-point-only scope,
-# manuscript 3.2): an exploratory PARTIAL quantity, not a total viscosity.
+# near-Gamma soft-TO-branch SECTOR of eta_44 (anchored at zone-centre data; integration
+# domain in Supplement S7): a partial quantity, not a total viscosity.
 # Lambda (tensor convention) from own strained cells; omega_s and the DHO
 # friction Gamma = gamma_VSR/2 from VSR 1982 hyper-Raman (measured points, no
 # Cochran fit); Harada dispersion, cap q_par<=0.47 A^-1; stress-correlator

@@ -1,0 +1,17 @@
+U verification (max relative residual of D(Rq) = U D(q) U^+ over the 16 operations, two generic q): bare hybrid 3.8e-15; SCPH hybrid 1.2e-08; QE 2.7e-15
+K_HA (production, B): ||K - K_sym|| / ||K|| on the 11^3 mesh: median 1.24e-02, 90 % 1.80e-02, 99 % 2.24e-02, max 2.79e-02
+K_SCPH (production, C): ||K - K_sym|| / ||K|| on the 11^3 mesh: median 1.20e-02, 90 % 1.68e-02, 99 % 2.18e-02, max 2.56e-02
+forbidden LA coupling along [100], |q| = 0.05: K_HA (production, B): 160.37 cm^-2 (Lambda/q^2 = 64147)
+forbidden LA coupling along [100], |q| = 0.05: K_HA (QE rigid-ion convention): 160.37 cm^-2 (Lambda/q^2 = 64147)
+forbidden LA coupling along [100], |q| = 0.05: K_SCPH (production, C): 152.64 cm^-2 (Lambda/q^2 = 61058)
+forbidden LA coupling along [100], |q| = 0.05: K_QE raw pair, no sum rule: 205.85 cm^-2 (Lambda/q^2 = 82339)
+forbidden LA coupling along [100], |q| = 0.05: K_QE pair, separate distributed sum rule: 160.37 cm^-2 (Lambda/q^2 = 64148)
+forbidden LA coupling along [100], |q| = 0.0125: K_HA (production, B): 10.22 cm^-2 (Lambda/q^2 = 65381)
+forbidden LA coupling along [100], |q| = 0.0125: K_HA (QE rigid-ion convention): 10.22 cm^-2 (Lambda/q^2 = 65381)
+forbidden LA coupling along [100], |q| = 0.0125: K_SCPH (production, C): 9.71 cm^-2 (Lambda/q^2 = 62140)
+forbidden LA coupling along [100], |q| = 0.0125: K_QE raw pair, no sum rule: 57.69 cm^-2 (Lambda/q^2 = 369205)
+forbidden LA coupling along [100], |q| = 0.0125: K_QE pair, separate distributed sum rule: 10.22 cm^-2 (Lambda/q^2 = 65383)
+reproduction of the production couplings from the stored K: max |d lam_B| = 0.00e+00, max |d lam_C| = 0.00e+00 cm^-2
+eta_B(300 K): K 6.938524e-04 Pa s; K_sym 6.926058e-04 Pa s; change -0.180 %
+eta_C(300 K): K 4.749411e-04 Pa s; K_sym 4.741199e-04 Pa s; change -0.173 %
+eta_C/eta_B: K 0.6845; K_sym 0.6845

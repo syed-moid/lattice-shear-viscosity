@@ -1,8 +1,10 @@
 # data/raw — manifest
 
 `data/raw/` holds the heavy calculation outputs. It is not in the git repository (only this manifest is). The folders marked
-**archived** are distributed as the raw-data archive `lattice-shear-viscosity-v3.0-raw.zip` on Zenodo (DOI: see `README.md`),
-with this manifest and `SHA256SUMS.txt` inside. Unzip it at the repository root so that the paths below resolve.
+**archived** are distributed as two raw-data archives on Zenodo (DOIs: see `README.md`): `lattice-shear-viscosity-v3.0-raw.zip`
+(release v3.0) and `lattice-shear-viscosity-v3.1-raw.zip` (release v3.1: the raw files new or changed since v3.0), each with
+this manifest and `SHA256SUMS.txt` inside. Unzip the v3.0 archive and then the v3.1 archive at the repository root so that
+the paths below resolve.
 
 Not in the archive: pseudopotential (UPF) files, superseded runs, and the `STO_anharm.xml` symbolic links. Every SCPH/RTA folder
 contains a link `STO_anharm.xml` to the decompressed ALAMODE example quartic set; recreate them after unpacking:
@@ -24,6 +26,7 @@ iterations, final residual).
 | `alamode_sto/z_tut/` (top level) | 7 M | hybrid model sets: `STO444_tut.xml` (example harmonic set on 4×4×4), strained `z_shear_xy_*_full_fc2.xml`, BORN files, q2r-format `z_*.fc` | `scripts/scph/build_hybrid_model.py reexpress|strain|qefc` | archived |
 | `alamode_sto/z_tut/i2s{2,4,8,12,16}/` | 121 M | hybrid model SCPH (unstrained + strained) and RTA at 300 K; `i2s12` is the production mesh | `scripts/scph/run_scph_surface.py` | archived |
 | `alamode_sto/z_tut/i2s12_T/` | 65 M | hybrid model at 2³/12³ for 200, 250, 350, 400 K (200 K strained set not converged, kept with suffix `.unconverged` where present) | `run_scph_surface.py --label i2s12T<T>` | archived |
+| `alamode_sto/z_tut/i2s12_rta_mesh/` | 5 M | RTA at 300 K on the production renormalised set (2³/12³) and the bare set with scattering meshes 10³ and 12³ (sensitivity) | anphon `MODE = RTA`; `scripts/v3_diagnostics/scattering_mesh_sensitivity.py` | archived (v3.1 increment) |
 | `alamode_sto/z_tut/bare/` | 1.3 M | harmonic (non-SCPH) RTA of the example set; linewidth reference for the projected-harmonic construction | ALAMODE anphon RTA | archived |
 | `alamode_sto/own_od1/i2s2, i2s4, i2s8, i2s12, i2s16, i3s12, i4s4, i4s8, i4s12, i4s16` | 305 M | diagnostic surface (own QE-PBEsol harmonic set), SCPH + RTA at 300 K per mesh | `run_scph_surface.py` | archived |
 | `alamode_sto/own_od1/i2s2_sym, i2s2_sym_eval` | 15 M | diagnostic surface with symmetrised strained inputs; `i2s2_sym_eval` holds relative links to the evaluated set | `scripts/v3_diagnostics/make_symmetrised_inputs.py` + `run_scph_surface.py` | archived |

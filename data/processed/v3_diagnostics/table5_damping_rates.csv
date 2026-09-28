@@ -1,0 +1,5 @@
+# table5_damping_rates.py: r = eta q^2/(2 rho) amplitude decay rate (10^9 s^-1) and HWHM r/(2 pi) (GHz); rho = 5110 kg/m^3,
+# v = 8000 m/s; eta = production eta_xyxy(300 K) (shear component used as a scale proxy for a longitudinal wave).
+q_um_inv,wave_frequency_GHz,eta_Pas,r_static_1e9_per_s,hwhm_static_GHz,finite_frequency_factor,r_dynamic_1e9_per_s,hwhm_dynamic_GHz
+52,66.20845633,0.0004749411624,0.1256595796,0.01999934323,0.6075163559,0.07634024985,0.01214992812
+58,73.84789359,0.0004749411624,0.1563309266,0.02488083973,0.5590403917,0.08739530245,0.01390939439

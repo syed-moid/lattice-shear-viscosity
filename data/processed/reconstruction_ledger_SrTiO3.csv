@@ -1,0 +1,14 @@
+# export_reconstruction_ledger.py: eta_xyxy(300 K) along the reconstruction from the submitted to the present
+# calculation (Supplement Table S8); Pa s, outer mesh 11^3; ratio to the previous step from unrounded values.
+# Successive changes along this specified sequence; not independent error estimates.
+step,calculation,eta_300K_Pas,record,ratio_to_previous
+0,"submitted calculation (symmetric-path derivative, energy kernel, per-q rank pairing, example surface with the distributed precomputed corrections)",0.003887,submitted manuscript (recorded value),
+1-3,engineering-shear derivative; stress-correlator kernel; exact isotope projection (isotope channel only),0.0009721807,"tag v3.0, data/processed/table_sensitivity_SrTiO3.csv, row 'legacy: tutorial surface, rank map'",0.2501108052
+4,per-q rank pairing -> eigenvector matching (same surface),0.001148259,"tag v3.0, data/processed/table_sensitivity_SrTiO3.csv, row 'legacy: tutorial surface, direct matching, transferred bare coupling'",1.181116844
+5,"own SCPH solution (diagnostic surface, 2^3/2^3), own linewidths; construction A",0.00191446,"tag v3.0, data/processed/coupling_constructions_SrTiO3.csv, row diagnostic 2/2 consistent, eta_A",1.667271931
+6,A -> projected harmonic coupling B (same surface),0.000848154,"tag v3.0, data/processed/coupling_constructions_SrTiO3.csv, row diagnostic 2/2 consistent, eta_B",0.4430251873
+7,B -> projected SCPH coupling C (same surface),0.000584226,"tag v3.0, data/processed/coupling_constructions_SrTiO3.csv, row diagnostic 2/2 consistent, eta_C",0.6888206623
+8,input model: diagnostic surface -> hybrid model (2^3/2^3),0.000511106,"tag v3.0, data/processed/coupling_constructions_SrTiO3.csv, row hybrid 2/2 consistent, eta_C",0.8748429546
+9,inner mesh 2^3 -> 12^3 (v3.0 reference),0.000507583,"tag v3.0, data/processed/coupling_constructions_SrTiO3.csv, row hybrid 2/12 consistent, eta_C",0.993107105
+10,diagonal projection for split modes and degenerate linewidth averaging (harmonic strained sets with the QE rigid-ion term),0.0004750038081,"scripts/export_reconstruction_ledger.py, production model with HARMONIC_CONVENTION = 'qe'",0.9358150453
+11,translationally invariant (ALAMODE) convention of the harmonic strained sets (reference),0.0004749411342,"data/processed/coupling_constructions_SrTiO3.csv, row hybrid 2/12 consistent, eta_C; data/processed/eta_SrTiO3.csv, T = 300 K",0.999868056

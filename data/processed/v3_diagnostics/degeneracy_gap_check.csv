@@ -1,0 +1,14 @@
+# degeneracy_gap_check.py: gaps between neighbouring renormalised frequencies (cm^-1) on the 11^3 mesh per set;
+# the exact-degeneracy threshold 1e-3 cm^-1 is valid where n_in_window_1e-4_1e-2 = 0.
+surface,mesh,T_K,n_gaps,n_below_1e-4,n_in_window_1e-4_1e-2,n_1e-2_to_0.5,max_gap_below_1e-4,min_gap_above_1e-2
+hybrid,i2s2,300,18634,360,0,446,1.259e-05,0.05187
+hybrid,i2s4,300,18634,360,0,348,1.651e-05,0.02228
+hybrid,i2s8,300,18634,360,0,300,1.88e-05,0.04351
+hybrid,i2s12,300,18634,360,0,332,1.934e-05,0.0464
+hybrid,i2s12,250,18634,360,0,260,2.105e-05,0.02427
+hybrid,i2s12,350,18634,360,0,336,1.759e-05,0.01862
+hybrid,i2s12,400,18634,360,0,384,1.62e-05,0.02976
+diagnostic,i2s2,300,18634,360,0,260,1.327e-05,0.04469
+diagnostic,i2s4,300,18634,360,0,312,1.79e-05,0.03734
+diagnostic,i2s8,300,18634,360,0,312,2.071e-05,0.08773
+diagnostic,i2s12,300,18634,360,24,264,2.149e-05,0.1454

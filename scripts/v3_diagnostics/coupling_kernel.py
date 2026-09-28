@@ -44,12 +44,27 @@ FC = {
 }
 H_STEP = {"005": 0.010, "010": 0.020}     # engineering shear h = 2 s of the strained cells
 DEGEN_TOL = 0.5                           # cm-1, multiplet grouping
+COUPLING_TOL = 1e-3                       # cm-1, exact degeneracy: block treatment for B and C only inside exact eigenspaces
 NEAR_TOL = 5.0                            # cm-1, near-degenerate pairs reported via |K_nu mu|
 VARIANTS = ("od0", "od1")
 
 
 def hermitian(m):
     return 0.5 * (m + m.conj().T)
+
+
+HARMONIC_CONVENTION = "alamode"
+BARE_XML = {**{t: RAW / "own_od1" / "i2s8" / f"{t}_full_fc2.xml" for t in ("reference", "shear_xy_p005", "shear_xy_m005")},
+            **{t: RAW / "own_surface_6p2" / f"{t}_full_fc2.xml" for t in ("shear_xy_p010", "shear_xy_m010")}}
+
+
+class _HarmonicSet:
+    def __init__(self, xml, fc):
+        self.s = AlamodeSet(xml, fc)
+        self.masses_amu = self.s.masses_amu
+
+    def dynmat(self, q):
+        return self.s.dynmat(q, asr_onsite=True)
 
 
 class Sets:
@@ -63,7 +78,9 @@ class Sets:
         xml_pattern = xml_pattern or "renorm_own_{tag}_{variant}_300K.xml"
         self.asr_onsite_scph = asr_onsite_scph
         tags = ["reference", "shear_xy_p005", "shear_xy_m005", "shear_xy_p010", "shear_xy_m010"]
-        self.bare = {t: QESet(FC[t]) for t in tags}
+        # harmonic sets in the production (ALAMODE, translationally invariant) convention; BARE_XML maps tag -> FC2 XML
+        self.bare = {t: (_HarmonicSet(BARE_XML[t], FC[t]) if HARMONIC_CONVENTION == "alamode" and t in BARE_XML else QESet(FC[t]))
+                     for t in tags}
         scph_tags = tags if strained_scph else ["reference"]
         self.scph = {t: AlamodeSet(surface_dir / xml_pattern.format(tag=t, variant=variant), FC[t]) for t in scph_tags
                      if (surface_dir / xml_pattern.format(tag=t, variant=variant)).exists()}
@@ -153,10 +170,10 @@ def evaluate_q(sets: Sets, q, steps=("005", "010"), matched_C=True):
         if "005" in K_SC and "010" in K_SC:
             K_SC["rich"] = (4.0 * K_SC["005"] - K_SC["010"]) / 3.0
     out["bare"] = {s: project(K_HA[s], wb, Eb) for s in K_HA}
-    out["B"] = {s: project(K_HA[s], wr, Er) for s in K_HA}
-    out["C"] = {s: project(K_SC[s], wr, Er) for s in K_SC}
+    out["B"] = {s: project(K_HA[s], wr, Er, tol=COUPLING_TOL) for s in K_HA}
+    out["C"] = {s: project(K_SC[s], wr, Er, tol=COUPLING_TOL) for s in K_SC}
     if "shear_xy_p005" in sets.scph:
-        out["C_noasr"] = project(sets.K_SCPH(q, "005", asr_onsite=False), wr, Er)
+        out["C_noasr"] = project(sets.K_SCPH(q, "005", asr_onsite=False), wr, Er, tol=COUPLING_TOL)
     lam_A, mu_star, single, summed, prod_index, prod_overlap = transfer_A(Eb.T, out["bare"]["005"]["eig"], Er.T, wr)
     out["A"] = {"lam": lam_A, "mu_star": mu_star, "overlap_single": single, "overlap_summed": summed,
                 "prod_index": prod_index, "prod_overlap": prod_overlap}

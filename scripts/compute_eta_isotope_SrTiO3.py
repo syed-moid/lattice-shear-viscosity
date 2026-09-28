@@ -130,6 +130,11 @@ def main() -> None:
         r_prod, r_bare = series["renormalised"][f], series["bare"][f]
         print(f"  f={f:4.2f}: g2={g2:.3e}  eta={eta0 * r_prod:.4e} Pa s  eta/eta(0)={r_prod:.5f}  (bare eigenvectors: {r_bare:.5f})")
         out_rows.append(f"{f},{g2:.6e},{eta0 * r_prod:.6e},{r_prod:.6f},{r_bare:.6f}")
+    smear = {}
+    for sig in (5.0, 20.0):
+        s_, _ = isotope_series("renormalised", fractions=[0.15], sigma_cm1=sig, modes=modes, surface=surface, vogt=vogt)
+        smear[sig] = s_[0.15]
+    print("  smearing sensitivity at f = 0.15: " + ", ".join(f"{s:.0f} cm-1: {100 * (r - 1):+.3f} %" for s, r in smear.items()))
     vals = [series["renormalised"][f] for f in FRACTIONS]
     print(f"eta decreases monotonically with f: {'YES' if all(vals[i] >= vals[i + 1] for i in range(len(vals) - 1)) else 'NO'}")
 
@@ -153,6 +158,7 @@ def main() -> None:
         "# eta_isotope_SrTiO3.csv - produced by scripts/compute_eta_isotope_SrTiO3.py",
         f"# Tamura 18O series at {T_K} K, exact g2 sum (Eq. 9), eigenvector-resolved O-site projection",
         "# (Tamura Eq. 12, rate pi/2N; HWHM = rate/2), Gaussian delta 10 cm-1, Matthiessen",
+        "# smearing sensitivity at f = 0.15: " + ", ".join(f"{s:.0f} cm-1 {100 * (r - 1):+.3f} %" for s, r in smear.items()) + ",",
         "# Gamma_total = Gamma_anh + Gamma_iso. Production model: the hybrid model (tut_z_od1, SELF_OFFDIAG = 1,",
         "# inner mesh 12^3), construction C; eigenvectors and frequencies of that surface on the 11^3 mesh. The bare-QE-",
         "# eigenvector series (same frequencies) is carried for comparison. Mass-variance channel only.",

@@ -13,6 +13,7 @@ import coupling_kernel as ck  # noqa: E402
 Z = REPO / "data" / "raw" / "alamode_sto" / "z_tut"
 for tag in list(ck.FC):
     ck.FC[tag] = Z / f"z_{tag}.fc"
+    ck.BARE_XML[tag] = (Z / "i2s12" / "z_reference_full_fc2.xml") if tag == "reference" else (Z / f"z_{tag}_full_fc2.xml")
 import eta_constructions as ec  # noqa: E402
 
 ec.RTA_BARE = Z / "bare" / "STO_RTA_z_bare.result"

@@ -123,7 +123,12 @@ SURFACE_TAG = "tutorial"       # production surface (6.0 gate outcome)
 OMEGA_R_SOURCE = "direct"      # "direct" (eigenvector-matched, production) | "rankmap" (sensitivity)
 GAMMA_SOURCE = "freqmap"       # "freqmap" (production) | "nearest_q" (sensitivity)
 MATCH_MODE = "one_step"        # "one_step": QE bare -> renormalised; "two_step": QE bare -> anphon bare -> renormalised
-DEGEN_TOL = 0.5                # cm-1, multiplet grouping for the eigenvector matching
+DEGEN_TOL = 0.5                # cm-1, multiplet grouping for the eigenvector matching and for construction A
+EXACT_DEGEN_TOL = 1e-3         # cm-1, exact degeneracy = SCPH round-off scale (spread histogram empty in 1e-4..1e-2)
+COUPLING_DEGEN_TOL = EXACT_DEGEN_TOL  # cm-1, EXACT degeneracy (SCPH round-off scale) for constructions B and C: the restricted
+                               # derivative is diagonalised only inside exactly degenerate eigenspaces; every other mode
+                               # gets the diagonal projection e^+ K e (first-order eigenvalue derivative). 0.5 = former
+                               # grouping of genuinely split modes (sensitivity only).
 CM1 = 2.0 * np.pi * speed_of_light * 100.0  # rad/s per cm-1
 
 # PBEsol production cell (Section 3.1: a = 3.8930 Angstrom)
@@ -715,11 +720,13 @@ TUT_Z_OD1 = {
     "self_offdiag": 1,
     "rta_bare": Z_DIR / "bare" / "STO_RTA_z_bare.result",
     "fc": Z_FC,
+    "harmonic": "tut_z",
     "h020": lambda tag, T: Z_DIR / "i2s12" / f"renorm_z_{tag}_i2s12_od1_{T}K.xml",
     "descriptor": "tut_z_od1 (hybrid model: example harmonic set on 4x4x4 + QE strain perturbation; "
                   "correction mesh 2x2x2, inner mesh 12x12x12, SELF_OFFDIAG = 1)",
 }
 OWN_OD1["fc"] = QE_FC
+OWN_OD1["harmonic"] = "own"
 OWN_OD1["h020"] = lambda tag, T: OWN_OD1["h020_dir"] / f"renorm_own_{tag}_od1_{T}K.xml"
 OWN_OD1["descriptor"] = "own_od1 (diagnostic surface: QE-PBEsol harmonic set; correction mesh 2x2x2, inner mesh 2x2x2)"
 SURFACE_SPECS = {"own_od1": OWN_OD1, "tut_z_od1": TUT_Z_OD1}
@@ -739,11 +746,44 @@ def fc_paths(spec: dict | None = None) -> dict:
     return spec.get("fc", QE_FC)
 
 
-def qe_set(tag: str, spec: dict | None = None) -> QESet:
+# Harmonic (unrenormalised) sets used for constructions A and B. "alamode" (production): the ALAMODE FC2 XMLs that the SCPH
+# runs start from, evaluated like the SCPH sets (rigid-ion dipole subtracted and restored in real space) - Hermitian, so the
+# strain derivative is translationally invariant. "qe": the q2r .fc files with the QE rigid-ion term of each (sheared) cell,
+# which is non-Hermitian at ~1 % for a sheared cell with an odd Born-charge part (former production; comparison only).
+HARMONIC_CONVENTION = "alamode"
+HARMONIC_XML = {
+    "tut_z": {"reference": Z_DIR / "i2s12" / "z_reference_full_fc2.xml",
+              **{t: Z_DIR / f"z_{t}_full_fc2.xml" for t in ("shear_xy_p005", "shear_xy_m005", "shear_xy_p010", "shear_xy_m010")}},
+    "own": {**{t: ALAMODE_DIR / "own_od1" / "i2s8" / f"{t}_full_fc2.xml" for t in ("reference", "shear_xy_p005", "shear_xy_m005")},
+            **{t: ALAMODE_DIR / "own_surface_6p2" / f"{t}_full_fc2.xml" for t in ("shear_xy_p010", "shear_xy_m010")}},
+}
+
+
+class HarmonicSet:
+    """ALAMODE-convention harmonic set with the QESet interface used here (dynmat(q), masses_amu)."""
+
+    def __init__(self, xml, fc):
+        self.s = AlamodeSet(xml, fc)
+        self.masses_amu = self.s.masses_amu
+
+    def dynmat(self, q_frac):
+        return self.s.dynmat(q_frac, asr_onsite=True)
+
+
+def qe_set(tag: str, spec: dict | None = None):
+    """harmonic set `tag` of a surface spec in the production convention (HARMONIC_CONVENTION)."""
+    spec = PROD if spec is None else spec
     path = fc_paths(spec)[tag]
-    if path not in _QE_SETS:
-        _QE_SETS[path] = QESet(path)
-    return _QE_SETS[path]
+    key = (HARMONIC_CONVENTION, str(path))
+    if key not in _QE_SETS:
+        fc = fc_paths(spec)
+        default = "tut_z" if fc is Z_FC else ("own" if fc is QE_FC else "")   # surface variants inherit their model's sets
+        xmls = HARMONIC_XML.get(spec.get("harmonic", default), {})
+        if HARMONIC_CONVENTION == "alamode" and tag in xmls:
+            _QE_SETS[key] = HarmonicSet(xmls[tag], path)
+        else:
+            _QE_SETS[key] = QESet(path)
+    return _QE_SETS[key]
 
 
 def _spec_dir(spec: dict, temperature: int) -> Path:
@@ -785,6 +825,36 @@ def mesh_points(n: int):
     return [(i / n, j / n, k / n) for i in range(n) for j in range(n) for k in range(n)]
 
 
+AVERAGE_DEGENERATE_LINEWIDTHS = True
+
+
+def average_degenerate_linewidths(freq: dict, gamma: dict, tol: float = None) -> tuple[dict, int]:
+    """Average the RTA linewidths over exactly degenerate sets (same irreducible q, frequencies equal within the
+    exact-degeneracy tolerance EXACT_DEGEN_TOL), as ALAMODE requires for results computed with TRISYM = 1 (the
+    equivalent of its analysis utility). Returns the averaged dict and the number of sets averaged."""
+    tol = EXACT_DEGEN_TOL if tol is None else tol
+    by_q = {}
+    for (q, b), w in freq.items():
+        by_q.setdefault(q, []).append((w, b))
+    out, n_sets = dict(gamma), 0
+    for q, lst in by_q.items():
+        lst.sort()
+        i = 0
+        while i < len(lst):
+            j = i
+            while j + 1 < len(lst) and lst[j + 1][0] - lst[j][0] <= tol:
+                j += 1
+            if j > i:
+                keys = [(q, b) for _, b in lst[i:j + 1] if (q, b) in gamma]
+                if len(keys) > 1:
+                    m = float(np.mean([gamma[k] for k in keys]))
+                    for k in keys:
+                        out[k] = m
+                    n_sets += 1
+            i = j + 1
+    return out, n_sets
+
+
 def load_construction_surface(temperature: int, with_h020: bool = False, spec: dict | None = None) -> dict:
     """Own-surface SCPH sets at one temperature (unstrained, +-0.005) and the linewidth maps of
     the same-T own RTA (character split from the bare RTA of the same harmonic set).
@@ -801,6 +871,9 @@ def load_construction_surface(temperature: int, with_h020: bool = False, spec: d
     freq_bare, _ = parse_result(spec.get("rta_bare", OWN_OD1["rta_bare"]), target_temp=300)
     rta_path = own_od1_rta(temperature, spec)
     freq_ren, gamma_ren = parse_result(rta_path, target_temp=temperature)
+    n_avg = 0
+    if AVERAGE_DEGENERATE_LINEWIDTHS:
+        gamma_ren, n_avg = average_degenerate_linewidths(freq_ren, gamma_ren)
     map_gamma, soft_gamma_median, soft_floor_theory = _gamma_map_from_results(freq_bare, freq_ren, gamma_ren)
     klist = _irreducible_kpoints(rta_path)
     full = {}
@@ -821,7 +894,7 @@ def load_construction_surface(temperature: int, with_h020: bool = False, spec: d
 
     return {"temperature": temperature, "sets": sets, "spec": spec, "map_gamma": map_gamma,
             "soft_gamma_median": soft_gamma_median, "soft_floor_theory": soft_floor_theory,
-            "nearest_gamma": nearest_gamma, "rta_path": rta_path}
+            "nearest_gamma": nearest_gamma, "rta_path": rta_path, "n_degenerate_sets_averaged": n_avg}
 
 
 def construction_modes(temperature: int, mesh_n: int = 11, surface: dict | None = None, qpoints=None):
@@ -841,14 +914,14 @@ def construction_modes(temperature: int, mesh_n: int = 11, surface: dict | None 
         K_SC = strain_derivative_matrix(sets["shear_xy_p005"].dynmat(q, asr_onsite=True),
                                         sets["shear_xy_m005"].dynmat(q, asr_onsite=True), H_ENG)
         pb = project_coupling(K_HA, E_b, omega_b, DEGEN_TOL)
-        pB = project_coupling(K_HA, E_r, omega_r, DEGEN_TOL)
-        pC = project_coupling(K_SC, E_r, omega_r, DEGEN_TOL)
+        pB = project_coupling(K_HA, E_r, omega_r, COUPLING_DEGEN_TOL)
+        pC = project_coupling(K_SC, E_r, omega_r, COUPLING_DEGEN_TOL)
         lam_A, mu, ov1, ovm = transfer_bare_coupling(pb["lam"], E_b, E_r, omega_r, DEGEN_TOL)
         if have_h020:
             K2 = strain_derivative_matrix(sets["shear_xy_p010"].dynmat(q, asr_onsite=True),
                                           sets["shear_xy_m010"].dynmat(q, asr_onsite=True), 2.0 * H_ENG)
-            pC2 = project_coupling(K2, E_r, omega_r, DEGEN_TOL)
-            pCr = project_coupling((4.0 * K_SC - K2) / 3.0, E_r, omega_r, DEGEN_TOL)
+            pC2 = project_coupling(K2, E_r, omega_r, COUPLING_DEGEN_TOL)
+            pCr = project_coupling((4.0 * K_SC - K2) / 3.0, E_r, omega_r, COUPLING_DEGEN_TOL)
         for nu in range(3 * len(bare["reference"].masses_amu)):
             rec = {"iq": iq, "q": q, "nu": nu + 1, "omega_r": float(omega_r[nu]), "omega0": float(omega_b[mu[nu]]),
                    "partner": int(mu[nu]) + 1, "overlap_single": float(ov1[nu]), "overlap_multiplet": float(ovm[nu]),
@@ -1134,10 +1207,12 @@ def main() -> None:
         "# correction mesh 2x2x2 / inner mesh 12x12x12 (finest completed mesh; convergence of eta not established).",
         "# Only temperatures with converged unstrained and eps_xy = +-0.005 SCPH solutions and an own RTA are listed.",
         "# Coupling Lambda_C = e_r K_SCPH e_r with K_SCPH = [D(+h)-D(-h)]/(2h),",
-        "# h = 0.010 engineering shear (= tensor eps_xy derivative); gamma = -Lambda_C/(2 omega_r^2); multiplets by",
-        "# projected-block diagonalisation; lifetime = stress-correlator kernel 1/(2G) + 2G/w^2; linewidths from the",
-        "# same-T own 8^3 RTA through the character-aware frequency-class map; Gamma-point TO1 triplet from Vogt 1995",
+        "# h = 0.010 engineering shear; gamma = -Lambda_C/(2 omega_r^2); diagonal projection for distinct modes, block",
+        "# diagonalisation only inside exactly degenerate eigenspaces (1e-3 cm^-1); lifetime = stress-correlator kernel",
+        "# 1/(2G) + 2G/w^2; linewidths from the same-T own 8^3 RTA, averaged over exactly degenerate sets, through the",
+        "# character-aware frequency-class map; Gamma-point TO1 triplet from Vogt 1995",
         "# (the one exception to the single-surface rule). Sectors = bare-omega_0 bin of the max-overlap bare partner.",
+        "# Harmonic strained sets (constructions A, B) in the ALAMODE convention (translationally invariant strain derivative).",
         "# See data/processed/reports/eta_SrTiO3_stageC.md.",
     ]
     tmp = out.with_suffix(".tmp")

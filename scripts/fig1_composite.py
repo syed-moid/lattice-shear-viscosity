@@ -111,7 +111,7 @@ def draw_hybrid(ax, label):
         ax.plot(blk.path_coord, blk.omega_bare_cm1, lw=0.6, color=BRANCH_PBE, zorder=1.5,
                 label="bare harmonic (example set)" if b == 1 else None)
         ax.plot(blk.path_coord, blk.omega_scph300_cm1, lw=0.8, color=ANCHOR_RENORM, zorder=2,
-                label="SCPH 300 K (inner mesh $12^3$)" if b == 1 else None)
+                label="SCPH 300 K (inner mesh 12³)" if b == 1 else None)
     ax.axhline(0.0, lw=0.6, color=GRID, zorder=1)
     for t in ticks[1:-1]:
         ax.axvline(t, lw=0.5, color=GRID, zorder=1)
@@ -145,7 +145,7 @@ def draw_decomposition(ax, label):
     ax.step(np.append(lo, hi[-1]), np.append(eta_b, eta_b[-1]) * 1e3, where="post", color="#a84848", lw=1.0,
             label="projected harmonic coupling (B)")
     ax.step(np.append(lo, hi[-1]), np.append(eta_a, eta_a[-1]) * 1e3, where="post", color="0.3", lw=0.9, ls="--",
-            label="transferred coupling (A, retired)")
+            label="maximum-overlap transfer (A)")
     peak = float(max((eta_c + eta_g).max(), eta_b.max(), eta_a.max()))
     ax.set_ylim(0, peak * 1e3 * 1.12)
     ax.axvspan(lo[0], 0.0, color="0.9", zorder=0)
@@ -155,7 +155,7 @@ def draw_decomposition(ax, label):
     ax.set_xlabel(r"bare frequency $\omega_0$ of the partner mode (cm$^{-1}$)")
     ax.set_ylabel(r"$\eta$ per 25 cm$^{-1}$ bin ($10^{-3}$ Pa s)")
     ax.set_title(rf"(c) SrTiO$_3$ $\eta_{{xyxy}}$ decomposition, hybrid model, 300 K "
-                 rf"(C total {total * 1e3:.2f}$\times 10^{{-3}}$ Pa s, finite-mesh result)",
+                 rf"(C total {total * 1e3:.3f}$\times 10^{{-3}}$ Pa s, finite-mesh result)",
                  loc="left", fontsize=9)
     ax.legend(fontsize=6.8, loc="upper right", frameon=False)
     ax.set_xlim(lo[0], 900)

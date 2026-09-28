@@ -36,21 +36,21 @@ rel_bare = (np.array([float(r[col["eta_over_eta0_bare_eigenvectors"]]) for r in 
             if "eta_over_eta0_bare_eigenvectors" in col else None)
 
 fig, ax = plt.subplots(figsize=(4.6, 3.6))
-ax.plot(f, eta * 1e3, "o-", color="#4878a8", lw=1.5, ms=6, label="renormalised eigenvectors")
+ax.plot(f, 100.0 * (rel - 1.0), "o-", color="#4878a8", lw=1.5, ms=6, label="renormalised eigenvectors")
 if rel_bare is not None:
-    ax.plot(f, eta[0] * rel_bare * 1e3, "s--", color="#a84848", lw=1.0, ms=4, label="bare eigenvectors")
+    ax.plot(f, 100.0 * (rel_bare - 1.0), "s--", color="#a84848", lw=1.0, ms=4, label="harmonic eigenvectors")
     ax.legend(fontsize=7, loc="upper right")
 ax.set_xlabel(r"$^{18}$O fraction $f$ on the oxygen sublattice")
-ax.set_ylabel(r"$\eta_{xyxy}$(300 K) ($10^{-3}$ Pa s)")
-ax.set_title(r"Mass-variance channel: $\eta$ vs $^{18}$O fraction (Tamura, exact $g_2$, O-site projection)", fontsize=8)
+ax.set_ylabel(r"relative change of $\eta_{xyxy}$(300 K) (%)")
+ax.set_title("Mass-variance channel of $^{18}$O substitution\n(Tamura rate, exact $g_2$, O-site projection)", fontsize=8.5)
 
 delta_pct = 100.0 * (rel[-1] - 1.0)
-ax.annotate(f"{delta_pct:+.1f}% at $f$ = {f[-1]:.2f}",
-            xy=(f[-1], eta[-1] * 1e3), xytext=(0.55, 0.55),
+ax.annotate(f"{delta_pct:+.2f} % at $f$ = {f[-1]:.2f}".replace("-", "−"),
+            xy=(f[-1], delta_pct), xytext=(0.30, 0.52),
             textcoords="axes fraction", fontsize=8,
             arrowprops=dict(arrowstyle="->", lw=0.8))
 ax.text(0.03, 0.05,
-        "eigenvector-resolved O-site projection (Tamura Eq. 12);\nfixed renormalised spectrum and couplings",
+        "eigenvector-resolved O-site projection (Eq. 10);\nfixed renormalised spectrum and couplings",
         transform=ax.transAxes, fontsize=6.5, color="0.35")
 fig.tight_layout()
 OUT.parent.mkdir(exist_ok=True)

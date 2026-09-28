@@ -47,5 +47,7 @@ the record of the statements they support.
 
 ## Archive
 
-Release v3.0 is archived on Zenodo (version DOI 10.5281/zenodo.22983132; concept DOI
-10.5281/zenodo.21940876): the repository at tag v3.0 and the raw-run archive with `MANIFEST.md` and `SHA256SUMS.txt`.
+Release v3.1 is archived on Zenodo as a new version (version DOI 10.5281/zenodo.23025569; concept DOI 10.5281/zenodo.21940876):
+the repository at tag v3.1 and a raw-run archive with the raw files new or changed since v3.0, with `MANIFEST.md` and
+`SHA256SUMS.txt`. The earlier release v3.0 (version DOI 10.5281/zenodo.22983132) holds the v3.0 raw-run archive, which
+contains the remaining raw files.

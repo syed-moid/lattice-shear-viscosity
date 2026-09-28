@@ -4,12 +4,12 @@
 # dynamical matrices and couplings). Smearing block: isotope-channel Gaussian delta-width
 # sensitivity at f = 0.15 (projected rate, production-surface eigenvectors).
 mesh,n_q,eta_300K_Pas,dev_from_densest_pct
-9^3,729,5.064822e-04,0.197
-11^3,1331,5.075831e-04,0.415
-13^3,2197,4.919414e-04,-2.680
-15^3,3375,5.054870e-04,0.000
+9^3,729,4.820200e-04,-0.791
+11^3,1331,4.749411e-04,-2.248
+13^3,2197,4.747657e-04,-2.284
+15^3,3375,4.858619e-04,0.000
 
 sigma_cm1,eta_f015_Pas,suppression_pct
-5.0,5.050841e-04,-0.492
-10.0,5.051878e-04,-0.472
-20.0,5.053145e-04,-0.447
+5.0,4.725256e-04,-0.509
+10.0,4.726426e-04,-0.484
+20.0,4.727780e-04,-0.455

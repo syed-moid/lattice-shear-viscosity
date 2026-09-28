@@ -14,7 +14,8 @@ import pandas as pd
 from scipy.constants import Boltzmann as K_B
 
 HERE = Path(__file__).resolve().parent
-from _paths import DIAG, RAW, REPO, SCPH  # noqa: E402,F401  (sets sys.path)
+from _paths import DIAG, RAW, REPO, SCPH, tee_stdout  # noqa: E402,F401  (sets sys.path)
+tee_stdout("narrative_facts_300K.txt")
 from compute_eta_SrTiO3 import V_CELL  # noqa: E402
 
 T = 300.0

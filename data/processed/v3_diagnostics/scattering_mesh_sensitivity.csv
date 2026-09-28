@@ -1,0 +1,7 @@
+# scattering_mesh_sensitivity.py: hybrid model, 300 K, 2^3/12^3; RTA q mesh 8^3 (production), 10^3, 12^3; linewidths
+# mapped by the production frequency-class rule (bare RTA of the same mesh for the character split); construction C,
+# frozen frequencies and couplings; sensitivity row only.
+scattering_mesh,eta_C_Pas,kappa_W_mK,soft_manifold_median_gamma_cm1,rta_result,eta_rel_to_8,kappa_rel_to_8
+8^3,0.000474941,7.5157,2.78327,STO_RTA_i2s12_od1_300K.result,0,0
+10^3,0.000472166,8.6359,3.49775,STO_RTA_i2s12_od1_300K_k10.result,-0.00584327,0.149048
+12^3,0.000465436,9.1206,3.11699,STO_RTA_i2s12_od1_300K_k12.result,-0.020014,0.21354

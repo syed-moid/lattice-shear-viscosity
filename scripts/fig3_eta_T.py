@@ -3,9 +3,9 @@
 construction C), decomposed by the bare-omega_0 class of each renormalised mode's partner.
 
 Data provenance (committed CSVs only): data/processed/eta_SrTiO3.csv <- scripts/compute_eta_SrTiO3.py.
-Only the temperatures with converged unstrained and strained SCPH solutions of the hybrid model appear in the CSV;
+Only the temperatures with iteratively converged, dynamically stable unstrained and strained SCPH solutions of the hybrid model appear in the CSV;
 if that is 300 K alone the figure is not produced (the paper then reports 300 K only). Flags rendered: T != 300 K
-(linewidths validated at 300 K only, shaded); T above the Vogt series (298 K) uses the production-surface TO1
+(linewidths benchmarked at 300 K only, shaded); T above the Vogt series (298 K) uses the production-surface TO1
 frequency and the soft-manifold linewidth (open markers).
 Writes figures/fig3_eta_T.{png,pdf}.
 Usage: uv run python scripts/fig3_eta_T.py
@@ -44,7 +44,7 @@ T, eta, imag, b0, b50, b100, b175, g_sec, vogt_ok = (a[order] for a in (T, eta, 
 fig, ax = plt.subplots(figsize=(5.2, 4.6))
 ax.axvspan(T.min() - 10, 290, color="0.92", zorder=0)
 ax.axvspan(310, T.max() + 10, color="0.92", zorder=0)
-ax.text(0.985, 0.02, "shaded: linewidth method validated at 300 K only",
+ax.text(0.985, 0.02, "shaded: linewidths benchmarked at 300 K only",
         transform=ax.transAxes, ha="right", va="bottom", fontsize=6.5, color="0.35")
 ax.stackplot(T, b100 + b175, b50, b0 + imag, g_sec,
              labels=[r"partner $\omega_0 \geq 100$ cm$^{-1}$", r"partner $50 \leq \omega_0 < 100$ cm$^{-1}$",
@@ -60,7 +60,7 @@ ax.set_ylabel(r"$\eta_{xyxy}$ ($10^{-3}$ Pa s)")
 ax.set_xlim(T.min() - 10, T.max() + 10)
 ax.set_ylim(0, eta.max() * 1.12)
 ax.legend(fontsize=6.3, loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=2, frameon=False)
-ax.set_title(r"SrTiO$_3$, hybrid model (inner mesh $12^3$); converged temperatures only", fontsize=8)
+ax.set_title("SrTiO$_3$, hybrid model (inner mesh 12³)\nstable SCPH solutions at the specified mesh", fontsize=8.5)
 fig.tight_layout()
 OUT.parent.mkdir(exist_ok=True)
 fig.savefig(f"{OUT}.png", dpi=220)

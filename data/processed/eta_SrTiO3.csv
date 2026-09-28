@@ -4,13 +4,15 @@
 # correction mesh 2x2x2 / inner mesh 12x12x12 (finest completed mesh; convergence of eta not established).
 # Only temperatures with converged unstrained and eps_xy = +-0.005 SCPH solutions and an own RTA are listed.
 # Coupling Lambda_C = e_r K_SCPH e_r with K_SCPH = [D(+h)-D(-h)]/(2h),
-# h = 0.010 engineering shear (= tensor eps_xy derivative); gamma = -Lambda_C/(2 omega_r^2); multiplets by
-# projected-block diagonalisation; lifetime = stress-correlator kernel 1/(2G) + 2G/w^2; linewidths from the
-# same-T own 8^3 RTA through the character-aware frequency-class map; Gamma-point TO1 triplet from Vogt 1995
+# h = 0.010 engineering shear; gamma = -Lambda_C/(2 omega_r^2); diagonal projection for distinct modes, block
+# diagonalisation only inside exactly degenerate eigenspaces (1e-3 cm^-1); lifetime = stress-correlator kernel
+# 1/(2G) + 2G/w^2; linewidths from the same-T own 8^3 RTA, averaged over exactly degenerate sets, through the
+# character-aware frequency-class map; Gamma-point TO1 triplet from Vogt 1995
 # (the one exception to the single-surface rule). Sectors = bare-omega_0 bin of the max-overlap bare partner.
+# Harmonic strained sets (constructions A, B) in the ALAMODE convention (translationally invariant strain derivative).
 # See data/processed/reports/eta_SrTiO3_stageC.md.
 T_K,eta_total_Pas,eta_imaginary_Pas,eta_0_50_Pas,eta_50_100_Pas,eta_100_175_Pas,eta_175_inf_Pas,eta_gamma_sector_Pas,frac_below_100_cm1,vogt_gamma_sector,n_skipped,provisional_method_flag
-250,3.399336e-04,2.593239e-05,1.940661e-06,9.629579e-05,1.996643e-04,1.473612e-05,1.364361e-06,0.3693,1,0,linewidths_validated_at_300K_only
-300,5.075831e-04,5.745395e-05,2.591075e-06,1.429827e-04,2.860140e-04,1.729723e-05,1.244099e-06,0.4024,1,0,no
-350,5.246227e-04,5.479756e-05,2.653113e-06,1.491092e-04,2.973884e-04,1.966624e-05,1.008210e-06,0.3957,0,0,linewidths_validated_at_300K_only
-400,5.317531e-04,4.197373e-05,2.430819e-06,1.487162e-04,3.162900e-04,2.141493e-05,9.274324e-07,0.3649,0,0,linewidths_validated_at_300K_only
+250,3.246717e-04,2.583663e-05,1.933389e-06,8.206391e-05,1.987331e-04,1.474034e-05,1.364361e-06,0.3425,1,0,linewidths_validated_at_300K_only
+300,4.749411e-04,5.403337e-05,2.468674e-06,1.218247e-04,2.782505e-04,1.711985e-05,1.244099e-06,0.3781,1,0,no
+350,5.048545e-04,5.479756e-05,2.731641e-06,1.354731e-04,2.914763e-04,1.936773e-05,1.008210e-06,0.3843,0,0,linewidths_validated_at_300K_only
+400,5.038470e-04,4.197373e-05,2.552934e-06,1.335855e-04,3.035257e-04,2.128172e-05,9.274324e-07,0.3553,0,0,linewidths_validated_at_300K_only

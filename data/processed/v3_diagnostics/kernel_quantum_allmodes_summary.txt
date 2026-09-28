@@ -1,0 +1,5 @@
+modes with eta > 0: 19962; distinct (omega, Gamma): 784; eta = 4.749412e-04 Pa s (production, 300 K)
+hbar omega / k_B T: 0.1656 - 3.9747; Gamma/omega: 0.00560 - 0.1270
+stress kernel (production): max |r - 1| = 0.1479%; eta-weighted mean r - 1 = 0.0028% (= relative change of eta if the quantum integral replaced the kernel)
+energy kernel: max |r - 1| = 0.0540%; eta-weighted mean r - 1 = 0.0001%
+largest stress-kernel corrections at: omega 800.5 cm-1, Gamma/omega 0.015, hw/kT 3.84: +0.1479%; omega 800.6 cm-1, Gamma/omega 0.015, hw/kT 3.84: +0.1478%; omega 799.9 cm-1, Gamma/omega 0.015, hw/kT 3.84: +0.1475%

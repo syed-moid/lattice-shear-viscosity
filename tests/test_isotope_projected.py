@@ -60,8 +60,12 @@ def test_production_series_pinned():
     # regenerated on the production model (hybrid model tut_z_od1: SELF_OFFDIAG = 1, correction mesh 2^3, inner mesh 12^3,
     # construction C, production-surface eigenvectors and frequencies at 300 K); the previous pins on the own-surface model
     # (inner mesh 2^3) were 0.99913/0.99605/0.99291/0.99038 (renormalised) and 0.99919/0.99632/0.99341/0.99108 (bare)
-    ref_renorm = {0.01: 0.999572, 0.05: 0.998059, 0.10: 0.996519, 0.15: 0.995281}
-    ref_bare = {0.01: 0.999567, 0.05: 0.998034, 0.10: 0.996469, 0.15: 0.995208}
+    # re-pinned after the exact-degeneracy coupling rule and the degenerate linewidth averaging (v3.1); the v3.0 pins were
+    # 0.999572/0.998059/0.996519/0.995281 (renormalised) and 0.999567/0.998034/0.996469/0.995208 (bare); re-pinned again after
+    # the translationally invariant (ALAMODE) convention of the harmonic strained sets (bare pins were
+    # 0.999555/0.997978/0.996370/0.995074, renormalised 0.995161 at f = 0.15)
+    ref_renorm = {0.01: 0.999561, 0.05: 0.998008, 0.10: 0.996429, 0.15: 0.995160}
+    ref_bare = {0.01: 0.999557, 0.05: 0.997987, 0.10: 0.996387, 0.15: 0.995098}
     surface = iso.load_construction_surface(iso.T_K)
     modes = iso.construction_modes(iso.T_K, 11, surface)
     s_ren, _ = iso.isotope_series(eigenvectors="renormalised", fractions=list(ref_renorm), modes=modes, surface=surface)

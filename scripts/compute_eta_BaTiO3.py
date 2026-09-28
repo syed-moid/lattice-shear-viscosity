@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Stage C (BaTiO3): zone-center-anchored soft-branch sector of eta_44 (EXPLORATORY).
+"""BaTiO3: near-Gamma soft-branch sector of eta_44 (qualitative illustration).
 
-SCOPE (Gamma-point-only, section 3.2 of the manuscript): after the fc3
+SCOPE (near-Gamma soft-branch sector, anchored at zone-centre data): after the fc3
 cost-gate NO-GO, BaTiO3 has no full-zone Gamma_qs(T). What CAN be
 computed with stated provenance is the soft-TO-branch contribution to
 eta_44 anchored entirely at the zone center:
@@ -166,15 +166,15 @@ def main() -> None:
 
     etas = np.array([r[1] for r in results])
     t_arr = np.array([r[0] for r in results])
-    print(f"\nZone-center-anchored soft-branch sector (exploratory): {etas.max():.2e} Pa s at "
+    print(f"\nNear-Gamma soft-branch sector: {etas.max():.2e} Pa s at "
           f"{t_arr[np.argmax(etas)]:.0f} K, {etas.min():.2e} Pa s at {t_arr[np.argmin(etas)]:.0f} K "
           f"({etas.max() / etas.min():.0f}-fold over the series). No total-viscosity inference is made.")
 
     path = REPO / "data" / "processed" / "eta_BaTiO3.csv"
     header = [
         "# eta_BaTiO3.csv - produced by scripts/compute_eta_BaTiO3.py",
-        "# ZONE-CENTER-ANCHORED soft-TO-branch SECTOR of eta_44 (Gamma-point-only scope,",
-        "# manuscript 3.2): an exploratory PARTIAL quantity, not a total viscosity.",
+        "# near-Gamma soft-TO-branch SECTOR of eta_44 (anchored at zone-centre data; integration",
+        "# domain in Supplement S7): a partial quantity, not a total viscosity.",
         "# Lambda (tensor convention) from own strained cells; omega_s and the DHO",
         "# friction Gamma = gamma_VSR/2 from VSR 1982 hyper-Raman (measured points, no",
         "# Cochran fit); Harada dispersion, cap q_par<=0.47 A^-1; stress-correlator",

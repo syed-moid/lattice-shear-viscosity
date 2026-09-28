@@ -212,3 +212,15 @@ eta(300 K) = 5.8423e-04 Pa s; eta(T) for T = 100, 150, 200, 250, 300, 350, 400 K
 ## Production model tut_z_od1 (hybrid model, construction C)
 
 eta(300 K) = 5.0758e-04 Pa s; eta(T) for T = 250, 300, 350, 400 K: 3.399e-04, 5.076e-04, 5.246e-04, 5.318e-04 Pa s. Mesh 9/11/13/15: 5.065e-04, 5.076e-04, 4.919e-04, 5.055e-04 Pa s (spread 3.09 %). Numbers only; provenance in the script header.
+
+## Production model tut_z_od1 (hybrid model, construction C)
+
+eta(300 K) = 4.7500e-04 Pa s; eta(T) for T = 250, 300, 350, 400 K: 3.247e-04, 4.750e-04, 5.050e-04, 5.041e-04 Pa s. Mesh 9/11/13/15: 4.820e-04, 4.750e-04, 4.749e-04, 4.859e-04 Pa s (spread 2.25 %). Numbers only; provenance in the script header.
+
+## Production model tut_z_od1 (hybrid model, construction C)
+
+eta(300 K) = 4.7494e-04 Pa s; eta(T) for T = 250, 300, 350, 400 K: 3.247e-04, 4.749e-04, 5.049e-04, 5.038e-04 Pa s. Mesh 9/11/13/15: 4.820e-04, 4.749e-04, 4.748e-04, 4.859e-04 Pa s (spread 2.28 %). Numbers only; provenance in the script header.
+
+## Production model tut_z_od1 (hybrid model, construction C)
+
+eta(300 K) = 4.7494e-04 Pa s; eta(T) for T = 250, 300, 350, 400 K: 3.247e-04, 4.749e-04, 5.049e-04, 5.038e-04 Pa s. Mesh 9/11/13/15: 4.820e-04, 4.749e-04, 4.748e-04, 4.859e-04 Pa s (spread 2.28 %). Numbers only; provenance in the script header.

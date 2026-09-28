@@ -63,7 +63,7 @@ def write(df, name, header):
     tmp = out.with_suffix(".tmp")
     with open(tmp, "w") as fh:
         fh.write("".join(f"# {h}\n" for h in header))
-        df.to_csv(fh, index=False, float_format="%.6g")
+        df.to_csv(fh, index=False, float_format="%.10g")
     tmp.rename(out)
     print(f"-> {out.relative_to(REPO)}")
 
@@ -127,7 +127,10 @@ def main() -> None:
            "Vogt Gamma exception; A = transferred coupling (retired), B = projected harmonic coupling, C = projected SCPH coupling;",
            "surface hybrid = example harmonic set + QE strain perturbation (production); diagnostic = own QE-PBEsol harmonic set;",
            "correction mesh (KMESH_INTERPOLATE) 2^3, inner mesh (KMESH_SCPH) as listed; linewidths consistent (own RTA of each",
-           "surface) or fixed at the 2^3/2^3 values of the same input model. Finite-mesh model results; no converged limit implied."]
+           "surface) or fixed at the 2^3/2^3 values of the same input model. Finite-mesh model results; no converged limit implied.",
+           "Harmonic strained sets (A, B) in the ALAMODE convention (dipole term subtracted and restored in real space; Hermitian,",
+           "translationally invariant strain derivative). A takes the bare coupling of the maximum-overlap bare partner; inside an",
+           "exactly degenerate bare multiplet that partner depends on the eigenvector basis (sensitivity of eta_A about 1 %)."]
     write(pd.DataFrame(rows), "coupling_constructions_SrTiO3.csv", hdr)
     write(pd.DataFrame(bin_rows), "coupling_ratio_bins_SrTiO3.csv",
           hdr[:3] + ["per bare-partner omega_0 bin (cm^-1) at inner mesh 12^3, consistent linewidths; ratio = eta ratio of the bin."])

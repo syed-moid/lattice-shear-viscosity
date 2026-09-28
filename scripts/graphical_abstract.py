@@ -29,10 +29,10 @@ LIGHT = "#F2F2F2"
 
 # ---------------------------------------------------------------- data
 # eta(300 K), 10^-3 Pa s: constructions A, B, C at inner mesh 12^3 (hybrid) and 2^3 (diagnostic)
-CONS = {"hybrid model": (0.945, 0.744, 0.508), "diagnostic surface": (1.914, 0.848, 0.584)}
+CONS = {"hybrid model": (0.920, 0.694, 0.475), "diagnostic surface": (1.876, 0.819, 0.573)}
 MESH_N = [2, 4, 8, 12]
-ETA_C_MESH = [0.511, 0.480, 0.481, 0.508]         # hybrid model, consistent linewidths
-ETA_C_FIXED = [0.511, 0.589, 0.652, 0.691]        # linewidths held at inner mesh 2^3
+ETA_C_MESH = [0.475, 0.449, 0.450, 0.475]         # hybrid model, consistent linewidths
+ETA_C_FIXED = [0.475, 0.546, 0.609, 0.644]        # linewidths held at inner mesh 2^3
 
 FW, FH = 4.80, 2.618
 fig = plt.figure(figsize=(FW, FH), facecolor="white")
@@ -69,7 +69,7 @@ ax_a.set_title("strain coupling: transfer vs projection", fontsize=FS_TITLE, pad
 from matplotlib.patches import Patch  # noqa: E402
 ax_a.legend(handles=[Patch(facecolor="0.45", label="hybrid model"), Patch(facecolor="white", edgecolor="0.45", hatch="////", label="diagnostic surface")],
            fontsize=FS_TICK - 0.6, frameon=False, loc="upper right", handlelength=1.2)
-ax_a.text(0.62, 1.40, "A: $\\times$1.9–3.8 vs C;\nfails the $q^2$ test", fontsize=FS_TICK - 0.3, color=VERMIL)
+ax_a.text(0.62, 1.40, "A: $\\times$1.9–3.5 vs C\nacross the tested cases", fontsize=FS_TICK - 0.3, color=VERMIL)
 ax_a.set_ylim(0, 2.05)
 ax_a.tick_params(labelsize=FS_TICK, length=2, pad=1.5)
 for s_ in ("top", "right"):
@@ -83,7 +83,7 @@ ax_b.set_ylim(0.3, 0.8)
 ax_b.set_xlabel("inner mesh $n$ ($n^3$)", fontsize=FS_LAB, labelpad=1.0)
 ax_b.set_ylabel(r"$\eta_C$ ($10^{-3}$ Pa s)", fontsize=FS_LAB, labelpad=1.5)
 ax_b.set_title("hybrid model, 300 K", fontsize=FS_TITLE, pad=2.5)
-ax_b.text(2.2, 0.36, "$0.51\\times10^{-3}$ Pa s at $12^3$\nconvergence not established", fontsize=FS_TICK - 0.3, color=BLUE)
+ax_b.text(2.2, 0.36, "$0.475\\times10^{-3}$ Pa s at $12^3$\nconvergence not established", fontsize=FS_TICK - 0.3, color=BLUE)
 ax_b.legend(fontsize=FS_TICK - 0.8, frameon=False, loc="upper left", handlelength=1.6)
 ax_b.tick_params(labelsize=FS_TICK, length=2, pad=1.5)
 for s_ in ("top", "right"):
