@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Graphical abstract for EPJ B submission.
 
-"Mode-resolved Akhiezer shear viscosity of SrTiO3 from anharmonic lattice dynamics: evaluating strain couplings in
-the renormalised phonon basis"
+"Strain couplings and Akhiezer shear viscosity in cubic SrTiO3"
 
 EPJ B spec: max width 480 px, aspect ratio 11:6, .png/.jpg, color encouraged.
 Renders a 600-dpi master (2880x1571) and the exact 480x262 submission file.
@@ -28,8 +27,8 @@ GRAY_TXT = "#444444"
 LIGHT = "#F2F2F2"
 
 # ---------------------------------------------------------------- data
-# eta(300 K), 10^-3 Pa s: constructions A, B, C at inner mesh 12^3 (hybrid) and 2^3 (diagnostic)
-CONS = {"hybrid model": (0.920, 0.694, 0.475), "diagnostic surface": (1.876, 0.819, 0.573)}
+# eta(300 K), 10^-3 Pa s: constructions A, B, C at inner mesh 12^3 on both input models
+CONS = {"hybrid model": (0.920, 0.694, 0.475), "diagnostic surface": (1.229, 0.640, 0.349)}
 MESH_N = [2, 4, 8, 12]
 ETA_C_MESH = [0.475, 0.449, 0.450, 0.475]         # hybrid model, consistent linewidths
 ETA_C_FIXED = [0.475, 0.546, 0.609, 0.644]        # linewidths held at inner mesh 2^3
@@ -65,12 +64,14 @@ for k, (label, vals) in enumerate(CONS.items()):
              edgecolor=[VERMIL, "#7FB3D5", BLUE], hatch=None if k == 0 else "////", lw=0.8, label=label)
 ax_a.set_xticks(x, ["A\ntransferred", "B\nprojected\nharmonic", "C\nprojected\nSCPH"], fontsize=FS_TICK - 0.3)
 ax_a.set_ylabel(r"$\eta_{xyxy}$(300 K) ($10^{-3}$ Pa s)", fontsize=FS_LAB, labelpad=1.5)
-ax_a.set_title("strain coupling: transfer vs projection", fontsize=FS_TITLE, pad=2.5)
+ax_a.set_title("strain coupling: transfer vs projection", fontsize=FS_TITLE, pad=9.0)
 from matplotlib.patches import Patch  # noqa: E402
 ax_a.legend(handles=[Patch(facecolor="0.45", label="hybrid model"), Patch(facecolor="white", edgecolor="0.45", hatch="////", label="diagnostic surface")],
            fontsize=FS_TICK - 0.6, frameon=False, loc="upper right", handlelength=1.2)
-ax_a.text(0.62, 1.40, "A: $\\times$1.9–3.5 vs C\nacross the tested cases", fontsize=FS_TICK - 0.3, color=VERMIL)
-ax_a.set_ylim(0, 2.05)
+ax_a.text(0.5, 1.012, "both models: correction mesh $2^3$, inner mesh $12^3$", transform=ax_a.transAxes, ha="center", va="bottom",
+          fontsize=FS_TICK - 0.6, color=GRAY_TXT)
+ax_a.text(0.62, 0.95, "A: $\\times$1.9–3.5 vs C\n($2^3$ and $12^3$, both models)", fontsize=FS_TICK - 0.3, color=VERMIL)
+ax_a.set_ylim(0, 1.50)
 ax_a.tick_params(labelsize=FS_TICK, length=2, pad=1.5)
 for s_ in ("top", "right"):
     ax_a.spines[s_].set_visible(False)
